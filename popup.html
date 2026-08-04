@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>トレひろ設定</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header class="head">
+      <h1>トレひろ</h1>
+      <label class="switch">
+        <input type="checkbox" id="enabled" />
+        <span class="track"><span class="knob"></span></span>
+        <span class="switch-text" id="enabledText">ON</span>
+      </label>
+    </header>
+
+    <main class="body">
+      <section class="field">
+        <div class="field-head">
+          <label for="cardWidth">カードの幅</label>
+          <output class="value" id="cardWidthValue">95%</output>
+        </div>
+        <input
+          type="range"
+          id="cardWidth"
+          min="40"
+          max="100"
+          step="1"
+          value="95"
+        />
+        <div class="scale"><span>40%</span><span>100%</span></div>
+        <p class="hint">ウィンドウ幅に対するカード詳細の幅。</p>
+      </section>
+
+      <section class="field">
+        <div class="field-head">
+          <label for="descRatio">左右の比率</label>
+          <output class="value" id="ratioValue">60 : 40</output>
+        </div>
+        <input
+          type="range"
+          id="descRatio"
+          min="15"
+          max="90"
+          step="1"
+          value="60"
+        />
+        <div class="preview" aria-hidden="true">
+          <span class="preview-left" id="previewLeft">説明欄</span>
+          <span class="preview-right" id="previewRight">コメント欄</span>
+        </div>
+        <p class="hint">左＝説明欄・添付／右＝コメントとアクティビティ。</p>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <button type="button" id="reset" class="reset">既定値に戻す</button>
+      <span class="saved" id="saved">保存しました</span>
+    </footer>
+
+    <script src="shared.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

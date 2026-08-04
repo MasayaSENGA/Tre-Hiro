@@ -1,0 +1,90 @@
+/*
+ * トレひろ – Trello ワイドカード
+ *
+ * カード詳細（カードバック）のレイアウト制約を解除して、
+ * 幅と「説明欄 : コメント欄」の左右比率を CSS 変数で制御する。
+ *
+ * Trello 側の実クラス名はビルドごとに変わるハッシュ値（例: .mqI1p85XmC2MaW）なので、
+ * ここでは data-testid / role / 要素名など変わりにくい目印だけを使っている。
+ *
+ * 想定している Trello 側のカードバック構造:
+ *   #layer-manager-card-back
+ *     div[role="dialog"][data-testid="card-back-name"]   ← width: 768px / 1008px
+ *       … > div (flex 行)
+ *            main   ← 説明欄・添付・チェックリスト（min-width: 460px, 内側に max-width: 620px）
+ *            aside  ← コメントとアクティビティ（min-width: 460px, 閉じると translateX(100%)）
+ */
+
+:root {
+  /* content.js が保存値で上書きする。ここの値は拡張が無効／未設定のときの既定値。 */
+  --twc-card-width: 95vw;
+  --twc-card-max-width: calc(100vw - 24px);
+  --twc-desc-ratio: 60%;
+}
+
+/* 750px 以下は Trello 自体がモバイル用の 1 カラム表示に切り替わるので触らない。
+   印刷時にも適用しないよう screen に限定する。 */
+@media screen and (min-width: 751px) {
+  /* ---------------------------------------------------------------
+     1. カード全体の幅（既定の 768px / 1008px 固定を解除）
+     --------------------------------------------------------------- */
+  html[data-twc-on] #layer-manager-card-back div[role="dialog"],
+  html[data-twc-on] div[role="dialog"][data-testid="card-back-name"] {
+    width: var(--twc-card-width) !important;
+    max-width: var(--twc-card-max-width) !important;
+  }
+
+  /* ---------------------------------------------------------------
+     2. 左カラム（説明欄側）の内部制限を解除
+        ・main の min-width: 460px → 比率を自由に動かせるように 0
+        ・main 直下ラッパーの max-width: 620px → 解除して幅いっぱいに
+        ・タイトル hgroup の max-width: 544px → 解除
+     --------------------------------------------------------------- */
+  html[data-twc-on] #layer-manager-card-back div[role="dialog"] main,
+  html[data-twc-on] div[role="dialog"][data-testid="card-back-name"] main {
+    min-width: 0 !important;
+  }
+
+  html[data-twc-on] #layer-manager-card-back div[role="dialog"] main > div,
+  html[data-twc-on] div[role="dialog"][data-testid="card-back-name"] main > div {
+    max-width: none !important;
+  }
+
+  html[data-twc-on] #layer-manager-card-back div[role="dialog"] main hgroup,
+  html[data-twc-on] div[role="dialog"][data-testid="card-back-name"] main hgroup {
+    max-width: none !important;
+  }
+
+  /* ---------------------------------------------------------------
+     3. 右カラム（コメント欄側）の幅で左右比率を決める
+        main は Trello 側で flex: 1 1 100%（縮む）なので、
+        aside に固定幅を与えるだけで main が残り幅ぴったりに縮む。
+        こうしておくと、コメント欄を閉じた状態（main が flex: 1 0 100%）でも
+        余白ができず、そのまま全幅表示になる。
+     --------------------------------------------------------------- */
+  html[data-twc-on] #layer-manager-card-back div[role="dialog"] aside,
+  html[data-twc-on] div[role="dialog"][data-testid="card-back-name"] aside {
+    flex: 0 0 auto !important;
+    width: calc(100% - var(--twc-desc-ratio)) !important;
+    min-width: 0 !important;
+    max-width: none !important;
+  }
+
+  /* コメント欄が開いている間だけ main を縮ませる（Trello 側の修飾クラスに依存しない保険）。 */
+  html[data-twc-on]
+    div[role="dialog"]:has(
+      [data-testid="card-back-activity-button"][aria-checked="true"]
+    )
+    main {
+    flex-shrink: 1 !important;
+  }
+
+  /* コメント欄が閉じているときは左カラムを全幅に戻す。 */
+  html[data-twc-on]
+    div[role="dialog"]:has(
+      [data-testid="card-back-activity-button"][aria-checked="false"]
+    )
+    main {
+    flex: 1 0 100% !important;
+  }
+}
