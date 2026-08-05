@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "トレひろ – Trello ワイドカード",
+  "name": "トレひろ",
   "version": "1.0.0",
   "description": "Trello のカード詳細を画面いっぱいに広げ、説明欄とコメント欄の左右比率を自由に調整できます。",
   "permissions": ["storage"],
