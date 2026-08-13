@@ -20,6 +20,8 @@
   --twc-card-width: 95vw;
   --twc-card-max-width: calc(100vw - 24px);
   --twc-desc-ratio: 60%;
+  --twc-color-strength: 16%;
+  --twc-bar-width: 4px;
 }
 
 /* 750px 以下は Trello 自体がモバイル用の 1 カラム表示に切り替わるので触らない。
@@ -86,5 +88,33 @@
     )
     main {
     flex: 1 0 100% !important;
+  }
+}
+
+/* -----------------------------------------------------------------
+   4. ボードのカードをラベル色で塗る
+      colorize.js が各カードフロントに付ける CSS 変数:
+        --twc-card-color … 先頭ラベルの色（実測値をそのまま）
+        --twc-card-bar   … ラベル色を積んだ縦帯グラデーション
+
+      Trello 標準の背景色（テーマ・ホバー・選択状態）は残したいので、
+      background-color を上書きせず background-image の半透明レイヤー
+      として重ねている。こうするとダークテーマでもホバーでも破綻しない。
+      幅の調整と違いモバイル幅でも効かせたいので、メディアクエリの外。
+   ----------------------------------------------------------------- */
+@media screen {
+  html[data-twc-on][data-twc-color] [data-twc-card-color] {
+    --twc-card-tint: color-mix(
+      in srgb,
+      var(--twc-card-color) var(--twc-color-strength),
+      transparent
+    );
+
+    /* 1 枚目＝左端の帯、2 枚目＝全面のうっすらした色。 */
+    background-image: var(--twc-card-bar),
+      linear-gradient(var(--twc-card-tint), var(--twc-card-tint)) !important;
+    background-size: var(--twc-bar-width) 100%, auto !important;
+    background-position: left center, center !important;
+    background-repeat: no-repeat, no-repeat !important;
   }
 }

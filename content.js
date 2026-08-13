@@ -21,11 +21,19 @@
       s.cardWidth >= 100 ? "calc(100vw - 8px)" : "calc(100vw - 24px)"
     );
     root.style.setProperty("--twc-desc-ratio", s.descRatio + "%");
+    root.style.setProperty("--twc-color-strength", s.colorStrength + "%");
 
     if (s.enabled) {
       root.setAttribute("data-twc-on", "");
     } else {
       root.removeAttribute("data-twc-on");
+    }
+
+    // カードの色付けは独立して ON/OFF できる（塗る対象の抽出は colorize.js 側）。
+    if (s.colorCards) {
+      root.setAttribute("data-twc-color", "");
+    } else {
+      root.removeAttribute("data-twc-color");
     }
   }
 
@@ -40,9 +48,13 @@
   // ポップアップで値を動かした瞬間に、開いているタブへ反映する。
   chrome.storage.onChanged.addListener((changes, areaName) => {
     if (areaName !== "sync") return;
-    const touched = ["enabled", "cardWidth", "descRatio"].some(
-      (key) => key in changes
-    );
+    const touched = [
+      "enabled",
+      "cardWidth",
+      "descRatio",
+      "colorCards",
+      "colorStrength",
+    ].some((key) => key in changes);
     if (!touched) return;
     chrome.storage.sync.get(TWC_DEFAULTS, (stored) => applySettings(stored));
   });

@@ -201,6 +201,48 @@ input[type="range"] {
   background: var(--right);
 }
 
+/* ---------------- カードの色付け ---------------- */
+/* field-head は baseline 揃えなので、背が高いスイッチだけ中央に戻す */
+.field-head .switch-mini {
+  align-self: center;
+}
+
+.value-mini {
+  padding: 0 6px;
+  font-size: 10px;
+}
+
+/* 色付け OFF のときは、この節の操作だけを無効化する */
+.field.is-colors-off input[type="range"],
+.field.is-colors-off .scale,
+.field.is-colors-off .swatch {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.swatch {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+/* 実際のカードと同じ「左端の帯＋うっすら全面」の重ね方でプレビューする */
+.swatch-card {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 6px 8px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background-image: var(--twc-bar), linear-gradient(var(--twc-tint), var(--twc-tint));
+  background-size: 4px 100%, auto;
+  background-position: left center, center;
+  background-repeat: no-repeat, no-repeat;
+  font-size: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 /* ---------------- フッター ---------------- */
 .foot {
   display: flex;

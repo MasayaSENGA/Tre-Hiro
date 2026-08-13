@@ -52,6 +52,34 @@
         </div>
         <p class="hint">左＝説明欄・添付／右＝コメントとアクティビティ。</p>
       </section>
+
+      <section class="field" id="colorField">
+        <div class="field-head">
+          <label for="colorStrength">カードの色付け</label>
+          <label class="switch switch-mini">
+            <input type="checkbox" id="colorCards" />
+            <span class="track"><span class="knob"></span></span>
+            <span class="switch-text" id="colorCardsText">ON</span>
+          </label>
+        </div>
+        <input
+          type="range"
+          id="colorStrength"
+          min="5"
+          max="45"
+          step="1"
+          value="16"
+        />
+        <div class="scale">
+          <span>薄い</span>
+          <output class="value value-mini" id="colorStrengthValue">16%</output>
+          <span>濃い</span>
+        </div>
+        <div class="swatch" id="swatch" aria-hidden="true"></div>
+        <p class="hint">
+          ボードのカードに、付いているラベルの色を重ねます。左端の帯はラベルごとに分かれます。
+        </p>
+      </section>
     </main>
 
     <footer class="foot">
