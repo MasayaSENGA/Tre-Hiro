@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "トレひろ",
-  "version": "2.0",
+  "version": "2.0.1",
   "description": "Trello のカード詳細を画面いっぱいに広げ、説明欄とコメント欄の左右比率を自由に調整できます。ボードのカードをラベル色で塗り分けることもできます。",
   "permissions": ["storage"],
   "action": {

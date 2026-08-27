@@ -17,6 +17,10 @@
  *   ・カードの白い面（背景色）はリンクそのものではなく、
  *     内側のラッパー要素が持っていることがある。透明な外側に塗っても
  *     不透明な子に覆われて何も見えない。
+ *   ・しかも「外側が透明・内側が不透明」とは限らない。現行の Trello は
+ *     カードと同じ大きさの入れ子が両方とも同じ不透明色を持っているので、
+ *     背景色を見つけた最初の要素で止めると、やはり子に覆われて見えない。
+ *     一番内側（＝一番手前）まで降りる必要がある。
  *   このため「カードの箱（unit）」と「面を描いている要素（surface）」を
  *   分けて求め、ラベルは unit から探し、色は surface に塗る。
  */
@@ -39,15 +43,23 @@
 
   /*
    * カード 1 枚ぶんの箱の目印。現行の Trello はこの入れ子:
-   *   div[data-testid="list-card-container"]
-   *     div[data-testid="list-card-wrapper"]
-   *       div[data-testid="trello-card"]        ← カードの面（背景色）はここ
-   *         div > div（ラベルの帯）
-   *              a[data-testid="card-name"]     ← リンクはタイトル行だけ
+   *   li [data-testid="list-card"]
+   *     div[data-testid="list-card-container"]
+   *       div[data-testid="list-card-wrapper"]
+   *         div[data-testid="trello-card"]      ← 不透明な背景色を持つ
+   *           div                               ← ここも同じ不透明な背景色を持つ
+   *             div（ラベルの帯）
+   *             a[data-testid="card-name"]      ← リンクはタイトル行だけ
    * リンク＝カードではないので、まず箱まで登ってからラベルを探す。
+   *
+   * カードの面を描く要素は trello-card だけではない。他ボードへのリンクを含む
+   * カードは mirror-card、カバー画像付きは full-cover-card、といった具合に
+   * 種類ごとに data-testid が違う。個別に並べると新しい種類で漏れるので
+   * 「…-card で終わる testid」でまとめて拾う。list-cards のような複数カードの
+   * 入れ物は末尾が -cards なので当たらず、当たっても holdsOneCard で弾かれる。
    */
   const TILE_SELECTOR = [
-    '[data-testid="trello-card"]',
+    '[data-testid$="-card"]',
     '[data-testid$="card-wrapper"]',
     '[data-testid$="card-container"]',
   ].join(",");
@@ -135,11 +147,17 @@
     return unit;
   }
 
-  /** el とほぼ同じ大きさの子要素（＝面を覆っている子）を返す。 */
-  function fillingChild(el) {
+  /**
+   * el とほぼ同じ大きさの子要素（＝面を覆っている子）を返す。
+   * カードフロントのリンクを含まない子には降りない。
+   * カバー画像やバッジ行がカード幅いっぱいに広がっていても、
+   * それはカードの「面」ではないため。
+   */
+  function fillingChild(el, front) {
     const r = el.getBoundingClientRect();
     if (r.width < 1 || r.height < 1) return null;
     for (const child of el.children) {
+      if (!child.contains(front)) continue;
       const c = child.getBoundingClientRect();
       if (c.width >= r.width * FILL_RATIO && c.height >= r.height * FILL_RATIO) {
         return child;
@@ -149,19 +167,42 @@
   }
 
   /**
-   * 実際に「カードの面」を描いている要素まで降りる。
-   * 外側が透明で内側が不透明だと、外側に塗っても子に覆われて見えないため。
+   * 実際に「カードの面」を描いている要素、つまり同じ大きさの入れ子のうち
+   * 背景色を持つ一番内側（＝一番手前）の要素まで降りる。
+   *
+   * 背景色を見つけた時点で止めてはいけない。現行の Trello はカードと同じ
+   * 大きさの入れ子が両方とも同じ不透明色を持っているので、外側で止めると
+   * 内側の不透明な背景に覆われて塗りが一切見えなくなる。
    * 面が見つからない（全部透明な）ときは箱そのものを塗る。
    */
-  function surfaceOf(unit) {
+  function surfaceOf(unit, front) {
     let el = unit;
-    for (let depth = 0; depth < MAX_DESCEND; depth++) {
-      if (!isTransparent(getComputedStyle(el).backgroundColor)) return el;
-      const next = fillingChild(el);
+    let surface = null;
+    for (let depth = 0; depth <= MAX_DESCEND; depth++) {
+      if (!isTransparent(getComputedStyle(el).backgroundColor)) surface = el;
+      const next = fillingChild(el, front);
       if (!next) break;
       el = next;
     }
-    return unit;
+    return surface || unit;
+  }
+
+  /**
+   * カバー画像付きのカードかどうか。
+   *
+   * カバーは data-testid="card-front-cover" の入れ物に <img> が入る形と、
+   * 要素の background-image で描かれる形の両方がある。どちらでもないカバー
+   * 「色」は画像ではないので当たらない＝これまでどおり塗る対象に残る。
+   */
+  function hasImageCover(unit, surface) {
+    const covers = unit.querySelectorAll('[data-testid$="-cover"]');
+    for (const el of [unit, surface, ...covers]) {
+      if (getComputedStyle(el).backgroundImage.includes("url(")) return true;
+    }
+    for (const el of covers) {
+      if (el.querySelector("img")) return true;
+    }
+    return false;
   }
 
   /** カードフロントに対する { unit, surface }。DOM が作り直されたら測り直す。 */
@@ -176,7 +217,7 @@
       return cached;
     }
     const unit = unitOf(a);
-    const target = { unit, surface: surfaceOf(unit) };
+    const target = { unit, surface: surfaceOf(unit, a) };
     // まだレイアウトされていない（大きさ 0 の）カードは測っても当てにならないので、
     // 結果を覚えずに次の走査でやり直す。
     const rect = a.getBoundingClientRect();
@@ -245,14 +286,12 @@
       return;
     }
 
-    if (!surface.hasAttribute(MARK)) {
-      // カバー画像付きのカードは Trello の見た目を壊すので触らない。
-      // （カバー「色」は background-color なので、ここでは引っかからない）
-      const bg = getComputedStyle(surface).backgroundImage;
-      if (bg && bg.includes("url(")) {
-        surface.setAttribute(SKIP, "");
-        return;
-      }
+    // カバー画像付きのカードは Trello の見た目を壊すので触らない。
+    // 塗った後は自分の gradient が background-image に乗るので、
+    // まだ塗っていないカードだけを調べる。
+    if (!surface.hasAttribute(MARK) && hasImageCover(unit, surface)) {
+      surface.setAttribute(SKIP, "");
+      return;
     }
 
     const key = colors.join("|");
