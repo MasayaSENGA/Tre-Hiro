@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>02 wide</title>
+<link rel="stylesheet" href="common.css">
+<style>
+  /* 同じ範囲（説明欄の見出し〜横に長い表の下端）を、OFF と ON で同じ倍率に並べる */
+  .fig-off, .fig-on { top: 270px; }
+  .tag.std, .tag.on { top: 224px; }
+  .tag-note { top: 224px; }
+  .result {
+    position: absolute; z-index: 4;
+    display: flex; align-items: center; gap: 10px;
+    font-size: 18px; line-height: 1.4; font-weight: 700; color: var(--brand-ink);
+    letter-spacing: 0.02em; font-feature-settings: "palt"; white-space: nowrap;
+  }
+  .result .dot {
+    width: 12px; height: 12px; border-radius: 50%; flex: none;
+    background: var(--accent-deep); box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.22);
+  }
+  .measure {
+    position: absolute; z-index: 4;
+    font-size: 15px; line-height: 1.4; font-weight: 500; color: var(--ink-3);
+    white-space: nowrap; font-feature-settings: "palt";
+  }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="stage"></div>
+
+  <div class="brand" data-block="brand"><img src="build/icon-art.png" alt=""><span class="brand-name">トレひろ</span></div>
+
+  <div class="head" data-block="head">
+    <h1 class="headline"><span class="l">横に長い説明や表も、<span class="mark">広々と</span></span></h1>
+    <p class="sub"><span class="l">標準の幅と、トレひろ（幅95%・比率60:40）の比較</span></p>
+  </div>
+
+  <div class="tag std lbl-before" data-block="tag-off">Trello 標準</div>
+  <div class="tag-note note-off" data-block="note-off">カード詳細の幅 1080px</div>
+  <figure class="shot framed fig-off" data-geom="wide_off" data-block="fig-off"><img src="build/wide_off.png" alt=""></figure>
+
+  <div class="tag on" data-block="tag-on"><img src="build/icon-art.png" alt=""><span class="lbl-after">トレひろ（幅95%・比率60:40）</span></div>
+  <div class="tag-note note-on" data-block="note-on">カード詳細の幅 1368px</div>
+  <figure class="shot framed fig-on" data-geom="wide_on" data-block="fig-on"><img src="build/wide_on.png" alt=""></figure>
+
+  <div class="result" data-block="result"><span class="dot"></span><span class="l">表の行が折り返さず、1行に収まる</span></div>
+  <div class="measure" data-block="measure">カード詳細の幅は、ウィンドウ幅 1440px のときの実測値</div>
+
+  <div class="footnotes" data-block="footnotes">
+    <span class="footnote">※非公式ツールです。Trello・Atlassian とは関係ありません。Trello は Atlassian の商標です。</span>
+    <span class="footnote2">※画面は、Trello を再現した確認用ページにトレひろの実際のコードを当てて撮影したものです。内容は架空です。</span>
+  </div>
+</div>
+<script src="build/geometry.js"></script>
+<script>
+  window.layout = function (H) {
+    const G = window.GEOM;
+    const off = document.querySelector(".fig-off"), on = document.querySelector(".fig-on");
+    const stage = H.rectOf(document.querySelector(".stage"));
+    const padX = 24, gap = 40, top = 270, bottom = stage.b - 16;
+    // 同じ倍率 s: 横は台に収まる最大、縦は台の下端まで
+    const wOff = G.wide_off.css_w, wOn = G.wide_on.css_w;
+    const sW = (stage.w - 2 * padX - gap) / (wOff + wOn);
+    const sH = (bottom - top) / Math.max(G.wide_off.css_h, G.wide_on.css_h);
+    const s = Math.min(sW, sH, 1);
+    const x0 = stage.x + (stage.w - (wOff + wOn) * s - gap) / 2;
+    off.style.left = x0 + "px";
+    off.querySelector("img").style.width = (wOff * s) + "px";
+    on.style.left = (x0 + wOff * s + gap) + "px";
+    on.querySelector("img").style.width = (wOn * s) + "px";
+    const so = H.figScale(off), sn = H.figScale(on);
+    if (Math.abs(so - sn) > 0.002) H.issues.push(`before/after scales differ: ${so.toFixed(4)} / ${sn.toFixed(4)}`);
+    H.issues.push(`note: before/after both at ${(so * 100).toFixed(1)}% (UI text 14px -> ${(14 * so).toFixed(1)}px)`);
+    // ラベルは各図の左上に揃え、注記（カード詳細の幅）はその右に
+    const ro = H.rectOf(off), rn = H.rectOf(on);
+    const tOff = document.querySelector(".tag.std"), tOn = document.querySelector(".tag.on");
+    tOff.style.left = ro.x + "px"; tOn.style.left = rn.x + "px";
+    const nOff = document.querySelector(".note-off"), nOn = document.querySelector(".note-on");
+    nOff.style.left = (H.rectOf(tOff).r + 12) + "px";
+    nOn.style.left = (H.rectOf(tOn).r + 12) + "px";
+    // 結果の一言は ON の図の下の空き（表が短くなった分）に
+    const res = document.querySelector(".result"), mea = document.querySelector(".measure");
+    res.style.left = (rn.x + 4) + "px";
+    res.style.top = (rn.b + 22) + "px";
+    mea.style.left = (rn.x + 26) + "px";
+    mea.style.top = (H.rectOf(res).b + 6) + "px";
+    if (H.rectOf(mea).b > stage.b - 8) H.issues.push("measure note does not fit on the stage");
+    // 実測値は geometry.js（raw/manifest.json）と一致させる
+    if (G.wide_off.dialog_w !== 1080 || G.wide_on.dialog_w !== 1368 || G.wide_on.viewport[0] !== 1440)
+      H.issues.push(`dialog widths changed: ${G.wide_off.dialog_w} / ${G.wide_on.dialog_w} @ ${G.wide_on.viewport}`);
+    if (Math.max(...G.wide_on.rows) > 40) H.issues.push("table rows wrap in the ON capture: " + G.wide_on.rows);
+    if (Math.max(...G.wide_off.rows) < 50) H.issues.push("table rows do not wrap in the OFF capture: " + G.wide_off.rows);
+  };
+</script>
+<script src="common.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>small promo tile</title>
+<link rel="stylesheet" href="common.css">
+<style>
+  /* 440x280。ストアでは半分の大きさでも表示されるので、文字は名前と短い一言だけ */
+  html, body { background: #0f766e; }
+  .canvas.tile {
+    width: 440px; height: 280px;
+    background:
+      radial-gradient(300px 220px at 84% -4%, rgba(45, 212, 191, 0.42), transparent 70%),
+      radial-gradient(260px 200px at -4% 108%, rgba(4, 47, 46, 0.55), transparent 70%),
+      linear-gradient(135deg, #0d9488 0%, #0f766e 50%, #134e4a 100%);
+  }
+  .tile .deco { position: absolute; right: -80px; top: -120px; width: 270px; height: 270px; border-radius: 50%; border: 24px solid rgba(255, 255, 255, 0.07); }
+  .tile .deco2 { position: absolute; left: -70px; bottom: -100px; width: 190px; height: 190px; border-radius: 50%; border: 18px solid rgba(255, 255, 255, 0.06); }
+  .tile .lockup {
+    position: absolute; left: 0; top: 0; width: 440px; height: 280px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding-top: 16px;  /* 視覚的な中央に寄せる（まとまりを 8px 下げる） */
+  }
+  .tile .row { display: flex; align-items: center; gap: 18px; }
+  .tile .icon { width: 104px; height: 104px; display: block; filter: drop-shadow(0 0 1.2px rgba(255, 255, 255, 0.65)) drop-shadow(0 10px 18px rgba(4, 47, 46, 0.45)); }
+  .tile .name {
+    font-size: 66px; line-height: 1.1; font-weight: 800; color: #fff;
+    letter-spacing: 0.03em; font-feature-settings: "palt";
+    text-shadow: 0 4px 14px rgba(4, 47, 46, 0.30);
+  }
+  .tile .tag {
+    /* 24px / 800: 半分の大きさでも 12px の太字。色は 01・マーキーと同じアンバー */
+    position: static; display: block; height: auto; padding: 0; border-radius: 0; background: none;
+    margin-top: 22px; font-size: 24px; line-height: 1.3; font-weight: 800;
+    color: var(--accent); letter-spacing: 0.03em; font-feature-settings: "palt";
+  }
+</style>
+</head>
+<body>
+<div class="canvas tile">
+  <div class="deco"></div>
+  <div class="deco2"></div>
+  <div class="lockup" data-block="lockup">
+    <div class="row">
+      <img class="icon" src="build/icon-art.png" alt="">
+      <div class="name l">トレひろ</div>
+    </div>
+    <div class="tag l">カード詳細を、画面いっぱいに</div>
+  </div>
+</div>
+<script src="build/geometry.js"></script>
+<script src="common.js"></script>
+</body>
+</html>

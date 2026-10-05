@@ -1,11 +1,11 @@
 {
   "manifest_version": 3,
   "name": "トレひろ",
-  "version": "2.0.1",
-  "description": "Trello のカード詳細を画面いっぱいに広げ、説明欄とコメント欄の左右比率を自由に調整できます。ボードのカードをラベル色で塗り分けることもできます。",
+  "version": "2.0.2",
+  "description": "Trello のカード詳細を画面いっぱいに広げ、説明欄とコメント欄の左右比率を自由に調整できます。ボードのカードをラベル色で塗り分けることもできます（非公式ツール）。",
   "permissions": ["storage"],
   "action": {
-    "default_title": "トレひろ – カード幅の設定",
+    "default_title": "トレひろの設定",
     "default_popup": "popup.html",
     "default_icon": {
       "16": "icons/icon16.png",
@@ -20,7 +20,7 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://trello.com/*", "https://*.trello.com/*"],
+      "matches": ["https://trello.com/*"],
       "css": ["content.css"],
       "js": ["shared.js", "content.js", "colorize.js"],
       "run_at": "document_start",

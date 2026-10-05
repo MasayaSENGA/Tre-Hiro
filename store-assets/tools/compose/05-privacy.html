@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>05 privacy</title>
+<link rel="stylesheet" href="common.css">
+<style>
+  /* ギガひろ 05 と同じ組み立て: 左に見出し、右の台に 4 枚のカード（撮影画像なし） */
+  .p .brand { top: 52px; }
+  .p .copy { position: absolute; left: 56px; top: 146px; width: 520px; }  /* top は layout() で台の中央に寄せる */
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px; height: 34px; padding: 0 16px 0 12px;
+    border-radius: 999px; background: var(--teal-100); color: var(--brand-ink);
+    font-size: 17px; font-weight: 700; letter-spacing: 0.04em;
+  }
+  .eyebrow svg { width: 18px; height: 18px; display: block; }
+  .p .headline { margin-top: 16px; font-size: 56px; line-height: 1.3; }
+  .p .sub { margin-top: 20px; font-size: 23px; line-height: 1.65; color: var(--ink-2); }
+  .p .stage { left: 600px; top: 24px; width: 656px; height: 692px; }
+  .facts { position: absolute; left: 632px; top: 60px; width: 592px; }
+  .fact { position: relative; display: flex; align-items: center; gap: 20px; height: 132px; padding: 0 22px; margin-bottom: 16px; }
+  .fact.card { position: relative; }
+  /* 権限のカードだけ見出しが 2 行。高さを中身に合わせる（ほかは 132px） */
+  .fact.fact-1 { height: auto; min-height: 132px; padding-top: 16px; padding-bottom: 16px; }
+  .fact .ic {
+    flex: none; width: 62px; height: 62px; border-radius: 18px;
+    background: linear-gradient(160deg, var(--teal-100), #b6f0e4);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .fact .ic svg { width: 32px; height: 32px; display: block; }
+  .fact .t { font-size: 22px; line-height: 1.4; font-weight: 800; color: var(--ink); letter-spacing: 0.01em; }
+  .fact .t .dom, .fact .t code { font-family: inherit; font-weight: 800; color: var(--tile-dark); }
+  .fact .d { margin-top: 5px; font-size: 17px; line-height: 1.55; font-weight: 500; color: var(--ink-2); }
+  .fact .t, .fact .d { font-feature-settings: "palt"; }
+  .p .footnotes { bottom: 30px; }
+</style>
+</head>
+<body>
+<div class="canvas p">
+  <div class="stage"></div>
+
+  <div class="brand" data-block="brand"><img src="build/icon-art.png" alt=""><span class="brand-name">トレひろ</span></div>
+
+  <div class="copy" data-col="520" data-block="copy">
+    <div class="eyebrow">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v6c0 4.2 3 7.6 7 9 4-1.4 7-4.8 7-9V6Z"/><path d="m9 12 2 2 4-4"/></svg>
+      <span class="l">安心設計</span>
+    </div>
+    <h1 class="headline">
+      <span class="l">権限は最小限、</span>
+      <span class="l"><span class="mark">外部送信なし</span></span>
+    </h1>
+    <p class="sub">
+      <span class="l">動くのは trello.com のページだけ。</span>
+      <span class="l">読み取った情報は保存も送信もしません</span>
+    </p>
+  </div>
+
+  <div class="facts" data-block="facts">
+    <div class="card fact fact-1">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#0f766e" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v6c0 4.2 3 7.6 7 9 4-1.4 7-4.8 7-9V6Z"/><path d="m9 12 2 2 4-4"/></svg></div>
+      <div>
+        <div class="t"><span class="l">権限は、設定の保存（<code>storage</code>）と</span><span class="l"><span class="dom">trello.com</span> へのアクセスだけ</span></div>
+        <div class="d">
+          <span class="l">保存するのは、幅・比率・色付けなどの設定5つだけ</span>
+          <span class="l">Chrome の同期が有効なら、ほかの端末にも同期</span>
+        </div>
+      </div>
+    </div>
+    <div class="card fact fact-2">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#0f766e" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 3.8 5.6 3.8 9s-1.2 6.4-3.8 9c-2.6-2.6-3.8-5.6-3.8-9S9.4 5.6 12 3Z"/></svg></div>
+      <div>
+        <div class="t l">動くのは <span class="dom">trello.com</span> のページだけ</div>
+        <div class="d">
+          <span class="l">ほかのサイトでは動きません</span>
+          <span class="l">カードやボードのデータは変えず、見た目だけを変更</span>
+        </div>
+      </div>
+    </div>
+    <div class="card fact fact-3">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#0f766e" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 16.5V8m-3.6 3.4L12 7.8l3.6 3.6"/><path d="M5.6 5.6l12.8 12.8"/></svg></div>
+      <div>
+        <div class="t l">外部送信・アクセス解析なし</div>
+        <div class="d">
+          <span class="l">拡張機能自体は通信しません</span>
+          <span class="l">外部のスクリプトやアクセス解析も使いません</span>
+        </div>
+      </div>
+    </div>
+    <div class="card fact fact-4">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#0f766e" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 12.2V4.5a1 1 0 0 1 1-1h7.7l8.3 8.3a1.4 1.4 0 0 1 0 2l-6.7 6.7a1.4 1.4 0 0 1-2 0Z"/><circle cx="8.2" cy="8.2" r="1.6"/></svg></div>
+      <div>
+        <div class="t l">カードの文字は読まない。保存も送信もしない</div>
+        <div class="d">
+          <span class="l">読むのはラベルの色など、カードを塗るための情報だけ</span>
+          <span class="l">読んだ情報はその場で使うだけで、残しません</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footnotes" data-block="footnotes">
+    <span class="footnote">※非公式ツールです。Trello・Atlassian とは関係ありません。Trello は Atlassian の商標です。</span>
+  </div>
+</div>
+<script src="build/geometry.js"></script>
+<script>
+  window.layout = function (H) {
+    const facts = document.querySelector(".facts");
+    const stage = H.rectOf(document.querySelector(".stage"));
+    facts.lastElementChild.style.marginBottom = "0";
+    facts.style.top = (stage.y + (stage.h - facts.offsetHeight) / 2) + "px";
+    // 見出しのまとまりを台の上下中央に（ロゴの下に 56px 以上あける）
+    const copy = document.querySelector(".p .copy");
+    const brand = H.rectOf(document.querySelector(".p .brand"));
+    copy.style.top = Math.max(brand.b + 56, stage.cy - copy.offsetHeight / 2) + "px";
+    facts.querySelectorAll(".fact").forEach((f) => {
+      const fr = f.getBoundingClientRect();
+      f.querySelectorAll(".l").forEach((l) => {
+        const r = document.createRange(); r.selectNodeContents(l);
+        const rr = r.getBoundingClientRect();
+        if (rr.right > fr.right - 16) H.issues.push(`fact text too wide (${(rr.right - fr.right + 16).toFixed(1)}px over): ` + l.textContent);
+      });
+    });
+  };
+</script>
+<script src="common.js"></script>
+</body>
+</html>

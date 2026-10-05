@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>marquee promo tile</title>
+<link rel="stylesheet" href="common.css">
+<style>
+  /* 1400x560。小タイルと同じ組み立てを横に広げ、右に本物のポップアップを添える */
+  html, body { background: #0f766e; }
+  .canvas.mq { width: 1400px; height: 560px; background: var(--hero-bg); }
+  .mq .deco { position: absolute; left: 980px; top: -260px; width: 620px; height: 620px; border-radius: 50%; border: 36px solid rgba(255, 255, 255, 0.07); }
+  .mq .deco2 { position: absolute; left: -150px; top: 380px; width: 360px; height: 360px; border-radius: 50%; border: 26px solid rgba(255, 255, 255, 0.06); }
+  .mq .copy { position: absolute; left: 88px; top: 0; height: 560px; display: flex; flex-direction: column; justify-content: center; }
+  .mq .row { display: flex; align-items: center; gap: 26px; }
+  .mq .icon { width: 132px; height: 132px; display: block; filter: drop-shadow(0 0 1.5px rgba(255, 255, 255, 0.65)) drop-shadow(0 12px 22px rgba(4, 47, 46, 0.45)); }
+  .mq .name {
+    font-size: 108px; line-height: 1.1; font-weight: 800; color: #fff;
+    letter-spacing: 0.03em; font-feature-settings: "palt";
+    text-shadow: 0 6px 18px rgba(4, 47, 46, 0.30);
+  }
+  .mq .tagline {
+    margin-top: 34px; font-size: 40px; line-height: 1.3; font-weight: 800; color: #fff;
+    letter-spacing: 0.02em; font-feature-settings: "palt";
+  }
+  .mq .tagline .accent { color: var(--accent); }
+  .mq .tagline .soft { font-weight: 500; color: rgba(255, 255, 255, 0.82); }  /* 「Trello の」はトレひろより目立たせない */
+  .mq .support {
+    margin-top: 14px; font-size: 23px; line-height: 1.5; font-weight: 600; color: var(--on-tile-sub);
+    letter-spacing: 0.02em; font-feature-settings: "palt";
+  }
+  .mq .popup-fig img { border-radius: 14px; box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.40), 0 24px 56px rgba(4, 47, 46, 0.55); }
+</style>
+</head>
+<body>
+<div class="canvas mq">
+  <div class="deco"></div>
+  <div class="deco2"></div>
+  <div class="copy" data-block="copy">
+    <div class="row">
+      <img class="icon" src="build/icon-art.png" alt="">
+      <div class="name l">トレひろ</div>
+    </div>
+    <div class="tagline l"><span class="soft">Trello の</span>カード詳細を、<span class="accent">画面いっぱいに</span></div>
+    <div class="support l">説明欄とコメント欄の比率調整・ラベル色の塗り分け（非公式ツール）</div>
+  </div>
+  <figure class="shot popup-fig" data-geom="popup_default" data-block="popup"><img src="build/popup_default.png" alt=""></figure>
+</div>
+<script src="build/geometry.js"></script>
+<script>
+  window.layout = function (H) {
+    const G = window.GEOM;
+    const pop = document.querySelector(".popup-fig");
+    const ps = 0.9;
+    const w = G.popup_default.css_w * ps, h = G.popup_default.css_h * ps;
+    pop.querySelector("img").style.width = w + "px";
+    // 文字のまとまりの右の余白の中央に置く（右端から 72px 以上内側）
+    const copy = H.rectOf(document.querySelector(".mq .copy"));
+    pop.style.left = Math.min(copy.r + (1400 - copy.r - w) / 2, 1400 - 72 - w) + "px";
+    pop.style.top = ((560 - h) / 2) + "px";
+    if ((560 - h) / 2 < 32) H.issues.push("popup too close to the top/bottom edge");
+    if (H.rectOf(pop).x - copy.r < 48) H.issues.push("popup too close to the copy");
+  };
+</script>
+<script src="common.js"></script>
+</body>
+</html>

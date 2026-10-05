@@ -1,0 +1,5480 @@
+{
+ "notes": [
+  "Extensions.loadUnpacked OK: id=bofakppkoiadngjfajbpfdnkglfleomn"
+ ],
+ "shots": [
+  {
+   "file": "popup_default.png",
+   "page": "popup",
+   "description": "ポップアップ（既定: ON・幅 95%・比率 60:40・色付け ON・濃さ 16%）",
+   "settings_target": {
+    "enabled": true,
+    "cardWidth": 95,
+    "descRatio": 60,
+    "colorCards": true,
+    "colorStrength": 16
+   },
+   "settings_stored": {
+    "cardWidth": 95,
+    "colorCards": true,
+    "colorStrength": 16,
+    "descRatio": 60,
+    "enabled": true
+   },
+   "popup_ui": {
+    "texts": {
+     "enabled": "ON",
+     "cardWidth": "95%",
+     "ratio": "60 : 40",
+     "colorCards": "ON",
+     "colorStrength": "16%"
+    },
+    "bodyOff": false,
+    "colorsOff": false
+   },
+   "actions": [],
+   "size": [
+    600,
+    1034
+   ],
+   "viewport": [
+    300,
+    800
+   ],
+   "dpr": 2,
+   "clip_css_px": {
+    "x": 0,
+    "y": 0,
+    "width": 300,
+    "height": 517.5
+   },
+   "rects": {
+    "body": {
+     "x": 0,
+     "y": 0,
+     "width": 300,
+     "height": 517.5
+    },
+    "head": {
+     "x": 0,
+     "y": 0,
+     "width": 300,
+     "height": 46
+    },
+    "cardWidth_field": {
+     "x": 16,
+     "y": 50,
+     "width": 268,
+     "height": 111.5
+    },
+    "descRatio_field": {
+     "x": 16,
+     "y": 161.5,
+     "width": 268,
+     "height": 129.5
+    },
+    "colorField": {
+     "x": 16,
+     "y": 291,
+     "width": 268,
+     "height": 165.5
+    },
+    "foot": {
+     "x": 0,
+     "y": 464.5,
+     "width": 300,
+     "height": 53
+    },
+    "swatch": {
+     "x": 16,
+     "y": 376.5,
+     "width": 268,
+     "height": 29
+    }
+   },
+   "note": "rects はビューポートの CSS px。画像は body を切り出したもの（原点 = body の左上）"
+  },
+  {
+   "file": "card_default.png",
+   "page": "card",
+   "description": "カード詳細（トレひろ ON・幅 95%・比率 60:40・コメント欄を開いた状態）",
+   "settings_target": {
+    "enabled": true,
+    "cardWidth": 95,
+    "descRatio": 60,
+    "colorCards": true,
+    "colorStrength": 16
+   },
+   "settings_stored": {
+    "cardWidth": 95,
+    "colorCards": true,
+    "colorStrength": 16,
+    "descRatio": 60,
+    "enabled": true
+   },
+   "popup_ui": {
+    "texts": {
+     "enabled": "ON",
+     "cardWidth": "95%",
+     "ratio": "60 : 40",
+     "colorCards": "ON",
+     "colorStrength": "16%"
+    },
+    "bodyOff": false,
+    "colorsOff": false
+   },
+   "actions": [],
+   "comments": "open",
+   "measured": {
+    "dialog": 1368,
+    "main": 820.81,
+    "aside": 547.19,
+    "aside_visible": 547.19,
+    "main_div": 820.81,
+    "hgroup": 744.81,
+    "description": 724.81,
+    "table": 724.81,
+    "ratio": 0.6
+   },
+   "computed": {
+    "dialog_width": "1368px",
+    "dialog_max_width": "1416px",
+    "main_flex": "1 1 460px",
+    "main_min_width": "0px",
+    "aside_flex": "0 0 auto",
+    "aside_width": "547.188px",
+    "aside_min_width": "0px",
+    "aside_transform": "none",
+    "main_div_max_width": "none",
+    "hgroup_max_width": "none"
+   },
+   "table_row_heights": [
+    37,
+    37,
+    37,
+    37,
+    37,
+    37
+   ],
+   "check_vs_expected": {
+    "dialog": {
+     "expected": 1368.0,
+     "measured": 1368,
+     "ok": true
+    },
+    "main": {
+     "expected": 820.8,
+     "measured": 820.81,
+     "ok": true
+    },
+    "aside": {
+     "expected": 547.2,
+     "measured": 547.19,
+     "ok": true
+    }
+   },
+   "rects": {
+    "viewport": {
+     "x": 0,
+     "y": 0,
+     "width": 1440,
+     "height": 900
+    },
+    "dialog": {
+     "x": 36,
+     "y": 48,
+     "width": 1368,
+     "height": 772
+    },
+    "dialog_header": {
+     "x": 36,
+     "y": 48,
+     "width": 1368,
+     "height": 57
+    },
+    "main": {
+     "x": 36,
+     "y": 105,
+     "width": 820.81,
+     "height": 715
+    },
+    "aside": {
+     "x": 856.81,
+     "y": 105,
+     "width": 547.19,
+     "height": 715
+    },
+    "aside_visible": {
+     "x": 856.81,
+     "y": 105,
+     "width": 547.19,
+     "height": 715
+    },
+    "title": {
+     "rect": {
+      "x": 92,
+      "y": 129,
+      "width": 744.81,
+      "height": 32
+     },
+     "visible": {
+      "x": 92,
+      "y": 129,
+      "width": 744.81,
+      "height": 32
+     }
+    },
+    "quick_actions": {
+     "rect": {
+      "x": 92,
+      "y": 185,
+      "width": 724.81,
+      "height": 32
+     },
+     "visible": {
+      "x": 92,
+      "y": 185,
+      "width": 724.81,
+      "height": 32
+     }
+    },
+    "meta": {
+     "rect": {
+      "x": 92,
+      "y": 241,
+      "width": 724.81,
+      "height": 56
+     },
+     "visible": {
+      "x": 92,
+      "y": 241,
+      "width": 724.81,
+      "height": 56
+     }
+    },
+    "description": {
+     "rect": {
+      "x": 56,
+      "y": 313,
+      "width": 760.81,
+      "height": 482
+     },
+     "visible": {
+      "x": 56,
+      "y": 313,
+      "width": 760.81,
+      "height": 482
+     }
+    },
+    "description_body": {
+     "rect": {
+      "x": 92,
+      "y": 357,
+      "width": 724.81,
+      "height": 438
+     },
+     "visible": {
+      "x": 92,
+      "y": 357,
+      "width": 724.81,
+      "height": 438
+     }
+    },
+    "table": {
+     "rect": {
+      "x": 92,
+      "y": 477,
+      "width": 724.81,
+      "height": 223
+     },
+     "visible": {
+      "x": 92,
+      "y": 477,
+      "width": 724.81,
+      "height": 223
+     }
+    },
+    "checklist": {
+     "rect": {
+      "x": 56,
+      "y": 827,
+      "width": 760.81,
+      "height": 290
+     },
+     "visible": null
+    },
+    "comments_header": {
+     "rect": {
+      "x": 909.81,
+      "y": 121,
+      "width": 478.19,
+      "height": 32
+     },
+     "visible": {
+      "x": 909.81,
+      "y": 121,
+      "width": 478.19,
+      "height": 32
+     }
+    },
+    "comment_composer": {
+     "rect": {
+      "x": 873.81,
+      "y": 165,
+      "width": 514.19,
+      "height": 40
+     },
+     "visible": {
+      "x": 873.81,
+      "y": 165,
+      "width": 514.19,
+      "height": 40
+     }
+    },
+    "comments_list": {
+     "rect": {
+      "x": 873.81,
+      "y": 217,
+      "width": 514.19,
+      "height": 524
+     },
+     "visible": {
+      "x": 873.81,
+      "y": 217,
+      "width": 514.19,
+      "height": 524
+     }
+    },
+    "comment_items": [
+     {
+      "who": "高橋 さくらさんがコメントしました。",
+      "kind": "comment",
+      "rect": {
+       "x": 873.81,
+       "y": 217,
+       "width": 514.19,
+       "height": 100
+      },
+      "visible": {
+       "x": 873.81,
+       "y": 217,
+       "width": 514.19,
+       "height": 100
+      }
+     },
+     {
+      "who": "鈴木 健さんがコメントしました。",
+      "kind": "comment",
+      "rect": {
+       "x": 873.81,
+       "y": 317,
+       "width": 514.19,
+       "height": 100
+      },
+      "visible": {
+       "x": 873.81,
+       "y": 317,
+       "width": 514.19,
+       "height": 100
+      }
+     },
+     {
+      "who": "鈴木 健",
+      "kind": "activity",
+      "rect": {
+       "x": 873.81,
+       "y": 417,
+       "width": 514.19,
+       "height": 54
+      },
+      "visible": {
+       "x": 873.81,
+       "y": 417,
+       "width": 514.19,
+       "height": 54
+      }
+     },
+     {
+      "who": "佐藤 美咲さんがコメントしました。",
+      "kind": "comment",
+      "rect": {
+       "x": 873.81,
+       "y": 471,
+       "width": 514.19,
+       "height": 120
+      },
+      "visible": {
+       "x": 873.81,
+       "y": 471,
+       "width": 514.19,
+       "height": 120
+      }
+     },
+     {
+      "who": "高橋 さくらさんがコメントしました。",
+      "kind": "comment",
+      "rect": {
+       "x": 873.81,
+       "y": 591,
+       "width": 514.19,
+       "height": 76
+      },
+      "visible": {
+       "x": 873.81,
+       "y": 591,
+       "width": 514.19,
+       "height": 76
+      }
+     },
+     {
+      "who": "佐藤 美咲",
+      "kind": "activity",
+      "rect": {
+       "x": 873.81,
+       "y": 667,
+       "width": 514.19,
+       "height": 74
+      },
+      "visible": {
+       "x": 873.81,
+       "y": 667,
+       "width": 514.19,
+       "height": 74
+      }
+     }
+    ],
+    "nav": {
+     "rect": {
+      "x": 552.64,
+      "y": 836,
+      "width": 334.72,
+      "height": 46
+     },
+     "visible": {
+      "x": 552.64,
+      "y": 836,
+      "width": 334.72,
+      "height": 46
+     }
+    },
+    "activity_button": {
+     "x": 778.36,
+     "y": 843,
+     "width": 102,
+     "height": 32
+    }
+   },
+   "html_state": {
+    "on": true,
+    "color": true,
+    "vars": {
+     "--twc-card-width": "95vw",
+     "--twc-card-max-width": "calc(100vw - 24px)",
+     "--twc-desc-ratio": "60%",
+     "--twc-color-strength": "16%"
+    }
+   },
+   "counts": {
+    "cards": 13,
+    "labeled_cards": 10,
+    "painted_cards": 10
+   },
+   "size": [
+    2880,
+    1800
+   ],
+   "viewport": [
+    1440,
+    900
+   ],
+   "dpr": 2
+  },
+  {
+   "file": "card_r75.png",
+   "page": "card",
+   "description": "カード詳細（トレひろ ON・幅 95%・比率 75:25）",
+   "settings_target": {
+    "enabled": true,
+    "cardWidth": 95,
+    "descRatio": 75,
+    "colorCards": true,
+    "colorStrength": 16
+   },
+   "settings_stored": {
+    "cardWidth": 95,
+    "colorCards": true,
+    "colorStrength": 16,
+    "descRatio": 75,
+    "enabled": true
+   },
+   "popup_ui": {
+    "texts": {
+     "enabled": "ON",
+     "cardWidth": "95%",
+     "ratio": "75 : 25",
+     "colorCards": "ON",
+     "colorStrength": "16%"
+    },
+    "bodyOff": false,
+    "colorsOff": false
+   },
+   "actions": [
+    "range: descRatio = 75（input を発火）"
+   ],
+   "comments": "open",
+   "measured": {
+    "dialog": 1368,
+    "main": 1026,
+    "aside": 342,
+    "aside_visible": 342,
+    "main_div": 1026,
+    "hgroup": 950,
+    "description": 930,
+    "table": 930,
+    "ratio": 0.75
+   },
+   "computed": {
+    "dialog_width": "1368px",
+    "dialog_max_width": "1416px",
+    "main_flex": "1 1 460px",
+    "main_min_width": "0px",
+    "aside_flex": "0 0 auto",
+    "aside_width": "342px",
+    "aside_min_width": "0px",
+    "aside_transform": "none",
+    "main_div_max_width": "none",
+    "hgroup_max_width": "none"
+   },
+   "table_row_heights": [
+    37,
+    37,
+    37,
+    37,
+    37,
+    37
+   ],
+   "check_vs_expected": {
+    "dialog": {
+     "expected": 1368.0,
+     "measured": 1368,
+     "ok": true
+    },
+    "main": {
+     "expected": 1026.0,
+     "measured": 1026,
+     "ok": true
+    },
+    "aside": {
+     "expected": 342.0,
+     "measured": 342,
+     "ok": true
+    }
+   },
+   "rects": {
+    "viewport": {
+     "x": 0,
+     "y": 0,
+     "width": 1440,
+     "height": 900
+    },
+    "dialog": {
+     "x": 36,
+     "y": 48,
+     "width": 1368,
+     "height": 772
+    },
+    "dialog_header": {
+     "x": 36,
+     "y": 48,
+     "width": 1368,
+     "height": 57
+    },
+    "main": {
+     "x": 36,
+     "y": 105,
+     "width": 1026,
+     "height": 715
+    },
+    "aside": {
+     "x": 1062,
+     "y": 105,
+     "width": 342,
+     "height": 715
+    },
+    "aside_visible": {
+     "x": 1062,
+     "y": 105,
+     "width": 342,
+     "height": 715
+    },
+    "title": {
+     "rect": {
+      "x": 92,
+      "y": 129,
+      "width": 950,
+      "height": 32
+     },
+     "visible": {
+      "x": 92,
+      "y": 129,
+      "width": 950,
+      "height": 32
+     }
+    },
+    "quick_actions": {
+     "rect": {
+      "x": 92,
+      "y": 185,
+      "width": 930,
+      "height": 32
+     },
+     "visible": {
+      "x": 92,
+      "y": 185,
+      "width": 930,
+      "height": 32
+     }
+    },
+    "meta": {
+     "rect": {
+      "x": 92,
+      "y": 241,
+      "width": 930,
+      "height": 56
+     },
+     "visible": {
+      "x": 92,
+      "y": 241,
+      "width": 930,
+      "height": 56
+     }
+    },
+    "description": {
+     "rect": {
+      "x": 56,
+      "y": 313,
+      "width": 966,
+      "height": 434
+     },
+     "visible": {
+      "x": 56,
+      "y": 313,
+      "width": 966,
+      "height": 434
+     }
+    },
+    "description_body": {
+     "rect": {
+      "x": 92,
+      "y": 357,
+      "width": 930,
+      "height": 390
+     },
+     "visible": {
+      "x": 92,
+      "y": 357,
+      "width": 930,
+      "height": 390
+     }
+    },
+    "table": {
+     "rect": {
+      "x": 92,
+      "y": 429,
+      "width": 930,
+      "height": 223
+     },
+     "visible": {
+      "x": 92,
+      "y": 429,
+      "width": 930,
+      "height": 223
+     }
+    },
+    "checklist": {
+     "rect": {
+      "x": 56,
+      "y": 779,
+      "width": 966,
+      "height": 290
+     },
+     "visible": {
+      "x": 56,
+      "y": 779,
+      "width": 966,
+      "height": 41
+     }
+    },
+    "comments_header": {
+     "rect": {
+      "x": 1115,
+      "y": 121,
+      "width": 273,
+      "height": 68
+     },
+     "visible": {
+      "x": 1115,
+      "y": 121,
+      "width": 273,
+      "height": 68
+     }
+    },
+    "comment_composer": {
+     "rect": {
+      "x": 1079,
+      "y": 201,
+      "width": 309,
+      "height": 40
+     },
+     "visible": {
+      "x": 1079,
+      "y": 201,
+      "width": 309,
+      "height": 40
+     }
+    },
+    "comments_list": {
+     "rect": {
+      "x": 1079,
+      "y": 253,
+      "width": 309,
+      "height": 680
+     },
+     "visible": {
+      "x": 1079,
+      "y": 253,
+      "width": 309,
+      "height": 567
+     }
+    },
+    "comment_items": [
+     {
+      "who": "高橋 さくらさんがコメントしました。",
+      "kind": "comment",
+      "rect": {
+       "x": 1079,
+       "y": 253,
+       "width": 309,
+       "height": 116
+      },
+      "visible": {
+       "x": 1079,
+       "y": 253,
+       "width": 309,
+       "height": 116
+      }
+     },
+     {
+      "who": "鈴木 健さんがコメントしました。",
+      "kind": "comment",
+      "rect": {
+       "x": 1079,
+       "y": 369,
+       "width": 309,
+       "height": 140
+      },
+      "visible": {
+       "x": 1079,
+       "y": 369,
+       "width": 309,
+       "height": 140
+      }
+     },
+     {
+      "who": "鈴木 健",
+      "kind": "activity",
+      "rect": {
+       "x": 1079,
+       "y": 509,
+       "width": 309,
+       "height": 74
+      },
+      "visible": {
+       "x": 1079,
+       "y": 509,
+       "width": 309,
+       "height": 74
+      }
+     },
+     {
+      "who": "佐藤 美咲さんがコメントしました。",
+      "kind": "comment",
+      "rect": {
+       "x": 1079,
+       "y": 583,
+       "width": 309,
+       "height": 160
+      },
+      "visible": {
+       "x": 1079,
+       "y": 583,
+       "width": 309,
+       "height": 160
+      }
+     },
+     {
+      "who": "高橋 さくらさんがコメントしました。",
+      "kind": "comment",
+      "rect": {
+       "x": 1079,
+       "y": 743,
+       "width": 309,
+       "height": 116
+      },
+      "visible": {
+       "x": 1079,
+       "y": 743,
+       "width": 309,
+       "height": 77
+      }
+     },
+     {
+      "who": "佐藤 美咲",
+      "kind": "activity",
+      "rect": {
+       "x": 1079,
+       "y": 859,
+       "width": 309,
+       "height": 74
+      },
+      "visible": null
+     }
+    ],
+    "nav": {
+     "rect": {
+      "x": 552.64,
+      "y": 836,
+      "width": 334.72,
+      "height": 46
+     },
+     "visible": {
+      "x": 552.64,
+      "y": 836,
+      "width": 334.72,
+      "height": 46
+     }
+    },
+    "activity_button": {
+     "x": 778.36,
+     "y": 843,
+     "width": 102,
+     "height": 32
+    }
+   },
+   "html_state": {
+    "on": true,
+    "color": true,
+    "vars": {
+     "--twc-card-width": "95vw",
+     "--twc-card-max-width": "calc(100vw - 24px)",
+     "--twc-desc-ratio": "75%",
+     "--twc-color-strength": "16%"
+    }
+   },
+   "counts": {
+    "cards": 13,
+    "labeled_cards": 10,
+    "painted_cards": 10
+   },
+   "size": [
+    2880,
+    1800
+   ],
+   "viewport": [
+    1440,
+    900
+   ],
+   "dpr": 2
+  },
+  {
+   "file": "popup_r75.png",
+   "page": "popup",
+   "description": "ポップアップ（比率 75:25）",
+   "settings_target": {
+    "enabled": true,
+    "cardWidth": 95,
+    "descRatio": 75,
+    "colorCards": true,
+    "colorStrength": 16
+   },
+   "settings_stored": {
+    "cardWidth": 95,
+    "colorCards": true,
+    "colorStrength": 16,
+    "descRatio": 75,
+    "enabled": true
+   },
+   "popup_ui": {
+    "texts": {
+     "enabled": "ON",
+     "cardWidth": "95%",
+     "ratio": "75 : 25",
+     "colorCards": "ON",
+     "colorStrength": "16%"
+    },
+    "bodyOff": false,
+    "colorsOff": false
+   },
+   "actions": [],
+   "size": [
+    600,
+    1034
+   ],
+   "viewport": [
+    300,
+    800
+   ],
+   "dpr": 2,
+   "clip_css_px": {
+    "x": 0,
+    "y": 0,
+    "width": 300,
+    "height": 517.5
+   },
+   "rects": {
+    "body": {
+     "x": 0,
+     "y": 0,
+     "width": 300,
+     "height": 517.5
+    },
+    "head": {
+     "x": 0,
+     "y": 0,
+     "width": 300,
+     "height": 46
+    },
+    "cardWidth_field": {
+     "x": 16,
+     "y": 50,
+     "width": 268,
+     "height": 111.5
+    },
+    "descRatio_field": {
+     "x": 16,
+     "y": 161.5,
+     "width": 268,
+     "height": 129.5
+    },
+    "colorField": {
+     "x": 16,
+     "y": 291,
+     "width": 268,
+     "height": 165.5
+    },
+    "foot": {
+     "x": 0,
+     "y": 464.5,
+     "width": 300,
+     "height": 53
+    },
+    "swatch": {
+     "x": 16,
+     "y": 376.5,
+     "width": 268,
+     "height": 29
+    }
+   },
+   "note": "rects はビューポートの CSS px。画像は body を切り出したもの（原点 = body の左上）"
+  },
+  {
+   "file": "card_r35.png",
+   "page": "card",
+   "description": "カード詳細（トレひろ ON・幅 95%・比率 35:65）",
+   "settings_target": {
+    "enabled": true,
+    "cardWidth": 95,
+    "descRatio": 35,
+    "colorCards": true,
+    "colorStrength": 16
+   },
+   "settings_stored": {
+    "cardWidth": 95,
+    "colorCards": true,
+    "colorStrength": 16,
+    "descRatio": 35,
+    "enabled": true
+   },
+   "popup_ui": {
+    "texts": {
+     "enabled": "ON",
+     "cardWidth": "95%",
+     "ratio": "35 : 65",
+     "colorCards": "ON",
+     "colorStrength": "16%"
+    },
+    "bodyOff": false,
+    "colorsOff": false
+   },
+   "actions": [
+    "range: descRatio = 35（input を発火）"
+   ],
+   "comments": "open",
+   "measured": {
+    "dialog": 1368,
+    "main": 478.81,
+    "aside": 889.19,
+    "aside_visible": 889.19,
+    "main_div": 478.81,
+    "hgroup": 402.81,
+    "description": 382.81,
+    "table": 382.81,
+    "ratio": 0.35
+   },
+   "computed": {
+    "dialog_width": "1368px",
+    "dialog_max_width": "1416px",
+    "main_flex": "1 1 460px",
+    "main_min_width": "0px",
+    "aside_flex": "0 0 auto",
+    "aside_width": "889.188px",
+    "aside_min_width": "0px",
+    "aside_transform": "none",
+    "main_div_max_width": "none",
+    "hgroup_max_width": "none"
+   },
+   "table_row_heights": [
+    37,
+    81,
+    103,
+    103,
+    103,
+    81
+   ],
+   "check_vs_expected": {
+    "dialog": {
+     "expected": 1368.0,
+     "measured": 1368,
+     "ok": true
+    },
+    "main": {
+     "expected": 478.8,
+     "measured": 478.81,
+     "ok": true
+    },
+    "aside": {
+     "expected": 889.2,
+     "measured": 889.19,
+     "ok": true
+    }
+   },
+   "rects": {
+    "viewport": {
+     "x": 0,
+     "y": 0,
+     "width": 1440,
+     "height": 900
+    },
+    "dialog": {
+     "x": 36,
+     "y": 48,
+     "width": 1368,
+     "height": 772
+    },
+    "dialog_header": {
+     "x": 36,
+     "y": 48,
+     "width": 1368,
+     "height": 57
+    },
+    "main": {
+     "x": 36,
+     "y": 105,
+     "width": 478.81,
+     "height": 715
+    },
+    "aside": {
+     "x": 514.81,
+     "y": 105,
+     "width": 889.19,
+     "height": 715
+    },
+    "aside_visible": {
+     "x": 514.81,
+     "y": 105,
+     "width": 889.19,
+     "height": 715
+    },
+    "title": {
+     "rect": {
+      "x": 92,
+      "y": 129,
+      "width": 402.81,
+      "height": 64
+     },
+     "visible": {
+      "x": 92,
+      "y": 129,
+      "width": 402.81,
+      "height": 64
+     }
+    },
+    "quick_actions": {
+     "rect": {
+      "x": 92,
+      "y": 217,
+      "width": 382.81,
+      "height": 72
+     },
+     "visible": {
+      "x": 92,
+      "y": 217,
+      "width": 382.81,
+      "height": 72
+     }
+    },
+    "meta": {
+     "rect": {
+      "x": 92,
+      "y": 313,
+      "width": 382.81,
+      "height": 128
+     },
+     "visible": {
+      "x": 92,
+      "y": 313,
+      "width": 382.81,
+      "height": 128
+     }
+    },
+    "description": {
+     "rect": {
+      "x": 56,
+      "y": 457,
+      "width": 418.81,
+      "height": 888
+     },
+     "visible": {
+      "x": 56,
+      "y": 457,
+      "width": 418.81,
+      "height": 363
+     }
+    },
+    "description_body": {
+     "rect": {
+      "x": 92,
+      "y": 501,
+      "width": 382.81,
+      "height": 844
+     },
+     "visible": {
+      "x": 92,
+      "y": 501,
+      "width": 382.81,
+      "height": 319
+     }
+    },
+    "table": {
+     "rect": {
+      "x": 92,
+      "y": 669,
+      "width": 382.81,
+      "height": 509
+     },
+     "visible": {
+      "x": 92,
+      "y": 669,
+      "width": 382.81,
+      "height": 151
+     }
+    },
+    "checklist": {
+     "rect": {
+      "x": 56,
+      "y": 1377,
+      "width": 418.81,
+      "height": 290
+     },
+     "visible": null
+    },
+    "comments_header": {
+     "rect": {
+      "x": 567.81,
+      "y": 121,
+      "width": 820.19,
+      "height": 32
+     },
+     "visible": {
+      "x": 567.81,
+      "y": 121,
+      "width": 820.19,
+      "height": 32
+     }
+    },
+    "comment_composer": {
+     "rect": {
+      "x": 531.81,
+      "y": 165,
+      "width": 856.19,
+      "height": 40
+     },
+     "visible": {
+      "x": 531.81,
+      "y": 165,
+      "width": 856.19,
+      "height": 40
+     }
+    },
+    "comments_list": {
+     "rect": {
+      "x": 531.81,
+      "y": 217,
+      "width": 856.19,
+      "height": 432
+     },
+     "visible": {
+      "x": 531.81,
+      "y": 217,
+      "width": 856.19,
+      "height": 432
+     }
+    },
+    "comment_items": [
+     {
+      "who": "高橋 さくらさんがコメントしました。",
+      "kind": "comment",
+      "rect": {
+       "x": 531.81,
+       "y": 217,
+       "width": 856.19,
+       "height": 76
+      },
+      "visible": {
+       "x": 531.81,
+       "y": 217,
+       "width": 856.19,
+       "height": 76
+      }
+     },
+     {
+      "who": "鈴木 健さんがコメントしました。",
+      "kind": "comment",
+      "rect": {
+       "x": 531.81,
+       "y": 293,
+       "width": 856.19,
+       "height": 76
+      },
+      "visible": {
+       "x": 531.81,
+       "y": 293,
+       "width": 856.19,
+       "height": 76
+      }
+     },
+     {
+      "who": "鈴木 健",
+      "kind": "activity",
+      "rect": {
+       "x": 531.81,
+       "y": 369,
+       "width": 856.19,
+       "height": 54
+      },
+      "visible": {
+       "x": 531.81,
+       "y": 369,
+       "width": 856.19,
+       "height": 54
+      }
+     },
+     {
+      "who": "佐藤 美咲さんがコメントしました。",
+      "kind": "comment",
+      "rect": {
+       "x": 531.81,
+       "y": 423,
+       "width": 856.19,
+       "height": 96
+      },
+      "visible": {
+       "x": 531.81,
+       "y": 423,
+       "width": 856.19,
+       "height": 96
+      }
+     },
+     {
+      "who": "高橋 さくらさんがコメントしました。",
+      "kind": "comment",
+      "rect": {
+       "x": 531.81,
+       "y": 519,
+       "width": 856.19,
+       "height": 76
+      },
+      "visible": {
+       "x": 531.81,
+       "y": 519,
+       "width": 856.19,
+       "height": 76
+      }
+     },
+     {
+      "who": "佐藤 美咲",
+      "kind": "activity",
+      "rect": {
+       "x": 531.81,
+       "y": 595,
+       "width": 856.19,
+       "height": 54
+      },
+      "visible": {
+       "x": 531.81,
+       "y": 595,
+       "width": 856.19,
+       "height": 54
+      }
+     }
+    ],
+    "nav": {
+     "rect": {
+      "x": 552.64,
+      "y": 836,
+      "width": 334.72,
+      "height": 46
+     },
+     "visible": {
+      "x": 552.64,
+      "y": 836,
+      "width": 334.72,
+      "height": 46
+     }
+    },
+    "activity_button": {
+     "x": 778.36,
+     "y": 843,
+     "width": 102,
+     "height": 32
+    }
+   },
+   "html_state": {
+    "on": true,
+    "color": true,
+    "vars": {
+     "--twc-card-width": "95vw",
+     "--twc-card-max-width": "calc(100vw - 24px)",
+     "--twc-desc-ratio": "35%",
+     "--twc-color-strength": "16%"
+    }
+   },
+   "counts": {
+    "cards": 13,
+    "labeled_cards": 10,
+    "painted_cards": 10
+   },
+   "size": [
+    2880,
+    1800
+   ],
+   "viewport": [
+    1440,
+    900
+   ],
+   "dpr": 2
+  },
+  {
+   "file": "popup_r35.png",
+   "page": "popup",
+   "description": "ポップアップ（比率 35:65）",
+   "settings_target": {
+    "enabled": true,
+    "cardWidth": 95,
+    "descRatio": 35,
+    "colorCards": true,
+    "colorStrength": 16
+   },
+   "settings_stored": {
+    "cardWidth": 95,
+    "colorCards": true,
+    "colorStrength": 16,
+    "descRatio": 35,
+    "enabled": true
+   },
+   "popup_ui": {
+    "texts": {
+     "enabled": "ON",
+     "cardWidth": "95%",
+     "ratio": "35 : 65",
+     "colorCards": "ON",
+     "colorStrength": "16%"
+    },
+    "bodyOff": false,
+    "colorsOff": false
+   },
+   "actions": [],
+   "size": [
+    600,
+    1034
+   ],
+   "viewport": [
+    300,
+    800
+   ],
+   "dpr": 2,
+   "clip_css_px": {
+    "x": 0,
+    "y": 0,
+    "width": 300,
+    "height": 517.5
+   },
+   "rects": {
+    "body": {
+     "x": 0,
+     "y": 0,
+     "width": 300,
+     "height": 517.5
+    },
+    "head": {
+     "x": 0,
+     "y": 0,
+     "width": 300,
+     "height": 46
+    },
+    "cardWidth_field": {
+     "x": 16,
+     "y": 50,
+     "width": 268,
+     "height": 111.5
+    },
+    "descRatio_field": {
+     "x": 16,
+     "y": 161.5,
+     "width": 268,
+     "height": 129.5
+    },
+    "colorField": {
+     "x": 16,
+     "y": 291,
+     "width": 268,
+     "height": 165.5
+    },
+    "foot": {
+     "x": 0,
+     "y": 464.5,
+     "width": 300,
+     "height": 53
+    },
+    "swatch": {
+     "x": 16,
+     "y": 376.5,
+     "width": 268,
+     "height": 29
+    }
+   },
+   "note": "rects はビューポートの CSS px。画像は body を切り出したもの（原点 = body の左上）"
+  },
+  {
+   "file": "card_closed.png",
+   "page": "card",
+   "description": "カード詳細（トレひろ ON・幅 95%・コメント欄を閉じた状態＝説明欄が全幅）",
+   "settings_target": {
+    "enabled": true,
+    "cardWidth": 95,
+    "descRatio": 60,
+    "colorCards": true,
+    "colorStrength": 16
+   },
+   "settings_stored": {
+    "cardWidth": 95,
+    "colorCards": true,
+    "colorStrength": 16,
+    "descRatio": 60,
+    "enabled": true
+   },
+   "popup_ui": {
+    "texts": {
+     "enabled": "ON",
+     "cardWidth": "95%",
+     "ratio": "60 : 40",
+     "colorCards": "ON",
+     "colorStrength": "16%"
+    },
+    "bodyOff": false,
+    "colorsOff": false
+   },
+   "actions": [
+    "range: descRatio = 60（input を発火）",
+    "click: 再現ページの下部ナビ「コメント」→ 閉じる"
+   ],
+   "comments": "closed",
+   "measured": {
+    "dialog": 1368,
+    "main": 1368,
+    "aside": 547.19,
+    "aside_visible": 0,
+    "main_div": 1368,
+    "hgroup": 1292,
+    "description": 1272,
+    "table": 1272,
+    "ratio": null
+   },
+   "computed": {
+    "dialog_width": "1368px",
+    "dialog_max_width": "1416px",
+    "main_flex": "1 0 100%",
+    "main_min_width": "0px",
+    "aside_flex": "0 0 auto",
+    "aside_width": "547.188px",
+    "aside_min_width": "0px",
+    "aside_transform": "matrix(1, 0, 0, 1, 547.188, 0)",
+    "main_div_max_width": "none",
+    "hgroup_max_width": "none"
+   },
+   "table_row_heights": [
+    37,
+    37,
+    37,
+    37,
+    37,
+    37
+   ],
+   "check_vs_expected": {
+    "dialog": {
+     "expected": 1368.0,
+     "measured": 1368,
+     "ok": true
+    },
+    "main": {
+     "expected": 1368.0,
+     "measured": 1368,
+     "ok": true
+    }
+   },
+   "rects": {
+    "viewport": {
+     "x": 0,
+     "y": 0,
+     "width": 1440,
+     "height": 900
+    },
+    "dialog": {
+     "x": 36,
+     "y": 48,
+     "width": 1368,
+     "height": 772
+    },
+    "dialog_header": {
+     "x": 36,
+     "y": 48,
+     "width": 1368,
+     "height": 57
+    },
+    "main": {
+     "x": 36,
+     "y": 105,
+     "width": 1368,
+     "height": 715
+    },
+    "aside": {
+     "x": 1951.19,
+     "y": 105,
+     "width": 547.19,
+     "height": 715
+    },
+    "aside_visible": null,
+    "title": {
+     "rect": {
+      "x": 92,
+      "y": 129,
+      "width": 1292,
+      "height": 32
+     },
+     "visible": {
+      "x": 92,
+      "y": 129,
+      "width": 1292,
+      "height": 32
+     }
+    },
+    "quick_actions": {
+     "rect": {
+      "x": 92,
+      "y": 185,
+      "width": 1272,
+      "height": 32
+     },
+     "visible": {
+      "x": 92,
+      "y": 185,
+      "width": 1272,
+      "height": 32
+     }
+    },
+    "meta": {
+     "rect": {
+      "x": 92,
+      "y": 241,
+      "width": 1272,
+      "height": 56
+     },
+     "visible": {
+      "x": 92,
+      "y": 241,
+      "width": 1272,
+      "height": 56
+     }
+    },
+    "description": {
+     "rect": {
+      "x": 56,
+      "y": 313,
+      "width": 1308,
+      "height": 434
+     },
+     "visible": {
+      "x": 56,
+      "y": 313,
+      "width": 1308,
+      "height": 434
+     }
+    },
+    "description_body": {
+     "rect": {
+      "x": 92,
+      "y": 357,
+      "width": 1272,
+      "height": 390
+     },
+     "visible": {
+      "x": 92,
+      "y": 357,
+      "width": 1272,
+      "height": 390
+     }
+    },
+    "table": {
+     "rect": {
+      "x": 92,
+      "y": 429,
+      "width": 1272,
+      "height": 223
+     },
+     "visible": {
+      "x": 92,
+      "y": 429,
+      "width": 1272,
+      "height": 223
+     }
+    },
+    "checklist": {
+     "rect": {
+      "x": 56,
+      "y": 779,
+      "width": 1308,
+      "height": 290
+     },
+     "visible": {
+      "x": 56,
+      "y": 779,
+      "width": 1308,
+      "height": 41
+     }
+    },
+    "comments_header": {
+     "rect": {
+      "x": 2004.19,
+      "y": 121,
+      "width": 478.19,
+      "height": 32
+     },
+     "visible": null
+    },
+    "comment_composer": {
+     "rect": {
+      "x": 1968.19,
+      "y": 165,
+      "width": 514.19,
+      "height": 40
+     },
+     "visible": null
+    },
+    "comments_list": {
+     "rect": {
+      "x": 1968.19,
+      "y": 217,
+      "width": 514.19,
+      "height": 524
+     },
+     "visible": null
+    },
+    "comment_items": [
+     {
+      "who": "高橋 さくらさんがコメントしました。",
+      "kind": "comment",
+      "rect": {
+       "x": 1968.19,
+       "y": 217,
+       "width": 514.19,
+       "height": 100
+      },
+      "visible": null
+     },
+     {
+      "who": "鈴木 健さんがコメントしました。",
+      "kind": "comment",
+      "rect": {
+       "x": 1968.19,
+       "y": 317,
+       "width": 514.19,
+       "height": 100
+      },
+      "visible": null
+     },
+     {
+      "who": "鈴木 健",
+      "kind": "activity",
+      "rect": {
+       "x": 1968.19,
+       "y": 417,
+       "width": 514.19,
+       "height": 54
+      },
+      "visible": null
+     },
+     {
+      "who": "佐藤 美咲さんがコメントしました。",
+      "kind": "comment",
+      "rect": {
+       "x": 1968.19,
+       "y": 471,
+       "width": 514.19,
+       "height": 120
+      },
+      "visible": null
+     },
+     {
+      "who": "高橋 さくらさんがコメントしました。",
+      "kind": "comment",
+      "rect": {
+       "x": 1968.19,
+       "y": 591,
+       "width": 514.19,
+       "height": 76
+      },
+      "visible": null
+     },
+     {
+      "who": "佐藤 美咲",
+      "kind": "activity",
+      "rect": {
+       "x": 1968.19,
+       "y": 667,
+       "width": 514.19,
+       "height": 74
+      },
+      "visible": null
+     }
+    ],
+    "nav": {
+     "rect": {
+      "x": 552.64,
+      "y": 836,
+      "width": 334.72,
+      "height": 46
+     },
+     "visible": {
+      "x": 552.64,
+      "y": 836,
+      "width": 334.72,
+      "height": 46
+     }
+    },
+    "activity_button": {
+     "x": 778.36,
+     "y": 843,
+     "width": 102,
+     "height": 32
+    }
+   },
+   "html_state": {
+    "on": true,
+    "color": true,
+    "vars": {
+     "--twc-card-width": "95vw",
+     "--twc-card-max-width": "calc(100vw - 24px)",
+     "--twc-desc-ratio": "60%",
+     "--twc-color-strength": "16%"
+    }
+   },
+   "counts": {
+    "cards": 13,
+    "labeled_cards": 10,
+    "painted_cards": 10
+   },
+   "size": [
+    2880,
+    1800
+   ],
+   "viewport": [
+    1440,
+    900
+   ],
+   "dpr": 2
+  },
+  {
+   "file": "card_off_closed.png",
+   "page": "card",
+   "description": "カード詳細（トレひろ OFF＝Trello 標準・コメント欄を閉じた状態、幅 584px）",
+   "settings_target": {
+    "enabled": false,
+    "cardWidth": 95,
+    "descRatio": 60,
+    "colorCards": true,
+    "colorStrength": 16
+   },
+   "settings_stored": {
+    "cardWidth": 95,
+    "colorCards": true,
+    "colorStrength": 16,
+    "descRatio": 60,
+    "enabled": false
+   },
+   "popup_ui": {
+    "texts": {
+     "enabled": "OFF",
+     "cardWidth": "95%",
+     "ratio": "60 : 40",
+     "colorCards": "ON",
+     "colorStrength": "16%"
+    },
+    "bodyOff": true,
+    "colorsOff": false
+   },
+   "actions": [
+    "click: メインスイッチ → OFF"
+   ],
+   "comments": "closed",
+   "measured": {
+    "dialog": 584,
+    "main": 584,
+    "aside": 460,
+    "aside_visible": 0,
+    "main_div": 584,
+    "hgroup": 508,
+    "description": 488,
+    "table": 488,
+    "ratio": null
+   },
+   "computed": {
+    "dialog_width": "584px",
+    "dialog_max_width": "none",
+    "main_flex": "1 0 100%",
+    "main_min_width": "460px",
+    "aside_flex": "0 1 auto",
+    "aside_width": "460px",
+    "aside_min_width": "460px",
+    "aside_transform": "matrix(1, 0, 0, 1, 460, 0)",
+    "main_div_max_width": "620px",
+    "hgroup_max_width": "544px"
+   },
+   "table_row_heights": [
+    37,
+    59,
+    59,
+    59,
+    59,
+    59
+   ],
+   "check_vs_expected": {
+    "dialog": {
+     "expected": 584.0,
+     "measured": 584,
+     "ok": true
+    },
+    "main": {
+     "expected": 584.0,
+     "measured": 584,
+     "ok": true
+    }
+   },
+   "rects": {
+    "viewport": {
+     "x": 0,
+     "y": 0,
+     "width": 1440,
+     "height": 900
+    },
+    "dialog": {
+     "x": 428,
+     "y": 48,
+     "width": 584,
+     "height": 772
+    },
+    "dialog_header": {
+     "x": 428,
+     "y": 48,
+     "width": 584,
+     "height": 57
+    },
+    "main": {
+     "x": 428,
+     "y": 105,
+     "width": 584,
+     "height": 715
+    },
+    "aside": {
+     "x": 1472,
+     "y": 105,
+     "width": 460,
+     "height": 715
+    },
+    "aside_visible": null,
+    "title": {
+     "rect": {
+      "x": 484,
+      "y": 129,
+      "width": 508,
+      "height": 32
+     },
+     "visible": {
+      "x": 484,
+      "y": 129,
+      "width": 508,
+      "height": 32
+     }
+    },
+    "quick_actions": {
+     "rect": {
+      "x": 484,
+      "y": 185,
+      "width": 488,
+      "height": 72
+     },
+     "visible": {
+      "x": 484,
+      "y": 185,
+      "width": 488,
+      "height": 72
+     }
+    },
+    "meta": {
+     "rect": {
+      "x": 484,
+      "y": 281,
+      "width": 488,
+      "height": 128
+     },
+     "visible": {
+      "x": 484,
+      "y": 281,
+      "width": 488,
+      "height": 128
+     }
+    },
+    "description": {
+     "rect": {
+      "x": 448,
+      "y": 425,
+      "width": 524,
+      "height": 616
+     },
+     "visible": {
+      "x": 448,
+      "y": 425,
+      "width": 524,
+      "height": 395
+     }
+    },
+    "description_body": {
+     "rect": {
+      "x": 484,
+      "y": 469,
+      "width": 488,
+      "height": 572
+     },
+     "visible": {
+      "x": 484,
+      "y": 469,
+      "width": 488,
+      "height": 351
+     }
+    },
+    "table": {
+     "rect": {
+      "x": 484,
+      "y": 589,
+      "width": 488,
+      "height": 333
+     },
+     "visible": {
+      "x": 484,
+      "y": 589,
+      "width": 488,
+      "height": 231
+     }
+    },
+    "checklist": {
+     "rect": {
+      "x": 448,
+      "y": 1073,
+      "width": 524,
+      "height": 290
+     },
+     "visible": null
+    },
+    "comments_header": {
+     "rect": {
+      "x": 1525,
+      "y": 121,
+      "width": 391,
+      "height": 32
+     },
+     "visible": null
+    },
+    "comment_composer": {
+     "rect": {
+      "x": 1489,
+      "y": 165,
+      "width": 427,
+      "height": 40
+     },
+     "visible": null
+    },
+    "comments_list": {
+     "rect": {
+      "x": 1489,
+      "y": 217,
+      "width": 427,
+      "height": 544
+     },
+     "visible": null
+    },
+    "comment_items": [
+     {
+      "who": "高橋 さくらさんがコメントしました。",
+      "kind": "comment",
+      "rect": {
+       "x": 1489,
+       "y": 217,
+       "width": 427,
+       "height": 100
+      },
+      "visible": null
+     },
+     {
+      "who": "鈴木 健さんがコメントしました。",
+      "kind": "comment",
+      "rect": {
+       "x": 1489,
+       "y": 317,
+       "width": 427,
+       "height": 100
+      },
+      "visible": null
+     },
+     {
+      "who": "鈴木 健",
+      "kind": "activity",
+      "rect": {
+       "x": 1489,
+       "y": 417,
+       "width": 427,
+       "height": 74
+      },
+      "visible": null
+     },
+     {
+      "who": "佐藤 美咲さんがコメントしました。",
+      "kind": "comment",
+      "rect": {
+       "x": 1489,
+       "y": 491,
+       "width": 427,
+       "height": 120
+      },
+      "visible": null
+     },
+     {
+      "who": "高橋 さくらさんがコメントしました。",
+      "kind": "comment",
+      "rect": {
+       "x": 1489,
+       "y": 611,
+       "width": 427,
+       "height": 76
+      },
+      "visible": null
+     },
+     {
+      "who": "佐藤 美咲",
+      "kind": "activity",
+      "rect": {
+       "x": 1489,
+       "y": 687,
+       "width": 427,
+       "height": 74
+      },
+      "visible": null
+     }
+    ],
+    "nav": {
+     "rect": {
+      "x": 552.64,
+      "y": 836,
+      "width": 334.72,
+      "height": 46
+     },
+     "visible": {
+      "x": 552.64,
+      "y": 836,
+      "width": 334.72,
+      "height": 46
+     }
+    },
+    "activity_button": {
+     "x": 778.36,
+     "y": 843,
+     "width": 102,
+     "height": 32
+    }
+   },
+   "html_state": {
+    "on": false,
+    "color": true,
+    "vars": {
+     "--twc-card-width": "95vw",
+     "--twc-card-max-width": "calc(100vw - 24px)",
+     "--twc-desc-ratio": "60%",
+     "--twc-color-strength": "16%"
+    }
+   },
+   "counts": {
+    "cards": 13,
+    "labeled_cards": 10,
+    "painted_cards": 0
+   },
+   "size": [
+    2880,
+    1800
+   ],
+   "viewport": [
+    1440,
+    900
+   ],
+   "dpr": 2
+  },
+  {
+   "file": "popup_off.png",
+   "page": "popup",
+   "description": "ポップアップ（メインスイッチ OFF）",
+   "settings_target": {
+    "enabled": false,
+    "cardWidth": 95,
+    "descRatio": 60,
+    "colorCards": true,
+    "colorStrength": 16
+   },
+   "settings_stored": {
+    "cardWidth": 95,
+    "colorCards": true,
+    "colorStrength": 16,
+    "descRatio": 60,
+    "enabled": false
+   },
+   "popup_ui": {
+    "texts": {
+     "enabled": "OFF",
+     "cardWidth": "95%",
+     "ratio": "60 : 40",
+     "colorCards": "ON",
+     "colorStrength": "16%"
+    },
+    "bodyOff": true,
+    "colorsOff": false
+   },
+   "actions": [],
+   "size": [
+    600,
+    1034
+   ],
+   "viewport": [
+    300,
+    800
+   ],
+   "dpr": 2,
+   "clip_css_px": {
+    "x": 0,
+    "y": 0,
+    "width": 300,
+    "height": 517.5
+   },
+   "rects": {
+    "body": {
+     "x": 0,
+     "y": 0,
+     "width": 300,
+     "height": 517.5
+    },
+    "head": {
+     "x": 0,
+     "y": 0,
+     "width": 300,
+     "height": 46
+    },
+    "cardWidth_field": {
+     "x": 16,
+     "y": 50,
+     "width": 268,
+     "height": 111.5
+    },
+    "descRatio_field": {
+     "x": 16,
+     "y": 161.5,
+     "width": 268,
+     "height": 129.5
+    },
+    "colorField": {
+     "x": 16,
+     "y": 291,
+     "width": 268,
+     "height": 165.5
+    },
+    "foot": {
+     "x": 0,
+     "y": 464.5,
+     "width": 300,
+     "height": 53
+    },
+    "swatch": {
+     "x": 16,
+     "y": 376.5,
+     "width": 268,
+     "height": 29
+    }
+   },
+   "note": "rects はビューポートの CSS px。画像は body を切り出したもの（原点 = body の左上）"
+  },
+  {
+   "file": "card_off.png",
+   "page": "card",
+   "description": "カード詳細（トレひろ OFF＝Trello 標準・コメント欄を開いた状態、幅 1080px）",
+   "settings_target": {
+    "enabled": false,
+    "cardWidth": 95,
+    "descRatio": 60,
+    "colorCards": true,
+    "colorStrength": 16
+   },
+   "settings_stored": {
+    "cardWidth": 95,
+    "colorCards": true,
+    "colorStrength": 16,
+    "descRatio": 60,
+    "enabled": false
+   },
+   "popup_ui": {
+    "texts": {
+     "enabled": "OFF",
+     "cardWidth": "95%",
+     "ratio": "60 : 40",
+     "colorCards": "ON",
+     "colorStrength": "16%"
+    },
+    "bodyOff": true,
+    "colorsOff": false
+   },
+   "actions": [
+    "click: 再現ページの下部ナビ「コメント」→ 開く"
+   ],
+   "comments": "open",
+   "measured": {
+    "dialog": 1080,
+    "main": 620,
+    "aside": 460,
+    "aside_visible": 460,
+    "main_div": 620,
+    "hgroup": 544,
+    "description": 524,
+    "table": 524,
+    "ratio": 0.5741
+   },
+   "computed": {
+    "dialog_width": "1080px",
+    "dialog_max_width": "none",
+    "main_flex": "1 1 460px",
+    "main_min_width": "460px",
+    "aside_flex": "0 1 auto",
+    "aside_width": "460px",
+    "aside_min_width": "460px",
+    "aside_transform": "none",
+    "main_div_max_width": "620px",
+    "hgroup_max_width": "544px"
+   },
+   "table_row_heights": [
+    37,
+    59,
+    59,
+    59,
+    59,
+    59
+   ],
+   "check_vs_expected": {
+    "dialog": {
+     "expected": 1080.0,
+     "measured": 1080,
+     "ok": true
+    },
+    "main": {
+     "expected": 620.0,
+     "measured": 620,
+     "ok": true
+    },
+    "aside": {
+     "expected": 460.0,
+     "measured": 460,
+     "ok": true
+    }
+   },
+   "rects": {
+    "viewport": {
+     "x": 0,
+     "y": 0,
+     "width": 1440,
+     "height": 900
+    },
+    "dialog": {
+     "x": 180,
+     "y": 48,
+     "width": 1080,
+     "height": 772
+    },
+    "dialog_header": {
+     "x": 180,
+     "y": 48,
+     "width": 1080,
+     "height": 57
+    },
+    "main": {
+     "x": 180,
+     "y": 105,
+     "width": 620,
+     "height": 715
+    },
+    "aside": {
+     "x": 800,
+     "y": 105,
+     "width": 460,
+     "height": 715
+    },
+    "aside_visible": {
+     "x": 800,
+     "y": 105,
+     "width": 460,
+     "height": 715
+    },
+    "title": {
+     "rect": {
+      "x": 236,
+      "y": 129,
+      "width": 544,
+      "height": 32
+     },
+     "visible": {
+      "x": 236,
+      "y": 129,
+      "width": 544,
+      "height": 32
+     }
+    },
+    "quick_actions": {
+     "rect": {
+      "x": 236,
+      "y": 185,
+      "width": 524,
+      "height": 32
+     },
+     "visible": {
+      "x": 236,
+      "y": 185,
+      "width": 524,
+      "height": 32
+     }
+    },
+    "meta": {
+     "rect": {
+      "x": 236,
+      "y": 241,
+      "width": 524,
+      "height": 56
+     },
+     "visible": {
+      "x": 236,
+      "y": 241,
+      "width": 524,
+      "height": 56
+     }
+    },
+    "description": {
+     "rect": {
+      "x": 200,
+      "y": 313,
+      "width": 560,
+      "height": 592
+     },
+     "visible": {
+      "x": 200,
+      "y": 313,
+      "width": 560,
+      "height": 507
+     }
+    },
+    "description_body": {
+     "rect": {
+      "x": 236,
+      "y": 357,
+      "width": 524,
+      "height": 548
+     },
+     "visible": {
+      "x": 236,
+      "y": 357,
+      "width": 524,
+      "height": 463
+     }
+    },
+    "table": {
+     "rect": {
+      "x": 236,
+      "y": 477,
+      "width": 524,
+      "height": 333
+     },
+     "visible": {
+      "x": 236,
+      "y": 477,
+      "width": 524,
+      "height": 333
+     }
+    },
+    "checklist": {
+     "rect": {
+      "x": 200,
+      "y": 937,
+      "width": 560,
+      "height": 290
+     },
+     "visible": null
+    },
+    "comments_header": {
+     "rect": {
+      "x": 853,
+      "y": 121,
+      "width": 391,
+      "height": 32
+     },
+     "visible": {
+      "x": 853,
+      "y": 121,
+      "width": 391,
+      "height": 32
+     }
+    },
+    "comment_composer": {
+     "rect": {
+      "x": 817,
+      "y": 165,
+      "width": 427,
+      "height": 40
+     },
+     "visible": {
+      "x": 817,
+      "y": 165,
+      "width": 427,
+      "height": 40
+     }
+    },
+    "comments_list": {
+     "rect": {
+      "x": 817,
+      "y": 217,
+      "width": 427,
+      "height": 544
+     },
+     "visible": {
+      "x": 817,
+      "y": 217,
+      "width": 427,
+      "height": 544
+     }
+    },
+    "comment_items": [
+     {
+      "who": "高橋 さくらさんがコメントしました。",
+      "kind": "comment",
+      "rect": {
+       "x": 817,
+       "y": 217,
+       "width": 427,
+       "height": 100
+      },
+      "visible": {
+       "x": 817,
+       "y": 217,
+       "width": 427,
+       "height": 100
+      }
+     },
+     {
+      "who": "鈴木 健さんがコメントしました。",
+      "kind": "comment",
+      "rect": {
+       "x": 817,
+       "y": 317,
+       "width": 427,
+       "height": 100
+      },
+      "visible": {
+       "x": 817,
+       "y": 317,
+       "width": 427,
+       "height": 100
+      }
+     },
+     {
+      "who": "鈴木 健",
+      "kind": "activity",
+      "rect": {
+       "x": 817,
+       "y": 417,
+       "width": 427,
+       "height": 74
+      },
+      "visible": {
+       "x": 817,
+       "y": 417,
+       "width": 427,
+       "height": 74
+      }
+     },
+     {
+      "who": "佐藤 美咲さんがコメントしました。",
+      "kind": "comment",
+      "rect": {
+       "x": 817,
+       "y": 491,
+       "width": 427,
+       "height": 120
+      },
+      "visible": {
+       "x": 817,
+       "y": 491,
+       "width": 427,
+       "height": 120
+      }
+     },
+     {
+      "who": "高橋 さくらさんがコメントしました。",
+      "kind": "comment",
+      "rect": {
+       "x": 817,
+       "y": 611,
+       "width": 427,
+       "height": 76
+      },
+      "visible": {
+       "x": 817,
+       "y": 611,
+       "width": 427,
+       "height": 76
+      }
+     },
+     {
+      "who": "佐藤 美咲",
+      "kind": "activity",
+      "rect": {
+       "x": 817,
+       "y": 687,
+       "width": 427,
+       "height": 74
+      },
+      "visible": {
+       "x": 817,
+       "y": 687,
+       "width": 427,
+       "height": 74
+      }
+     }
+    ],
+    "nav": {
+     "rect": {
+      "x": 552.64,
+      "y": 836,
+      "width": 334.72,
+      "height": 46
+     },
+     "visible": {
+      "x": 552.64,
+      "y": 836,
+      "width": 334.72,
+      "height": 46
+     }
+    },
+    "activity_button": {
+     "x": 778.36,
+     "y": 843,
+     "width": 102,
+     "height": 32
+    }
+   },
+   "html_state": {
+    "on": false,
+    "color": true,
+    "vars": {
+     "--twc-card-width": "95vw",
+     "--twc-card-max-width": "calc(100vw - 24px)",
+     "--twc-desc-ratio": "60%",
+     "--twc-color-strength": "16%"
+    }
+   },
+   "counts": {
+    "cards": 13,
+    "labeled_cards": 10,
+    "painted_cards": 0
+   },
+   "size": [
+    2880,
+    1800
+   ],
+   "viewport": [
+    1440,
+    900
+   ],
+   "dpr": 2
+  },
+  {
+   "file": "card_off_1280.png",
+   "page": "card",
+   "description": "カード詳細 1280x800（トレひろ OFF＝Trello 標準・コメント欄を開いた状態）",
+   "settings_target": {
+    "enabled": false,
+    "cardWidth": 95,
+    "descRatio": 60,
+    "colorCards": true,
+    "colorStrength": 16
+   },
+   "settings_stored": {
+    "cardWidth": 95,
+    "colorCards": true,
+    "colorStrength": 16,
+    "descRatio": 60,
+    "enabled": false
+   },
+   "popup_ui": {
+    "texts": {
+     "enabled": "OFF",
+     "cardWidth": "95%",
+     "ratio": "60 : 40",
+     "colorCards": "ON",
+     "colorStrength": "16%"
+    },
+    "bodyOff": true,
+    "colorsOff": false
+   },
+   "actions": [],
+   "comments": "open",
+   "measured": {
+    "dialog": 1080,
+    "main": 620,
+    "aside": 460,
+    "aside_visible": 460,
+    "main_div": 620,
+    "hgroup": 544,
+    "description": 524,
+    "table": 524,
+    "ratio": 0.5741
+   },
+   "computed": {
+    "dialog_width": "1080px",
+    "dialog_max_width": "none",
+    "main_flex": "1 1 460px",
+    "main_min_width": "460px",
+    "aside_flex": "0 1 auto",
+    "aside_width": "460px",
+    "aside_min_width": "460px",
+    "aside_transform": "none",
+    "main_div_max_width": "620px",
+    "hgroup_max_width": "544px"
+   },
+   "table_row_heights": [
+    37,
+    59,
+    59,
+    59,
+    59,
+    59
+   ],
+   "check_vs_expected": {
+    "dialog": {
+     "expected": 1080.0,
+     "measured": 1080,
+     "ok": true
+    },
+    "main": {
+     "expected": 620.0,
+     "measured": 620,
+     "ok": true
+    },
+    "aside": {
+     "expected": 460.0,
+     "measured": 460,
+     "ok": true
+    }
+   },
+   "rects": {
+    "viewport": {
+     "x": 0,
+     "y": 0,
+     "width": 1280,
+     "height": 800
+    },
+    "dialog": {
+     "x": 100,
+     "y": 48,
+     "width": 1080,
+     "height": 672
+    },
+    "dialog_header": {
+     "x": 100,
+     "y": 48,
+     "width": 1080,
+     "height": 57
+    },
+    "main": {
+     "x": 100,
+     "y": 105,
+     "width": 620,
+     "height": 615
+    },
+    "aside": {
+     "x": 720,
+     "y": 105,
+     "width": 460,
+     "height": 615
+    },
+    "aside_visible": {
+     "x": 720,
+     "y": 105,
+     "width": 460,
+     "height": 615
+    },
+    "title": {
+     "rect": {
+      "x": 156,
+      "y": 129,
+      "width": 544,
+      "height": 32
+     },
+     "visible": {
+      "x": 156,
+      "y": 129,
+      "width": 544,
+      "height": 32
+     }
+    },
+    "quick_actions": {
+     "rect": {
+      "x": 156,
+      "y": 185,
+      "width": 524,
+      "height": 32
+     },
+     "visible": {
+      "x": 156,
+      "y": 185,
+      "width": 524,
+      "height": 32
+     }
+    },
+    "meta": {
+     "rect": {
+      "x": 156,
+      "y": 241,
+      "width": 524,
+      "height": 56
+     },
+     "visible": {
+      "x": 156,
+      "y": 241,
+      "width": 524,
+      "height": 56
+     }
+    },
+    "description": {
+     "rect": {
+      "x": 120,
+      "y": 313,
+      "width": 560,
+      "height": 592
+     },
+     "visible": {
+      "x": 120,
+      "y": 313,
+      "width": 560,
+      "height": 407
+     }
+    },
+    "description_body": {
+     "rect": {
+      "x": 156,
+      "y": 357,
+      "width": 524,
+      "height": 548
+     },
+     "visible": {
+      "x": 156,
+      "y": 357,
+      "width": 524,
+      "height": 363
+     }
+    },
+    "table": {
+     "rect": {
+      "x": 156,
+      "y": 477,
+      "width": 524,
+      "height": 333
+     },
+     "visible": {
+      "x": 156,
+      "y": 477,
+      "width": 524,
+      "height": 243
+     }
+    },
+    "checklist": {
+     "rect": {
+      "x": 120,
+      "y": 937,
+      "width": 560,
+      "height": 290
+     },
+     "visible": null
+    },
+    "comments_header": {
+     "rect": {
+      "x": 773,
+      "y": 121,
+      "width": 391,
+      "height": 32
+     },
+     "visible": {
+      "x": 773,
+      "y": 121,
+      "width": 391,
+      "height": 32
+     }
+    },
+    "comment_composer": {
+     "rect": {
+      "x": 737,
+      "y": 165,
+      "width": 427,
+      "height": 40
+     },
+     "visible": {
+      "x": 737,
+      "y": 165,
+      "width": 427,
+      "height": 40
+     }
+    },
+    "comments_list": {
+     "rect": {
+      "x": 737,
+      "y": 217,
+      "width": 427,
+      "height": 544
+     },
+     "visible": {
+      "x": 737,
+      "y": 217,
+      "width": 427,
+      "height": 503
+     }
+    },
+    "comment_items": [
+     {
+      "who": "高橋 さくらさんがコメントしました。",
+      "kind": "comment",
+      "rect": {
+       "x": 737,
+       "y": 217,
+       "width": 427,
+       "height": 100
+      },
+      "visible": {
+       "x": 737,
+       "y": 217,
+       "width": 427,
+       "height": 100
+      }
+     },
+     {
+      "who": "鈴木 健さんがコメントしました。",
+      "kind": "comment",
+      "rect": {
+       "x": 737,
+       "y": 317,
+       "width": 427,
+       "height": 100
+      },
+      "visible": {
+       "x": 737,
+       "y": 317,
+       "width": 427,
+       "height": 100
+      }
+     },
+     {
+      "who": "鈴木 健",
+      "kind": "activity",
+      "rect": {
+       "x": 737,
+       "y": 417,
+       "width": 427,
+       "height": 74
+      },
+      "visible": {
+       "x": 737,
+       "y": 417,
+       "width": 427,
+       "height": 74
+      }
+     },
+     {
+      "who": "佐藤 美咲さんがコメントしました。",
+      "kind": "comment",
+      "rect": {
+       "x": 737,
+       "y": 491,
+       "width": 427,
+       "height": 120
+      },
+      "visible": {
+       "x": 737,
+       "y": 491,
+       "width": 427,
+       "height": 120
+      }
+     },
+     {
+      "who": "高橋 さくらさんがコメントしました。",
+      "kind": "comment",
+      "rect": {
+       "x": 737,
+       "y": 611,
+       "width": 427,
+       "height": 76
+      },
+      "visible": {
+       "x": 737,
+       "y": 611,
+       "width": 427,
+       "height": 76
+      }
+     },
+     {
+      "who": "佐藤 美咲",
+      "kind": "activity",
+      "rect": {
+       "x": 737,
+       "y": 687,
+       "width": 427,
+       "height": 74
+      },
+      "visible": {
+       "x": 737,
+       "y": 687,
+       "width": 427,
+       "height": 33
+      }
+     }
+    ],
+    "nav": {
+     "rect": {
+      "x": 472.64,
+      "y": 736,
+      "width": 334.72,
+      "height": 46
+     },
+     "visible": {
+      "x": 472.64,
+      "y": 736,
+      "width": 334.72,
+      "height": 46
+     }
+    },
+    "activity_button": {
+     "x": 698.36,
+     "y": 743,
+     "width": 102,
+     "height": 32
+    }
+   },
+   "html_state": {
+    "on": false,
+    "color": true,
+    "vars": {
+     "--twc-card-width": "95vw",
+     "--twc-card-max-width": "calc(100vw - 24px)",
+     "--twc-desc-ratio": "60%",
+     "--twc-color-strength": "16%"
+    }
+   },
+   "counts": {
+    "cards": 13,
+    "labeled_cards": 10,
+    "painted_cards": 0
+   },
+   "size": [
+    2560,
+    1600
+   ],
+   "viewport": [
+    1280,
+    800
+   ],
+   "dpr": 2
+  },
+  {
+   "file": "card_default_1280.png",
+   "page": "card",
+   "description": "カード詳細 1280x800（トレひろ ON・幅 95%・比率 60:40）",
+   "settings_target": {
+    "enabled": true,
+    "cardWidth": 95,
+    "descRatio": 60,
+    "colorCards": true,
+    "colorStrength": 16
+   },
+   "settings_stored": {
+    "cardWidth": 95,
+    "colorCards": true,
+    "colorStrength": 16,
+    "descRatio": 60,
+    "enabled": true
+   },
+   "popup_ui": {
+    "texts": {
+     "enabled": "ON",
+     "cardWidth": "95%",
+     "ratio": "60 : 40",
+     "colorCards": "ON",
+     "colorStrength": "16%"
+    },
+    "bodyOff": false,
+    "colorsOff": false
+   },
+   "actions": [
+    "click: メインスイッチ → ON"
+   ],
+   "comments": "open",
+   "measured": {
+    "dialog": 1216,
+    "main": 729.61,
+    "aside": 486.39,
+    "aside_visible": 486.39,
+    "main_div": 729.61,
+    "hgroup": 653.61,
+    "description": 633.61,
+    "table": 633.61,
+    "ratio": 0.6
+   },
+   "computed": {
+    "dialog_width": "1216px",
+    "dialog_max_width": "1256px",
+    "main_flex": "1 1 460px",
+    "main_min_width": "0px",
+    "aside_flex": "0 0 auto",
+    "aside_width": "486.391px",
+    "aside_min_width": "0px",
+    "aside_transform": "none",
+    "main_div_max_width": "none",
+    "hgroup_max_width": "none"
+   },
+   "table_row_heights": [
+    37,
+    59,
+    59,
+    59,
+    59,
+    37
+   ],
+   "check_vs_expected": {
+    "dialog": {
+     "expected": 1216.0,
+     "measured": 1216,
+     "ok": true
+    },
+    "main": {
+     "expected": 729.6,
+     "measured": 729.61,
+     "ok": true
+    },
+    "aside": {
+     "expected": 486.4,
+     "measured": 486.39,
+     "ok": true
+    }
+   },
+   "rects": {
+    "viewport": {
+     "x": 0,
+     "y": 0,
+     "width": 1280,
+     "height": 800
+    },
+    "dialog": {
+     "x": 32,
+     "y": 48,
+     "width": 1216,
+     "height": 672
+    },
+    "dialog_header": {
+     "x": 32,
+     "y": 48,
+     "width": 1216,
+     "height": 57
+    },
+    "main": {
+     "x": 32,
+     "y": 105,
+     "width": 729.61,
+     "height": 615
+    },
+    "aside": {
+     "x": 761.61,
+     "y": 105,
+     "width": 486.39,
+     "height": 615
+    },
+    "aside_visible": {
+     "x": 761.61,
+     "y": 105,
+     "width": 486.39,
+     "height": 615
+    },
+    "title": {
+     "rect": {
+      "x": 88,
+      "y": 129,
+      "width": 653.61,
+      "height": 32
+     },
+     "visible": {
+      "x": 88,
+      "y": 129,
+      "width": 653.61,
+      "height": 32
+     }
+    },
+    "quick_actions": {
+     "rect": {
+      "x": 88,
+      "y": 185,
+      "width": 633.61,
+      "height": 32
+     },
+     "visible": {
+      "x": 88,
+      "y": 185,
+      "width": 633.61,
+      "height": 32
+     }
+    },
+    "meta": {
+     "rect": {
+      "x": 88,
+      "y": 241,
+      "width": 633.61,
+      "height": 56
+     },
+     "visible": {
+      "x": 88,
+      "y": 241,
+      "width": 633.61,
+      "height": 56
+     }
+    },
+    "description": {
+     "rect": {
+      "x": 52,
+      "y": 313,
+      "width": 669.61,
+      "height": 570
+     },
+     "visible": {
+      "x": 52,
+      "y": 313,
+      "width": 669.61,
+      "height": 407
+     }
+    },
+    "description_body": {
+     "rect": {
+      "x": 88,
+      "y": 357,
+      "width": 633.61,
+      "height": 526
+     },
+     "visible": {
+      "x": 88,
+      "y": 357,
+      "width": 633.61,
+      "height": 363
+     }
+    },
+    "table": {
+     "rect": {
+      "x": 88,
+      "y": 477,
+      "width": 633.61,
+      "height": 311
+     },
+     "visible": {
+      "x": 88,
+      "y": 477,
+      "width": 633.61,
+      "height": 243
+     }
+    },
+    "checklist": {
+     "rect": {
+      "x": 52,
+      "y": 915,
+      "width": 669.61,
+      "height": 290
+     },
+     "visible": null
+    },
+    "comments_header": {
+     "rect": {
+      "x": 814.61,
+      "y": 121,
+      "width": 417.39,
+      "height": 32
+     },
+     "visible": {
+      "x": 814.61,
+      "y": 121,
+      "width": 417.39,
+      "height": 32
+     }
+    },
+    "comment_composer": {
+     "rect": {
+      "x": 778.61,
+      "y": 165,
+      "width": 453.39,
+      "height": 40
+     },
+     "visible": {
+      "x": 778.61,
+      "y": 165,
+      "width": 453.39,
+      "height": 40
+     }
+    },
+    "comments_list": {
+     "rect": {
+      "x": 778.61,
+      "y": 217,
+      "width": 453.39,
+      "height": 544
+     },
+     "visible": {
+      "x": 778.61,
+      "y": 217,
+      "width": 453.39,
+      "height": 503
+     }
+    },
+    "comment_items": [
+     {
+      "who": "高橋 さくらさんがコメントしました。",
+      "kind": "comment",
+      "rect": {
+       "x": 778.61,
+       "y": 217,
+       "width": 453.39,
+       "height": 100
+      },
+      "visible": {
+       "x": 778.61,
+       "y": 217,
+       "width": 453.39,
+       "height": 100
+      }
+     },
+     {
+      "who": "鈴木 健さんがコメントしました。",
+      "kind": "comment",
+      "rect": {
+       "x": 778.61,
+       "y": 317,
+       "width": 453.39,
+       "height": 100
+      },
+      "visible": {
+       "x": 778.61,
+       "y": 317,
+       "width": 453.39,
+       "height": 100
+      }
+     },
+     {
+      "who": "鈴木 健",
+      "kind": "activity",
+      "rect": {
+       "x": 778.61,
+       "y": 417,
+       "width": 453.39,
+       "height": 74
+      },
+      "visible": {
+       "x": 778.61,
+       "y": 417,
+       "width": 453.39,
+       "height": 74
+      }
+     },
+     {
+      "who": "佐藤 美咲さんがコメントしました。",
+      "kind": "comment",
+      "rect": {
+       "x": 778.61,
+       "y": 491,
+       "width": 453.39,
+       "height": 120
+      },
+      "visible": {
+       "x": 778.61,
+       "y": 491,
+       "width": 453.39,
+       "height": 120
+      }
+     },
+     {
+      "who": "高橋 さくらさんがコメントしました。",
+      "kind": "comment",
+      "rect": {
+       "x": 778.61,
+       "y": 611,
+       "width": 453.39,
+       "height": 76
+      },
+      "visible": {
+       "x": 778.61,
+       "y": 611,
+       "width": 453.39,
+       "height": 76
+      }
+     },
+     {
+      "who": "佐藤 美咲",
+      "kind": "activity",
+      "rect": {
+       "x": 778.61,
+       "y": 687,
+       "width": 453.39,
+       "height": 74
+      },
+      "visible": {
+       "x": 778.61,
+       "y": 687,
+       "width": 453.39,
+       "height": 33
+      }
+     }
+    ],
+    "nav": {
+     "rect": {
+      "x": 472.64,
+      "y": 736,
+      "width": 334.72,
+      "height": 46
+     },
+     "visible": {
+      "x": 472.64,
+      "y": 736,
+      "width": 334.72,
+      "height": 46
+     }
+    },
+    "activity_button": {
+     "x": 698.36,
+     "y": 743,
+     "width": 102,
+     "height": 32
+    }
+   },
+   "html_state": {
+    "on": true,
+    "color": true,
+    "vars": {
+     "--twc-card-width": "95vw",
+     "--twc-card-max-width": "calc(100vw - 24px)",
+     "--twc-desc-ratio": "60%",
+     "--twc-color-strength": "16%"
+    }
+   },
+   "counts": {
+    "cards": 13,
+    "labeled_cards": 10,
+    "painted_cards": 10
+   },
+   "size": [
+    2560,
+    1600
+   ],
+   "viewport": [
+    1280,
+    800
+   ],
+   "dpr": 2
+  },
+  {
+   "file": "board_color.png",
+   "page": "board",
+   "description": "ボード（トレひろ ON・カードの色付け ON・濃さ 16%）",
+   "settings_target": {
+    "enabled": true,
+    "cardWidth": 95,
+    "descRatio": 60,
+    "colorCards": true,
+    "colorStrength": 16
+   },
+   "settings_stored": {
+    "cardWidth": 95,
+    "colorCards": true,
+    "colorStrength": 16,
+    "descRatio": 60,
+    "enabled": true
+   },
+   "popup_ui": {
+    "texts": {
+     "enabled": "ON",
+     "cardWidth": "95%",
+     "ratio": "60 : 40",
+     "colorCards": "ON",
+     "colorStrength": "16%"
+    },
+    "bodyOff": false,
+    "colorsOff": false
+   },
+   "actions": [],
+   "rects": {
+    "viewport": {
+     "x": 0,
+     "y": 0,
+     "width": 1440,
+     "height": 900
+    },
+    "board_header": {
+     "x": 0,
+     "y": 0,
+     "width": 1440,
+     "height": 56
+    },
+    "board_name": {
+     "x": 12,
+     "y": 12,
+     "width": 203.7,
+     "height": 32
+    },
+    "lists": [
+     {
+      "name": "未着手",
+      "rect": {
+       "x": 12,
+       "y": 68,
+       "width": 272,
+       "height": 436
+      }
+     },
+     {
+      "name": "作業中",
+      "rect": {
+       "x": 296,
+       "y": 68,
+       "width": 272,
+       "height": 372
+      }
+     },
+     {
+      "name": "確認待ち",
+      "rect": {
+       "x": 580,
+       "y": 68,
+       "width": 272,
+       "height": 324
+      }
+     },
+     {
+      "name": "完了",
+      "rect": {
+       "x": 864,
+       "y": 68,
+       "width": 272,
+       "height": 332
+      }
+     }
+    ],
+    "cards": [
+     {
+      "name": "お問い合わせフォームの項目を整理する",
+      "list": "未着手",
+      "labels": [
+       {
+        "color": "purple",
+        "name": "開発"
+       },
+       {
+        "color": "yellow",
+        "name": "原稿"
+       }
+      ],
+      "painted": true,
+      "paint_colors": "rgb(201, 124, 244)|rgb(238, 209, 43)",
+      "painted_element": "trello-card > div > div",
+      "rect": {
+       "x": 20,
+       "y": 116,
+       "width": 256,
+       "height": 96
+      },
+      "visible": {
+       "x": 20,
+       "y": 116,
+       "width": 256,
+       "height": 96
+      }
+     },
+     {
+      "name": "採用情報ページの原稿を依頼する",
+      "list": "未着手",
+      "labels": [
+       {
+        "color": "yellow",
+        "name": "原稿"
+       }
+      ],
+      "painted": true,
+      "paint_colors": "rgb(238, 209, 43)",
+      "painted_element": "trello-card > div > div",
+      "rect": {
+       "x": 20,
+       "y": 220,
+       "width": 256,
+       "height": 76
+      },
+      "visible": {
+       "x": 20,
+       "y": 220,
+       "width": 256,
+       "height": 76
+      }
+     },
+     {
+      "name": "OGP 画像を作成する",
+      "list": "未着手",
+      "labels": [
+       {
+        "color": "green",
+        "name": "デザイン"
+       },
+       {
+        "color": "blue",
+        "name": "公開準備"
+       }
+      ],
+      "painted": true,
+      "paint_colors": "rgb(75, 206, 151)|rgb(102, 157, 241)",
+      "painted_element": "trello-card > div > div",
+      "rect": {
+       "x": 20,
+       "y": 304,
+       "width": 256,
+       "height": 76
+      },
+      "visible": {
+       "x": 20,
+       "y": 304,
+       "width": 256,
+       "height": 76
+      }
+     },
+     {
+      "name": "サイトマップを最新にする",
+      "list": "未着手",
+      "labels": [],
+      "painted": false,
+      "paint_colors": null,
+      "painted_element": null,
+      "rect": {
+       "x": 20,
+       "y": 388,
+       "width": 256,
+       "height": 64
+      },
+      "visible": {
+       "x": 20,
+       "y": 388,
+       "width": 256,
+       "height": 64
+      }
+     },
+     {
+      "name": "トップページのデザインを確定する",
+      "list": "作業中",
+      "labels": [
+       {
+        "color": "green",
+        "name": "デザイン"
+       },
+       {
+        "color": "orange",
+        "name": "確認"
+       }
+      ],
+      "painted": true,
+      "paint_colors": "rgb(75, 206, 151)|rgb(252, 167, 0)",
+      "painted_element": "trello-card > div > div",
+      "rect": {
+       "x": 304,
+       "y": 116,
+       "width": 256,
+       "height": 104
+      },
+      "visible": {
+       "x": 304,
+       "y": 116,
+       "width": 256,
+       "height": 104
+      }
+     },
+     {
+      "name": "お知らせ一覧の表示を改修する",
+      "list": "作業中",
+      "labels": [
+       {
+        "color": "purple",
+        "name": "開発"
+       }
+      ],
+      "painted": true,
+      "paint_colors": "rgb(201, 124, 244)",
+      "painted_element": "trello-card > div > div",
+      "rect": {
+       "x": 304,
+       "y": 228,
+       "width": 256,
+       "height": 76
+      },
+      "visible": {
+       "x": 304,
+       "y": 228,
+       "width": 256,
+       "height": 76
+      }
+     },
+     {
+      "name": "会社概要ページの写真を差し替える",
+      "list": "作業中",
+      "labels": [
+       {
+        "color": "green",
+        "name": "デザイン"
+       },
+       {
+        "color": "yellow",
+        "name": "原稿"
+       },
+       {
+        "color": "red",
+        "name": "至急"
+       }
+      ],
+      "painted": true,
+      "paint_colors": "rgb(75, 206, 151)|rgb(238, 209, 43)|rgb(248, 113, 104)",
+      "painted_element": "trello-card > div > div",
+      "rect": {
+       "x": 304,
+       "y": 312,
+       "width": 256,
+       "height": 76
+      },
+      "visible": {
+       "x": 304,
+       "y": 312,
+       "width": 256,
+       "height": 76
+      }
+     },
+     {
+      "name": "スマホ表示の崩れを修正する",
+      "list": "確認待ち",
+      "labels": [
+       {
+        "color": "red",
+        "name": "至急"
+       },
+       {
+        "color": "purple",
+        "name": "開発"
+       }
+      ],
+      "painted": true,
+      "paint_colors": "rgb(248, 113, 104)|rgb(201, 124, 244)",
+      "painted_element": "trello-card > div > div",
+      "rect": {
+       "x": 588,
+       "y": 116,
+       "width": 256,
+       "height": 76
+      },
+      "visible": {
+       "x": 588,
+       "y": 116,
+       "width": 256,
+       "height": 76
+      }
+     },
+     {
+      "name": "プライバシーポリシーの文言を確認する",
+      "list": "確認待ち",
+      "labels": [
+       {
+        "color": "orange",
+        "name": "確認"
+       }
+      ],
+      "painted": true,
+      "paint_colors": "rgb(252, 167, 0)",
+      "painted_element": "trello-card > div > div",
+      "rect": {
+       "x": 588,
+       "y": 200,
+       "width": 256,
+       "height": 96
+      },
+      "visible": {
+       "x": 588,
+       "y": 200,
+       "width": 256,
+       "height": 96
+      }
+     },
+     {
+      "name": "ファビコンを差し替える",
+      "list": "確認待ち",
+      "labels": [],
+      "painted": false,
+      "paint_colors": null,
+      "painted_element": null,
+      "rect": {
+       "x": 588,
+       "y": 304,
+       "width": 256,
+       "height": 36
+      },
+      "visible": {
+       "x": 588,
+       "y": 304,
+       "width": 256,
+       "height": 36
+      }
+     },
+     {
+      "name": "旧ページのリダイレクト一覧を作る",
+      "list": "完了",
+      "labels": [
+       {
+        "color": "purple",
+        "name": "開発"
+       },
+       {
+        "color": "blue",
+        "name": "公開準備"
+       }
+      ],
+      "painted": true,
+      "paint_colors": "rgb(201, 124, 244)|rgb(102, 157, 241)",
+      "painted_element": "trello-card > div > div",
+      "rect": {
+       "x": 872,
+       "y": 116,
+       "width": 256,
+       "height": 76
+      },
+      "visible": {
+       "x": 872,
+       "y": 116,
+       "width": 256,
+       "height": 76
+      }
+     },
+     {
+      "name": "公開スケジュールを決める",
+      "list": "完了",
+      "labels": [
+       {
+        "color": "blue",
+        "name": "公開準備"
+       }
+      ],
+      "painted": true,
+      "paint_colors": "rgb(102, 157, 241)",
+      "painted_element": "trello-card > div > div",
+      "rect": {
+       "x": 872,
+       "y": 200,
+       "width": 256,
+       "height": 76
+      },
+      "visible": {
+       "x": 872,
+       "y": 200,
+       "width": 256,
+       "height": 76
+      }
+     },
+     {
+      "name": "キックオフミーティング",
+      "list": "完了",
+      "labels": [],
+      "painted": false,
+      "paint_colors": null,
+      "painted_element": null,
+      "rect": {
+       "x": 872,
+       "y": 284,
+       "width": 256,
+       "height": 64
+      },
+      "visible": {
+       "x": 872,
+       "y": 284,
+       "width": 256,
+       "height": 64
+      }
+     }
+    ]
+   },
+   "html_state": {
+    "on": true,
+    "color": true,
+    "vars": {
+     "--twc-card-width": "95vw",
+     "--twc-card-max-width": "calc(100vw - 24px)",
+     "--twc-desc-ratio": "60%",
+     "--twc-color-strength": "16%"
+    }
+   },
+   "counts": {
+    "cards": 13,
+    "labeled_cards": 10,
+    "painted_cards": 10
+   },
+   "size": [
+    2880,
+    1800
+   ],
+   "viewport": [
+    1440,
+    900
+   ],
+   "dpr": 2
+  },
+  {
+   "file": "board_color28.png",
+   "page": "board",
+   "description": "ボード（トレひろ ON・カードの色付け ON・濃さ 28%）",
+   "settings_target": {
+    "enabled": true,
+    "cardWidth": 95,
+    "descRatio": 60,
+    "colorCards": true,
+    "colorStrength": 28
+   },
+   "settings_stored": {
+    "cardWidth": 95,
+    "colorCards": true,
+    "colorStrength": 28,
+    "descRatio": 60,
+    "enabled": true
+   },
+   "popup_ui": {
+    "texts": {
+     "enabled": "ON",
+     "cardWidth": "95%",
+     "ratio": "60 : 40",
+     "colorCards": "ON",
+     "colorStrength": "28%"
+    },
+    "bodyOff": false,
+    "colorsOff": false
+   },
+   "actions": [
+    "range: colorStrength = 28（input を発火）"
+   ],
+   "rects": {
+    "viewport": {
+     "x": 0,
+     "y": 0,
+     "width": 1440,
+     "height": 900
+    },
+    "board_header": {
+     "x": 0,
+     "y": 0,
+     "width": 1440,
+     "height": 56
+    },
+    "board_name": {
+     "x": 12,
+     "y": 12,
+     "width": 203.7,
+     "height": 32
+    },
+    "lists": [
+     {
+      "name": "未着手",
+      "rect": {
+       "x": 12,
+       "y": 68,
+       "width": 272,
+       "height": 436
+      }
+     },
+     {
+      "name": "作業中",
+      "rect": {
+       "x": 296,
+       "y": 68,
+       "width": 272,
+       "height": 372
+      }
+     },
+     {
+      "name": "確認待ち",
+      "rect": {
+       "x": 580,
+       "y": 68,
+       "width": 272,
+       "height": 324
+      }
+     },
+     {
+      "name": "完了",
+      "rect": {
+       "x": 864,
+       "y": 68,
+       "width": 272,
+       "height": 332
+      }
+     }
+    ],
+    "cards": [
+     {
+      "name": "お問い合わせフォームの項目を整理する",
+      "list": "未着手",
+      "labels": [
+       {
+        "color": "purple",
+        "name": "開発"
+       },
+       {
+        "color": "yellow",
+        "name": "原稿"
+       }
+      ],
+      "painted": true,
+      "paint_colors": "rgb(201, 124, 244)|rgb(238, 209, 43)",
+      "painted_element": "trello-card > div > div",
+      "rect": {
+       "x": 20,
+       "y": 116,
+       "width": 256,
+       "height": 96
+      },
+      "visible": {
+       "x": 20,
+       "y": 116,
+       "width": 256,
+       "height": 96
+      }
+     },
+     {
+      "name": "採用情報ページの原稿を依頼する",
+      "list": "未着手",
+      "labels": [
+       {
+        "color": "yellow",
+        "name": "原稿"
+       }
+      ],
+      "painted": true,
+      "paint_colors": "rgb(238, 209, 43)",
+      "painted_element": "trello-card > div > div",
+      "rect": {
+       "x": 20,
+       "y": 220,
+       "width": 256,
+       "height": 76
+      },
+      "visible": {
+       "x": 20,
+       "y": 220,
+       "width": 256,
+       "height": 76
+      }
+     },
+     {
+      "name": "OGP 画像を作成する",
+      "list": "未着手",
+      "labels": [
+       {
+        "color": "green",
+        "name": "デザイン"
+       },
+       {
+        "color": "blue",
+        "name": "公開準備"
+       }
+      ],
+      "painted": true,
+      "paint_colors": "rgb(75, 206, 151)|rgb(102, 157, 241)",
+      "painted_element": "trello-card > div > div",
+      "rect": {
+       "x": 20,
+       "y": 304,
+       "width": 256,
+       "height": 76
+      },
+      "visible": {
+       "x": 20,
+       "y": 304,
+       "width": 256,
+       "height": 76
+      }
+     },
+     {
+      "name": "サイトマップを最新にする",
+      "list": "未着手",
+      "labels": [],
+      "painted": false,
+      "paint_colors": null,
+      "painted_element": null,
+      "rect": {
+       "x": 20,
+       "y": 388,
+       "width": 256,
+       "height": 64
+      },
+      "visible": {
+       "x": 20,
+       "y": 388,
+       "width": 256,
+       "height": 64
+      }
+     },
+     {
+      "name": "トップページのデザインを確定する",
+      "list": "作業中",
+      "labels": [
+       {
+        "color": "green",
+        "name": "デザイン"
+       },
+       {
+        "color": "orange",
+        "name": "確認"
+       }
+      ],
+      "painted": true,
+      "paint_colors": "rgb(75, 206, 151)|rgb(252, 167, 0)",
+      "painted_element": "trello-card > div > div",
+      "rect": {
+       "x": 304,
+       "y": 116,
+       "width": 256,
+       "height": 104
+      },
+      "visible": {
+       "x": 304,
+       "y": 116,
+       "width": 256,
+       "height": 104
+      }
+     },
+     {
+      "name": "お知らせ一覧の表示を改修する",
+      "list": "作業中",
+      "labels": [
+       {
+        "color": "purple",
+        "name": "開発"
+       }
+      ],
+      "painted": true,
+      "paint_colors": "rgb(201, 124, 244)",
+      "painted_element": "trello-card > div > div",
+      "rect": {
+       "x": 304,
+       "y": 228,
+       "width": 256,
+       "height": 76
+      },
+      "visible": {
+       "x": 304,
+       "y": 228,
+       "width": 256,
+       "height": 76
+      }
+     },
+     {
+      "name": "会社概要ページの写真を差し替える",
+      "list": "作業中",
+      "labels": [
+       {
+        "color": "green",
+        "name": "デザイン"
+       },
+       {
+        "color": "yellow",
+        "name": "原稿"
+       },
+       {
+        "color": "red",
+        "name": "至急"
+       }
+      ],
+      "painted": true,
+      "paint_colors": "rgb(75, 206, 151)|rgb(238, 209, 43)|rgb(248, 113, 104)",
+      "painted_element": "trello-card > div > div",
+      "rect": {
+       "x": 304,
+       "y": 312,
+       "width": 256,
+       "height": 76
+      },
+      "visible": {
+       "x": 304,
+       "y": 312,
+       "width": 256,
+       "height": 76
+      }
+     },
+     {
+      "name": "スマホ表示の崩れを修正する",
+      "list": "確認待ち",
+      "labels": [
+       {
+        "color": "red",
+        "name": "至急"
+       },
+       {
+        "color": "purple",
+        "name": "開発"
+       }
+      ],
+      "painted": true,
+      "paint_colors": "rgb(248, 113, 104)|rgb(201, 124, 244)",
+      "painted_element": "trello-card > div > div",
+      "rect": {
+       "x": 588,
+       "y": 116,
+       "width": 256,
+       "height": 76
+      },
+      "visible": {
+       "x": 588,
+       "y": 116,
+       "width": 256,
+       "height": 76
+      }
+     },
+     {
+      "name": "プライバシーポリシーの文言を確認する",
+      "list": "確認待ち",
+      "labels": [
+       {
+        "color": "orange",
+        "name": "確認"
+       }
+      ],
+      "painted": true,
+      "paint_colors": "rgb(252, 167, 0)",
+      "painted_element": "trello-card > div > div",
+      "rect": {
+       "x": 588,
+       "y": 200,
+       "width": 256,
+       "height": 96
+      },
+      "visible": {
+       "x": 588,
+       "y": 200,
+       "width": 256,
+       "height": 96
+      }
+     },
+     {
+      "name": "ファビコンを差し替える",
+      "list": "確認待ち",
+      "labels": [],
+      "painted": false,
+      "paint_colors": null,
+      "painted_element": null,
+      "rect": {
+       "x": 588,
+       "y": 304,
+       "width": 256,
+       "height": 36
+      },
+      "visible": {
+       "x": 588,
+       "y": 304,
+       "width": 256,
+       "height": 36
+      }
+     },
+     {
+      "name": "旧ページのリダイレクト一覧を作る",
+      "list": "完了",
+      "labels": [
+       {
+        "color": "purple",
+        "name": "開発"
+       },
+       {
+        "color": "blue",
+        "name": "公開準備"
+       }
+      ],
+      "painted": true,
+      "paint_colors": "rgb(201, 124, 244)|rgb(102, 157, 241)",
+      "painted_element": "trello-card > div > div",
+      "rect": {
+       "x": 872,
+       "y": 116,
+       "width": 256,
+       "height": 76
+      },
+      "visible": {
+       "x": 872,
+       "y": 116,
+       "width": 256,
+       "height": 76
+      }
+     },
+     {
+      "name": "公開スケジュールを決める",
+      "list": "完了",
+      "labels": [
+       {
+        "color": "blue",
+        "name": "公開準備"
+       }
+      ],
+      "painted": true,
+      "paint_colors": "rgb(102, 157, 241)",
+      "painted_element": "trello-card > div > div",
+      "rect": {
+       "x": 872,
+       "y": 200,
+       "width": 256,
+       "height": 76
+      },
+      "visible": {
+       "x": 872,
+       "y": 200,
+       "width": 256,
+       "height": 76
+      }
+     },
+     {
+      "name": "キックオフミーティング",
+      "list": "完了",
+      "labels": [],
+      "painted": false,
+      "paint_colors": null,
+      "painted_element": null,
+      "rect": {
+       "x": 872,
+       "y": 284,
+       "width": 256,
+       "height": 64
+      },
+      "visible": {
+       "x": 872,
+       "y": 284,
+       "width": 256,
+       "height": 64
+      }
+     }
+    ]
+   },
+   "html_state": {
+    "on": true,
+    "color": true,
+    "vars": {
+     "--twc-card-width": "95vw",
+     "--twc-card-max-width": "calc(100vw - 24px)",
+     "--twc-desc-ratio": "60%",
+     "--twc-color-strength": "28%"
+    }
+   },
+   "counts": {
+    "cards": 13,
+    "labeled_cards": 10,
+    "painted_cards": 10
+   },
+   "size": [
+    2880,
+    1800
+   ],
+   "viewport": [
+    1440,
+    900
+   ],
+   "dpr": 2
+  },
+  {
+   "file": "popup_color28.png",
+   "page": "popup",
+   "description": "ポップアップ（カードの色付け 濃さ 28%）",
+   "settings_target": {
+    "enabled": true,
+    "cardWidth": 95,
+    "descRatio": 60,
+    "colorCards": true,
+    "colorStrength": 28
+   },
+   "settings_stored": {
+    "cardWidth": 95,
+    "colorCards": true,
+    "colorStrength": 28,
+    "descRatio": 60,
+    "enabled": true
+   },
+   "popup_ui": {
+    "texts": {
+     "enabled": "ON",
+     "cardWidth": "95%",
+     "ratio": "60 : 40",
+     "colorCards": "ON",
+     "colorStrength": "28%"
+    },
+    "bodyOff": false,
+    "colorsOff": false
+   },
+   "actions": [],
+   "size": [
+    600,
+    1034
+   ],
+   "viewport": [
+    300,
+    800
+   ],
+   "dpr": 2,
+   "clip_css_px": {
+    "x": 0,
+    "y": 0,
+    "width": 300,
+    "height": 517.5
+   },
+   "rects": {
+    "body": {
+     "x": 0,
+     "y": 0,
+     "width": 300,
+     "height": 517.5
+    },
+    "head": {
+     "x": 0,
+     "y": 0,
+     "width": 300,
+     "height": 46
+    },
+    "cardWidth_field": {
+     "x": 16,
+     "y": 50,
+     "width": 268,
+     "height": 111.5
+    },
+    "descRatio_field": {
+     "x": 16,
+     "y": 161.5,
+     "width": 268,
+     "height": 129.5
+    },
+    "colorField": {
+     "x": 16,
+     "y": 291,
+     "width": 268,
+     "height": 165.5
+    },
+    "foot": {
+     "x": 0,
+     "y": 464.5,
+     "width": 300,
+     "height": 53
+    },
+    "swatch": {
+     "x": 16,
+     "y": 376.5,
+     "width": 268,
+     "height": 29
+    }
+   },
+   "note": "rects はビューポートの CSS px。画像は body を切り出したもの（原点 = body の左上）"
+  },
+  {
+   "file": "board_off.png",
+   "page": "board",
+   "description": "ボード（トレひろ ON・カードの色付け OFF＝Trello 標準のカード）",
+   "settings_target": {
+    "enabled": true,
+    "cardWidth": 95,
+    "descRatio": 60,
+    "colorCards": false,
+    "colorStrength": 16
+   },
+   "settings_stored": {
+    "cardWidth": 95,
+    "colorCards": false,
+    "colorStrength": 16,
+    "descRatio": 60,
+    "enabled": true
+   },
+   "popup_ui": {
+    "texts": {
+     "enabled": "ON",
+     "cardWidth": "95%",
+     "ratio": "60 : 40",
+     "colorCards": "OFF",
+     "colorStrength": "16%"
+    },
+    "bodyOff": false,
+    "colorsOff": true
+   },
+   "actions": [
+    "range: colorStrength = 16（input を発火）",
+    "click: カードの色付け → OFF"
+   ],
+   "rects": {
+    "viewport": {
+     "x": 0,
+     "y": 0,
+     "width": 1440,
+     "height": 900
+    },
+    "board_header": {
+     "x": 0,
+     "y": 0,
+     "width": 1440,
+     "height": 56
+    },
+    "board_name": {
+     "x": 12,
+     "y": 12,
+     "width": 203.7,
+     "height": 32
+    },
+    "lists": [
+     {
+      "name": "未着手",
+      "rect": {
+       "x": 12,
+       "y": 68,
+       "width": 272,
+       "height": 436
+      }
+     },
+     {
+      "name": "作業中",
+      "rect": {
+       "x": 296,
+       "y": 68,
+       "width": 272,
+       "height": 372
+      }
+     },
+     {
+      "name": "確認待ち",
+      "rect": {
+       "x": 580,
+       "y": 68,
+       "width": 272,
+       "height": 324
+      }
+     },
+     {
+      "name": "完了",
+      "rect": {
+       "x": 864,
+       "y": 68,
+       "width": 272,
+       "height": 332
+      }
+     }
+    ],
+    "cards": [
+     {
+      "name": "お問い合わせフォームの項目を整理する",
+      "list": "未着手",
+      "labels": [
+       {
+        "color": "purple",
+        "name": "開発"
+       },
+       {
+        "color": "yellow",
+        "name": "原稿"
+       }
+      ],
+      "painted": false,
+      "paint_colors": null,
+      "painted_element": null,
+      "rect": {
+       "x": 20,
+       "y": 116,
+       "width": 256,
+       "height": 96
+      },
+      "visible": {
+       "x": 20,
+       "y": 116,
+       "width": 256,
+       "height": 96
+      }
+     },
+     {
+      "name": "採用情報ページの原稿を依頼する",
+      "list": "未着手",
+      "labels": [
+       {
+        "color": "yellow",
+        "name": "原稿"
+       }
+      ],
+      "painted": false,
+      "paint_colors": null,
+      "painted_element": null,
+      "rect": {
+       "x": 20,
+       "y": 220,
+       "width": 256,
+       "height": 76
+      },
+      "visible": {
+       "x": 20,
+       "y": 220,
+       "width": 256,
+       "height": 76
+      }
+     },
+     {
+      "name": "OGP 画像を作成する",
+      "list": "未着手",
+      "labels": [
+       {
+        "color": "green",
+        "name": "デザイン"
+       },
+       {
+        "color": "blue",
+        "name": "公開準備"
+       }
+      ],
+      "painted": false,
+      "paint_colors": null,
+      "painted_element": null,
+      "rect": {
+       "x": 20,
+       "y": 304,
+       "width": 256,
+       "height": 76
+      },
+      "visible": {
+       "x": 20,
+       "y": 304,
+       "width": 256,
+       "height": 76
+      }
+     },
+     {
+      "name": "サイトマップを最新にする",
+      "list": "未着手",
+      "labels": [],
+      "painted": false,
+      "paint_colors": null,
+      "painted_element": null,
+      "rect": {
+       "x": 20,
+       "y": 388,
+       "width": 256,
+       "height": 64
+      },
+      "visible": {
+       "x": 20,
+       "y": 388,
+       "width": 256,
+       "height": 64
+      }
+     },
+     {
+      "name": "トップページのデザインを確定する",
+      "list": "作業中",
+      "labels": [
+       {
+        "color": "green",
+        "name": "デザイン"
+       },
+       {
+        "color": "orange",
+        "name": "確認"
+       }
+      ],
+      "painted": false,
+      "paint_colors": null,
+      "painted_element": null,
+      "rect": {
+       "x": 304,
+       "y": 116,
+       "width": 256,
+       "height": 104
+      },
+      "visible": {
+       "x": 304,
+       "y": 116,
+       "width": 256,
+       "height": 104
+      }
+     },
+     {
+      "name": "お知らせ一覧の表示を改修する",
+      "list": "作業中",
+      "labels": [
+       {
+        "color": "purple",
+        "name": "開発"
+       }
+      ],
+      "painted": false,
+      "paint_colors": null,
+      "painted_element": null,
+      "rect": {
+       "x": 304,
+       "y": 228,
+       "width": 256,
+       "height": 76
+      },
+      "visible": {
+       "x": 304,
+       "y": 228,
+       "width": 256,
+       "height": 76
+      }
+     },
+     {
+      "name": "会社概要ページの写真を差し替える",
+      "list": "作業中",
+      "labels": [
+       {
+        "color": "green",
+        "name": "デザイン"
+       },
+       {
+        "color": "yellow",
+        "name": "原稿"
+       },
+       {
+        "color": "red",
+        "name": "至急"
+       }
+      ],
+      "painted": false,
+      "paint_colors": null,
+      "painted_element": null,
+      "rect": {
+       "x": 304,
+       "y": 312,
+       "width": 256,
+       "height": 76
+      },
+      "visible": {
+       "x": 304,
+       "y": 312,
+       "width": 256,
+       "height": 76
+      }
+     },
+     {
+      "name": "スマホ表示の崩れを修正する",
+      "list": "確認待ち",
+      "labels": [
+       {
+        "color": "red",
+        "name": "至急"
+       },
+       {
+        "color": "purple",
+        "name": "開発"
+       }
+      ],
+      "painted": false,
+      "paint_colors": null,
+      "painted_element": null,
+      "rect": {
+       "x": 588,
+       "y": 116,
+       "width": 256,
+       "height": 76
+      },
+      "visible": {
+       "x": 588,
+       "y": 116,
+       "width": 256,
+       "height": 76
+      }
+     },
+     {
+      "name": "プライバシーポリシーの文言を確認する",
+      "list": "確認待ち",
+      "labels": [
+       {
+        "color": "orange",
+        "name": "確認"
+       }
+      ],
+      "painted": false,
+      "paint_colors": null,
+      "painted_element": null,
+      "rect": {
+       "x": 588,
+       "y": 200,
+       "width": 256,
+       "height": 96
+      },
+      "visible": {
+       "x": 588,
+       "y": 200,
+       "width": 256,
+       "height": 96
+      }
+     },
+     {
+      "name": "ファビコンを差し替える",
+      "list": "確認待ち",
+      "labels": [],
+      "painted": false,
+      "paint_colors": null,
+      "painted_element": null,
+      "rect": {
+       "x": 588,
+       "y": 304,
+       "width": 256,
+       "height": 36
+      },
+      "visible": {
+       "x": 588,
+       "y": 304,
+       "width": 256,
+       "height": 36
+      }
+     },
+     {
+      "name": "旧ページのリダイレクト一覧を作る",
+      "list": "完了",
+      "labels": [
+       {
+        "color": "purple",
+        "name": "開発"
+       },
+       {
+        "color": "blue",
+        "name": "公開準備"
+       }
+      ],
+      "painted": false,
+      "paint_colors": null,
+      "painted_element": null,
+      "rect": {
+       "x": 872,
+       "y": 116,
+       "width": 256,
+       "height": 76
+      },
+      "visible": {
+       "x": 872,
+       "y": 116,
+       "width": 256,
+       "height": 76
+      }
+     },
+     {
+      "name": "公開スケジュールを決める",
+      "list": "完了",
+      "labels": [
+       {
+        "color": "blue",
+        "name": "公開準備"
+       }
+      ],
+      "painted": false,
+      "paint_colors": null,
+      "painted_element": null,
+      "rect": {
+       "x": 872,
+       "y": 200,
+       "width": 256,
+       "height": 76
+      },
+      "visible": {
+       "x": 872,
+       "y": 200,
+       "width": 256,
+       "height": 76
+      }
+     },
+     {
+      "name": "キックオフミーティング",
+      "list": "完了",
+      "labels": [],
+      "painted": false,
+      "paint_colors": null,
+      "painted_element": null,
+      "rect": {
+       "x": 872,
+       "y": 284,
+       "width": 256,
+       "height": 64
+      },
+      "visible": {
+       "x": 872,
+       "y": 284,
+       "width": 256,
+       "height": 64
+      }
+     }
+    ]
+   },
+   "html_state": {
+    "on": true,
+    "color": false,
+    "vars": {
+     "--twc-card-width": "95vw",
+     "--twc-card-max-width": "calc(100vw - 24px)",
+     "--twc-desc-ratio": "60%",
+     "--twc-color-strength": "16%"
+    }
+   },
+   "counts": {
+    "cards": 13,
+    "labeled_cards": 10,
+    "painted_cards": 0
+   },
+   "size": [
+    2880,
+    1800
+   ],
+   "viewport": [
+    1440,
+    900
+   ],
+   "dpr": 2
+  }
+ ],
+ "started": "2026-10-04T22:02:13",
+ "tool": "store-assets/tools/capture_raw.py",
+ "dpr": 2,
+ "mock": {
+  "dir": "store-assets/tools/mock",
+  "board_url": "https://trello.com/b/Mk7Wb2Qa/web-renewal",
+  "card_url": "https://trello.com/c/Hr8dT0pK/14-top-page-design"
+ },
+ "browser": {
+  "executable": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+  "version": {
+   "protocolVersion": "1.3",
+   "product": "Chrome/154.0.8037.97",
+   "revision": "@b510e9d7cd3a2fbd78d0ddc42234103206c5f78d",
+   "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+   "jsVersion": "15.4.80.20"
+  },
+  "argv": [
+   "--user-data-dir=<一時プロファイル>",
+   "--no-first-run",
+   "--no-default-browser-check",
+   "--disable-background-networking",
+   "--disable-component-update",
+   "--mute-audio",
+   "--lang=ja",
+   "--window-size=1280,800",
+   "--use-mock-keychain",
+   "--host-resolver-rules=MAP * ~NOTFOUND",
+   "--disable-sync",
+   "--disable-default-apps",
+   "--disable-domain-reliability",
+   "--disable-client-side-phishing-detection",
+   "--no-pings",
+   "--metrics-recording-only",
+   "--safebrowsing-disable-auto-update",
+   "--disable-features=Translate,OptimizationHints,MediaRouter,AutofillServerCommunication,CertificateTransparencyComponentUpdater,InterestFeedContentSuggestions",
+   "--headless=new",
+   "--enable-unsafe-extension-debugging",
+   "--remote-debugging-pipe",
+   "about:blank"
+  ],
+  "browser_level_fetch": true
+ },
+ "tabs": {
+  "control_card": {
+   "url": "https://trello.com/c/Hr8dT0pK/14-top-page-design",
+   "execution_contexts": [
+    {
+     "name": "",
+     "origin": "://",
+     "type": "default"
+    },
+    {
+     "name": "",
+     "origin": "https://trello.com",
+     "type": "default"
+    }
+   ]
+  },
+  "card": {
+   "url": "https://trello.com/c/Hr8dT0pK/14-top-page-design",
+   "execution_contexts": [
+    {
+     "name": "",
+     "origin": "://",
+     "type": "default"
+    },
+    {
+     "name": "",
+     "origin": "https://trello.com",
+     "type": "default"
+    },
+    {
+     "name": "トレひろ",
+     "origin": "chrome-extension://bofakppkoiadngjfajbpfdnkglfleomn",
+     "type": "isolated"
+    }
+   ],
+   "content_script_world": [
+    {
+     "name": "トレひろ",
+     "origin": "chrome-extension://bofakppkoiadngjfajbpfdnkglfleomn",
+     "type": "isolated"
+    }
+   ]
+  },
+  "board": {
+   "url": "https://trello.com/b/Mk7Wb2Qa/web-renewal",
+   "execution_contexts": [
+    {
+     "name": "",
+     "origin": "://",
+     "type": "default"
+    },
+    {
+     "name": "",
+     "origin": "https://trello.com",
+     "type": "default"
+    },
+    {
+     "name": "トレひろ",
+     "origin": "chrome-extension://bofakppkoiadngjfajbpfdnkglfleomn",
+     "type": "isolated"
+    }
+   ],
+   "content_script_world": [
+    {
+     "name": "トレひろ",
+     "origin": "chrome-extension://bofakppkoiadngjfajbpfdnkglfleomn",
+     "type": "isolated"
+    }
+   ]
+  }
+ },
+ "verification": {
+  "mock_sources_free_of_extension_marks": {
+   "pattern": "twc",
+   "hits": [],
+   "ok": true
+  },
+  "control_without_extension": {
+   "card_1440_open": {
+    "html_has_data_twc_on": false,
+    "html_twc_vars": {
+     "--twc-card-width": "",
+     "--twc-card-max-width": "",
+     "--twc-desc-ratio": "",
+     "--twc-color-strength": ""
+    },
+    "painted_cards": 0,
+    "labeled_cards": 10,
+    "widths": {
+     "dialog": 1080,
+     "main": 620,
+     "aside": 460,
+     "aside_visible": 460,
+     "main_div": 620,
+     "hgroup": 544,
+     "description": 524,
+     "table": 524,
+     "ratio": 0.5741
+    },
+    "check": {
+     "dialog": {
+      "expected": 1080.0,
+      "measured": 1080,
+      "ok": true
+     },
+     "main": {
+      "expected": 620.0,
+      "measured": 620,
+      "ok": true
+     },
+     "aside": {
+      "expected": 460.0,
+      "measured": 460,
+      "ok": true
+     }
+    },
+    "execution_contexts": [
+     {
+      "name": "",
+      "origin": "://",
+      "type": "default"
+     },
+     {
+      "name": "",
+      "origin": "https://trello.com",
+      "type": "default"
+     }
+    ]
+   },
+   "card_1440_closed": {
+    "widths": {
+     "dialog": 584,
+     "main": 584,
+     "aside": 460,
+     "aside_visible": 0,
+     "main_div": 584,
+     "hgroup": 508,
+     "description": 488,
+     "table": 488,
+     "ratio": null
+    },
+    "check": {
+     "dialog": {
+      "expected": 584.0,
+      "measured": 584,
+      "ok": true
+     },
+     "main": {
+      "expected": 584.0,
+      "measured": 584,
+      "ok": true
+     }
+    }
+   }
+  }
+ },
+ "extension": {
+  "id": "bofakppkoiadngjfajbpfdnkglfleomn",
+  "path": "（リポジトリのルートを Extensions.loadUnpacked で読み込み）",
+  "popup_url": "chrome-extension://bofakppkoiadngjfajbpfdnkglfleomn/popup.html",
+  "manifest_as_loaded": {
+   "name": "トレひろ",
+   "version": "2.0.2",
+   "manifest_version": 3,
+   "description": "Trello のカード詳細を画面いっぱいに広げ、説明欄とコメント欄の左右比率を自由に調整できます。ボードのカードをラベル色で塗り分けることもできます（非公式ツール）。"
+  },
+  "action_default_title": "トレひろの設定",
+  "content_scripts": [
+   {
+    "matches": [
+     "https://trello.com/*"
+    ],
+    "js": [
+     "shared.js",
+     "content.js",
+     "colorize.js"
+    ],
+    "css": [
+     "content.css"
+    ],
+    "run_at": "document_start"
+   }
+  ],
+  "permissions": [
+   "storage"
+  ],
+  "host_permissions": null
+ },
+ "final_settings_stored": {
+  "cardWidth": 95,
+  "colorCards": false,
+  "colorStrength": 16,
+  "descRatio": 60,
+  "enabled": true
+ },
+ "page_exceptions": [],
+ "network": {
+  "served": 9,
+  "served_files": {
+   "card.html": 2,
+   "mock.css": 3,
+   "mock.js": 3,
+   "board.html": 1
+  },
+  "not_found_local": 0,
+  "not_found_urls": [],
+  "blocked": 0,
+  "blocked_urls": [],
+  "continued_local_scheme": 7,
+  "errors": []
+ },
+ "finished": "2026-10-04T22:02:30",
+ "summary": [
+  {
+   "file": "popup_default.png",
+   "page": "popup",
+   "viewport": [
+    300,
+    800
+   ],
+   "settings": {
+    "enabled": true,
+    "cardWidth": 95,
+    "descRatio": 60,
+    "colorCards": true,
+    "colorStrength": 16
+   }
+  },
+  {
+   "file": "card_default.png",
+   "page": "card",
+   "viewport": [
+    1440,
+    900
+   ],
+   "settings": {
+    "enabled": true,
+    "cardWidth": 95,
+    "descRatio": 60,
+    "colorCards": true,
+    "colorStrength": 16
+   },
+   "comments": "open",
+   "dialog": 1368,
+   "main": 820.81,
+   "aside": 547.19,
+   "ratio": 0.6,
+   "table": 724.81,
+   "matches_expected": true,
+   "labeled_cards": 10,
+   "painted_cards": 10,
+   "html_data_twc_on": true
+  },
+  {
+   "file": "card_r75.png",
+   "page": "card",
+   "viewport": [
+    1440,
+    900
+   ],
+   "settings": {
+    "enabled": true,
+    "cardWidth": 95,
+    "descRatio": 75,
+    "colorCards": true,
+    "colorStrength": 16
+   },
+   "comments": "open",
+   "dialog": 1368,
+   "main": 1026,
+   "aside": 342,
+   "ratio": 0.75,
+   "table": 930,
+   "matches_expected": true,
+   "labeled_cards": 10,
+   "painted_cards": 10,
+   "html_data_twc_on": true
+  },
+  {
+   "file": "popup_r75.png",
+   "page": "popup",
+   "viewport": [
+    300,
+    800
+   ],
+   "settings": {
+    "enabled": true,
+    "cardWidth": 95,
+    "descRatio": 75,
+    "colorCards": true,
+    "colorStrength": 16
+   }
+  },
+  {
+   "file": "card_r35.png",
+   "page": "card",
+   "viewport": [
+    1440,
+    900
+   ],
+   "settings": {
+    "enabled": true,
+    "cardWidth": 95,
+    "descRatio": 35,
+    "colorCards": true,
+    "colorStrength": 16
+   },
+   "comments": "open",
+   "dialog": 1368,
+   "main": 478.81,
+   "aside": 889.19,
+   "ratio": 0.35,
+   "table": 382.81,
+   "matches_expected": true,
+   "labeled_cards": 10,
+   "painted_cards": 10,
+   "html_data_twc_on": true
+  },
+  {
+   "file": "popup_r35.png",
+   "page": "popup",
+   "viewport": [
+    300,
+    800
+   ],
+   "settings": {
+    "enabled": true,
+    "cardWidth": 95,
+    "descRatio": 35,
+    "colorCards": true,
+    "colorStrength": 16
+   }
+  },
+  {
+   "file": "card_closed.png",
+   "page": "card",
+   "viewport": [
+    1440,
+    900
+   ],
+   "settings": {
+    "enabled": true,
+    "cardWidth": 95,
+    "descRatio": 60,
+    "colorCards": true,
+    "colorStrength": 16
+   },
+   "comments": "closed",
+   "dialog": 1368,
+   "main": 1368,
+   "aside": 0,
+   "ratio": null,
+   "table": 1272,
+   "matches_expected": true,
+   "labeled_cards": 10,
+   "painted_cards": 10,
+   "html_data_twc_on": true
+  },
+  {
+   "file": "card_off_closed.png",
+   "page": "card",
+   "viewport": [
+    1440,
+    900
+   ],
+   "settings": {
+    "enabled": false,
+    "cardWidth": 95,
+    "descRatio": 60,
+    "colorCards": true,
+    "colorStrength": 16
+   },
+   "comments": "closed",
+   "dialog": 584,
+   "main": 584,
+   "aside": 0,
+   "ratio": null,
+   "table": 488,
+   "matches_expected": true,
+   "labeled_cards": 10,
+   "painted_cards": 0,
+   "html_data_twc_on": false
+  },
+  {
+   "file": "popup_off.png",
+   "page": "popup",
+   "viewport": [
+    300,
+    800
+   ],
+   "settings": {
+    "enabled": false,
+    "cardWidth": 95,
+    "descRatio": 60,
+    "colorCards": true,
+    "colorStrength": 16
+   }
+  },
+  {
+   "file": "card_off.png",
+   "page": "card",
+   "viewport": [
+    1440,
+    900
+   ],
+   "settings": {
+    "enabled": false,
+    "cardWidth": 95,
+    "descRatio": 60,
+    "colorCards": true,
+    "colorStrength": 16
+   },
+   "comments": "open",
+   "dialog": 1080,
+   "main": 620,
+   "aside": 460,
+   "ratio": 0.5741,
+   "table": 524,
+   "matches_expected": true,
+   "labeled_cards": 10,
+   "painted_cards": 0,
+   "html_data_twc_on": false
+  },
+  {
+   "file": "card_off_1280.png",
+   "page": "card",
+   "viewport": [
+    1280,
+    800
+   ],
+   "settings": {
+    "enabled": false,
+    "cardWidth": 95,
+    "descRatio": 60,
+    "colorCards": true,
+    "colorStrength": 16
+   },
+   "comments": "open",
+   "dialog": 1080,
+   "main": 620,
+   "aside": 460,
+   "ratio": 0.5741,
+   "table": 524,
+   "matches_expected": true,
+   "labeled_cards": 10,
+   "painted_cards": 0,
+   "html_data_twc_on": false
+  },
+  {
+   "file": "card_default_1280.png",
+   "page": "card",
+   "viewport": [
+    1280,
+    800
+   ],
+   "settings": {
+    "enabled": true,
+    "cardWidth": 95,
+    "descRatio": 60,
+    "colorCards": true,
+    "colorStrength": 16
+   },
+   "comments": "open",
+   "dialog": 1216,
+   "main": 729.61,
+   "aside": 486.39,
+   "ratio": 0.6,
+   "table": 633.61,
+   "matches_expected": true,
+   "labeled_cards": 10,
+   "painted_cards": 10,
+   "html_data_twc_on": true
+  },
+  {
+   "file": "board_color.png",
+   "page": "board",
+   "viewport": [
+    1440,
+    900
+   ],
+   "settings": {
+    "enabled": true,
+    "cardWidth": 95,
+    "descRatio": 60,
+    "colorCards": true,
+    "colorStrength": 16
+   },
+   "labeled_cards": 10,
+   "painted_cards": 10,
+   "html_data_twc_on": true
+  },
+  {
+   "file": "board_color28.png",
+   "page": "board",
+   "viewport": [
+    1440,
+    900
+   ],
+   "settings": {
+    "enabled": true,
+    "cardWidth": 95,
+    "descRatio": 60,
+    "colorCards": true,
+    "colorStrength": 28
+   },
+   "labeled_cards": 10,
+   "painted_cards": 10,
+   "html_data_twc_on": true
+  },
+  {
+   "file": "popup_color28.png",
+   "page": "popup",
+   "viewport": [
+    300,
+    800
+   ],
+   "settings": {
+    "enabled": true,
+    "cardWidth": 95,
+    "descRatio": 60,
+    "colorCards": true,
+    "colorStrength": 28
+   }
+  },
+  {
+   "file": "board_off.png",
+   "page": "board",
+   "viewport": [
+    1440,
+    900
+   ],
+   "settings": {
+    "enabled": true,
+    "cardWidth": 95,
+    "descRatio": 60,
+    "colorCards": false,
+    "colorStrength": 16
+   },
+   "labeled_cards": 10,
+   "painted_cards": 0,
+   "html_data_twc_on": true
+  }
+ ]
+}

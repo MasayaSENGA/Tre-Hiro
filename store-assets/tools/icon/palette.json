@@ -1,0 +1,86 @@
+{
+  "name": "トレひろ ブランドカラー（新アイコンの色）",
+  "source": "store-assets/tools/icon/render_icons.py が書き出す。手で直さず、スクリプトの PALETTE を直して再実行する。",
+  "tile": "#12978A",
+  "tile_light": "#14B8A6",
+  "tile_dark": "#0F766E",
+  "tile_deep": "#134E4A",
+  "tile_hi": "#2DD4BF",
+  "accent": "#FBBF24",
+  "accent_deep": "#F59E0B",
+  "on_tile": "#FFFFFF",
+  "on_tile_sub": "#CCFBF1",
+  "ink": "#115E59",
+  "icon": {
+    "tile_top": "#14B8A6",
+    "tile_bottom": "#0F766E",
+    "tile_mid": "#12978A",
+    "shadow": "#0A4F49",
+    "white": "#FFFFFF",
+    "accent": "#FBBF24",
+    "accent_edge": "#F59E0B",
+    "ink": "#115E59",
+    "line": "#CFE3E0"
+  },
+  "gradients": {
+    "icon_tile": "linear-gradient(180deg, #14B8A6 0%, #0F766E 100%)",
+    "background": "linear-gradient(135deg, #0D9488 0%, #0F766E 48%, #134E4A 100%)",
+    "background_glow": "radial-gradient(760px 520px at 86% -6%, rgba(45, 212, 191, 0.45), transparent 70%), radial-gradient(640px 460px at -4% 108%, rgba(4, 47, 46, 0.6), transparent 70%)",
+    "background_css": "radial-gradient(760px 520px at 86% -6%, rgba(45, 212, 191, 0.45), transparent 70%), radial-gradient(640px 460px at -4% 108%, rgba(4, 47, 46, 0.6), transparent 70%), linear-gradient(135deg, #0D9488 0%, #0F766E 48%, #134E4A 100%)"
+  },
+  "gradient_stops": {
+    "icon_tile": {
+      "angle": 180,
+      "stops": [
+        [
+          "#14B8A6",
+          0.0
+        ],
+        [
+          "#0F766E",
+          1.0
+        ]
+      ]
+    },
+    "background": {
+      "angle": 135,
+      "stops": [
+        [
+          "#0D9488",
+          0.0
+        ],
+        [
+          "#0F766E",
+          0.48
+        ],
+        [
+          "#134E4A",
+          1.0
+        ]
+      ]
+    }
+  },
+  "contrast_white_on": {
+    "#14B8A6": 2.49,
+    "#12978A": 3.61,
+    "#0D9488": 3.74,
+    "#0F766E": 5.47,
+    "#115E59": 7.58,
+    "#134E4A": 9.48
+  },
+  "contrast_other": {
+    "on_tile_sub on tile_dark": 4.86,
+    "on_tile_sub on tile_deep": 8.41,
+    "ink on white": 7.58,
+    "accent on tile_deep": 5.68
+  },
+  "notes": [
+    "地の色はアイコンのタイルと同じティール系（色相 172〜176°）。Atlassian / Trello の青（色相 200〜225°、#0C66E4・#1558BC・#0052CC・#0079BF など）は使わない。",
+    "宣材・スクリーンショットの地は gradients.background_css（#0D9488 → tile_dark → tile_deep の 135° のグラデーションに、右上の光と左下の影を重ねたもの）。ギガひろの青い地（#2563eb → #1d4ed8 → #1e3a8a）と同じ組み立て。",
+    "アイコンと同じ見た目が必要な小さな面（バッジ・タイル）は gradients.icon_tile（tile_light → tile_dark の縦グラデーション）。",
+    "白い見出しは tile_dark 以下の暗い側に置く（白と tile_light は約 2.5:1 しかない）。大見出し（24px 以上・太字）は #0D9488 の上でも可（約 3.7:1）。",
+    "小見出し・補足は on_tile_sub（#CCFBF1）。下端の注記（約 7:1）は tile_deep（白で約 9.5:1）か ink（白で約 7.6:1）の上に白で置く。",
+    "強調（リング・矢印・引き出し線）は accent_deep（#F59E0B）、塗りの強調は accent（#FBBF24。ギガひろと同じ黄）。",
+    "白いカード型のパネルの影は、黒ではなく濃いティール（icon.shadow #0A4F49、不透明度 25〜40%）。"
+  ]
+}

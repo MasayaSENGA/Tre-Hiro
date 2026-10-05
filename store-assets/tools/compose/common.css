@@ -1,0 +1,252 @@
+/* トレひろ Chrome ウェブストア素材 - 共通スタイル
+   各ページは最終の大きさ（1280x800 など）の CSS px で組み、render_assets.py が
+   deviceScaleFactor 2 で撮影して LANCZOS で縮める。
+   build/font.css は render_assets.py が書き出し（--font、既定は macOS のヒラギノ角ゴシック）、
+   下で使う "TH Sans" を定義する。
+   色は store-assets/tools/icon/palette.json（新アイコンのティール）に合わせる。Atlassian の青は使わない。 */
+@import url("build/font.css");
+
+:root {
+  /* palette.json */
+  --tile: #12978a;
+  --tile-light: #14b8a6;
+  --tile-dark: #0f766e;
+  --tile-deep: #134e4a;
+  --tile-hi: #2dd4bf;
+  --on-tile-sub: #ccfbf1;
+  --brand-ink: #115e59;
+  --accent: #fbbf24;        /* amber-400 */
+  --accent-deep: #f59e0b;   /* amber-500: 強調のリング・矢印 */
+  --amber-200: #fde68a;
+  --teal-50: #f0fdfa;
+  --teal-100: #ccfbf1;
+  --teal-200: #99f6e4;
+  --hero-bg:
+    radial-gradient(760px 520px at 86% -6%, rgba(45, 212, 191, 0.45), transparent 70%),
+    radial-gradient(640px 460px at -4% 108%, rgba(4, 47, 46, 0.6), transparent 70%),
+    linear-gradient(135deg, #0d9488 0%, #0f766e 48%, #134e4a 100%);
+  /* 文字 */
+  --ink: #0f172a;
+  --ink-2: #334155;      /* 注記・サブ見出し（#f2f8f7 の上で約 10:1） */
+  --ink-3: #475569;
+  --line: #d5e6e3;
+  --page: #f2f8f7;
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; background: var(--page); }
+
+body {
+  font-family: "TH Sans", sans-serif;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+  word-break: keep-all;
+  line-break: strict;
+  overflow-wrap: normal;
+}
+
+/* 1 行ずつ明示する（自動の折り返しはさせない。common.js が検査する） */
+.l { display: block; white-space: nowrap; }
+.nw { white-space: nowrap; }
+
+.canvas {
+  position: relative;
+  width: 1280px;
+  height: 800px;
+  overflow: hidden;
+  background: var(--page);
+}
+
+/* ---------- ブランド（アイコン＋トレひろ） ---------- */
+.brand {
+  position: absolute;
+  left: 56px;
+  top: 30px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.brand img { width: 40px; height: 40px; display: block; filter: drop-shadow(0 3px 6px rgba(15, 118, 110, 0.28)); }
+.brand .brand-name {
+  font-size: 24px;
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: var(--tile-deep);
+}
+
+/* ---------- 見出し（02〜04 は上の帯に 1 行ずつ） ---------- */
+.head {
+  position: absolute;
+  left: 56px;
+  top: 86px;
+}
+.headline {
+  margin: 0;
+  font-size: 46px;
+  line-height: 1.28;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  font-feature-settings: "palt";
+  color: var(--ink);
+}
+.headline .mark {
+  background: linear-gradient(transparent 64%, var(--amber-200) 64%, var(--amber-200) 92%, transparent 92%);
+  padding: 0 2px;
+}
+.sub {
+  margin: 8px 0 0;
+  font-size: 22px;
+  line-height: 1.5;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  font-feature-settings: "palt";
+  color: var(--ink-2);
+}
+
+/* ---------- 撮影画像を置く台（02〜04） ---------- */
+.stage {
+  position: absolute;
+  left: 24px;
+  top: 206px;
+  width: 1232px;
+  height: 514px;
+  border-radius: 28px;
+  background:
+    radial-gradient(620px 360px at 92% 0%, rgba(45, 212, 191, 0.20), transparent 70%),
+    radial-gradient(520px 340px at 0% 100%, rgba(153, 246, 228, 0.40), transparent 70%),
+    linear-gradient(160deg, #e3f3f0 0%, #d3ebe7 100%);
+  overflow: hidden;
+}
+.stage::before {
+  /* アイコンの「区切り線」を思わせる淡い帯 */
+  content: "";
+  position: absolute;
+  right: -110px;
+  top: -130px;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  border: 26px solid rgba(255, 255, 255, 0.38);
+}
+
+/* ---------- 注記（下端。全画像に 1 行目、再現画面が写る 01〜04 に 2 行目） ---------- */
+.footnotes {
+  position: absolute;
+  left: 56px;
+  bottom: 18px;
+}
+.footnote, .footnote2 {
+  display: block;
+  font-size: 16px;
+  line-height: 1.35;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+
+/* ---------- ラベル（撮影画像の上に置くチップ） ---------- */
+.tag {
+  position: absolute;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 34px;
+  padding: 0 14px;
+  border-radius: 999px;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  font-feature-settings: "palt";
+}
+.tag.std { background: #e2e8f0; color: var(--ink-2); font-weight: 600; }  /* 比較元は控えめに（トレひろ側を主役に） */
+.tag.on { background: var(--tile-dark); color: #fff; padding-left: 6px; }
+.tag.on img { width: 24px; height: 24px; display: block; }
+.tag-note {
+  position: absolute;
+  z-index: 4;
+  font-size: 15px;
+  line-height: 34px;
+  font-weight: 500;
+  color: var(--ink-3);
+  white-space: nowrap;
+  font-feature-settings: "palt";
+}
+
+/* 撮影画像の設定値を示すキャプション */
+.fig-cap {
+  position: absolute;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 17px;
+  line-height: 1.4;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--brand-ink);
+  font-feature-settings: "palt";
+  white-space: nowrap;
+}
+.fig-cap svg { width: 18px; height: 18px; display: block; flex: none; }
+
+/* ---------- 撮影画像 ---------- */
+.shot { position: absolute; margin: 0; }
+.shot > img { display: block; position: relative; }
+.shot.framed > img {
+  border-radius: 12px;
+  box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.08), 0 16px 36px rgba(19, 78, 74, 0.22);
+}
+
+.card {
+  position: absolute;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08), 0 18px 40px rgba(19, 78, 74, 0.16);
+}
+
+/* ---------- 強調（控えめに。撮影画像の外に置く） ---------- */
+.ring {
+  position: absolute;
+  z-index: 6;
+  border: 3px solid var(--accent-deep);
+  border-radius: 10px;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.95), 0 4px 12px rgba(245, 158, 11, 0.30);
+  pointer-events: none;
+}
+.wires {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 5;
+  pointer-events: none;
+  overflow: visible;
+}
+.callout {
+  position: absolute;
+  z-index: 7;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 14px 0 10px;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  font-feature-settings: "palt";
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08), 0 8px 20px rgba(19, 78, 74, 0.18);
+}
+.callout .dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--accent-deep);
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.22);
+}

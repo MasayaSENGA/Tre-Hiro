@@ -1,0 +1,1217 @@
+/*
+ * トレひろ ストア素材用「Trello の再現ページ（模型）」のスタイル。
+ *
+ * 現行の Trello（build-241517、2026-10-04 に公開ボードで採寸）で実測した
+ * 寸法・色・余白に合わせて、自分で書き起こした CSS です。Trello / Atlassian の CSS・フォント・
+ * アイコン・背景画像は使っていません（アイコンは mock.js の自作 SVG、フォントは OS の標準フォント）。
+ *
+ * トレひろの content.css / colorize.js が目印にしている要素（data-testid・role・main / aside / hgroup
+ * など）は実物と同じ入れ子にしてあり、Trello 標準の制約（カード詳細の幅 1080px / 584px、
+ * main・aside の min-width 460px、main > div の max-width 620px、hgroup の max-width 544px など）も
+ * ここで再現しています。拡張を当てない状態がそのまま「Trello 標準」の見た目になるようにするためです。
+ * 拡張の上書き（!important）を邪魔しないよう、この CSS では !important を使いません。
+ */
+
+:root {
+  --ds-text: #292a2e;
+  --ds-text-subtle: #505258;
+  --ds-text-subtlest: #6b6e76;
+  --ds-link: #1868db;
+  --ds-border: rgba(11, 18, 14, 0.14);
+  --ds-bg-neutral: rgba(5, 21, 36, 0.06);
+  --ds-bg-neutral-hovered: rgba(11, 18, 14, 0.14);
+  --ds-bg-selected: #e9f2fe;
+  --ds-surface: #ffffff;
+  --shadow-raised: 0 1px 1px rgba(30, 31, 33, 0.25), 0 0 1px rgba(30, 31, 33, 0.31);
+  --shadow-overlay: 0 8px 12px rgba(30, 31, 33, 0.15), 0 0 1px rgba(30, 31, 33, 0.31);
+  /* Trello と同じ並びから Atlassian Sans だけを除いたもの。日本語は OS の既定（macOS ではヒラギノ角ゴ）になる */
+  --font: ui-sans-serif, -apple-system, "system-ui", "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif;
+  /* 自作のボード背景（写真は使わない） */
+  --board-bg: linear-gradient(135deg, #3d3b8e 0%, #6c4aa3 48%, #b4589a 100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+  background: #ffffff;
+  color: var(--ds-text);
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  margin: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+svg {
+  display: block;
+  flex: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ===================================================================
+   画面全体
+   =================================================================== */
+#trello-root {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  background: var(--board-bg);
+  background-color: #5b4699;
+}
+
+#chrome-container {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+}
+
+/* ===================================================================
+   ボード
+   =================================================================== */
+div[data-testid="board-view"] {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+/* ボードヘッダー: 外側が半透明の帯、内側が余白（実測: 高さ 56、背景 24%、blur 6px） */
+div[data-testid="board-header"].board-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  background-color: rgba(0, 0, 0, 0.24);
+  backdrop-filter: blur(6px);
+  color: #ffffff;
+}
+
+.board-header-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+  padding: 12px;
+}
+
+.board-header-right {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 12px 12px 0;
+}
+
+h1[data-testid="board-name-display"] {
+  overflow: hidden;
+  padding: 0 12px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 653;
+  line-height: 32px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bh-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  color: #ffffff;
+}
+
+.bh-view-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 32px;
+  padding: 0 6px 0 8px;
+  border-radius: 6px;
+  color: #ffffff;
+}
+
+.bh-sep {
+  width: 1px;
+  height: 16px;
+  margin: 0 6px;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.bh-members {
+  display: inline-flex;
+  margin: 0 6px 0 4px;
+}
+
+.bh-members .avatar {
+  margin-left: -4px;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.18);
+}
+
+.bh-share {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  margin-left: 4px;
+  padding: 0 12px 0 10px;
+  border-radius: 6px;
+  background: #dddee1;
+  color: #172b4d;
+  font-weight: 500;
+}
+
+/* ボードキャンバスとリスト（実測: キャンバスはヘッダーの下 12px、リストの間隔 284px） */
+div[data-testid="board-canvas"] {
+  position: absolute;
+  top: 68px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+ul#board[data-testid="lists"] {
+  position: absolute;
+  top: -2px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: flex-start;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 2px 6px 12px;
+  white-space: nowrap;
+}
+
+li[data-testid="list-wrapper"] {
+  flex: none;
+  height: 100%;
+  padding: 0 6px;
+  white-space: normal;
+}
+
+div[data-testid="list"] {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 272px;
+  max-height: 100%;
+  padding-bottom: 4px;
+  border-radius: 12px;
+  background-color: #f1f2f4;
+  box-shadow: var(--shadow-raised);
+  color: var(--ds-text);
+}
+
+div[data-testid="list-header"] {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0 4px;
+  padding: 8px 8px 0;
+}
+
+div[data-testid="list-header"] > div:first-child {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+h2[data-testid="list-name"] {
+  font-size: 20px;
+  font-weight: 653;
+  line-height: 24px;
+}
+
+h2[data-testid="list-name"] > button {
+  display: block;
+  width: 100%;
+  height: 32px;
+  overflow: hidden;
+  padding: 6px 8px 6px 12px;
+  border-radius: 8px;
+  color: var(--ds-text);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.list-count {
+  padding: 0 4px;
+  color: var(--ds-text-subtle);
+}
+
+.list-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  color: var(--ds-text-subtle);
+}
+
+div[data-testid="list-card-gap"] {
+  height: 8px;
+  opacity: 0;
+}
+
+ol[data-testid="list-cards"] {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 8px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin: -4px 4px 0;
+  padding: 4px;
+}
+
+li[data-testid="list-card"] {
+  display: grid;
+  row-gap: 8px;
+}
+
+li[data-testid="list-card"] > div {
+  display: flex;
+  flex-direction: column;
+}
+
+div[data-testid="list-card-wrapper"] {
+  border-radius: 8px;
+}
+
+/* カード面: 同じ大きさの白い要素が 3 重（実物と同じ）。トレひろは一番内側を塗る */
+div[data-testid="trello-card"] {
+  position: relative;
+  min-height: 36px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: var(--shadow-raised);
+  color: var(--ds-text);
+  cursor: pointer;
+}
+
+div[data-testid="trello-card"] > div:first-child {
+  position: relative;
+  z-index: 10;
+  border-radius: 8px;
+  background-color: #ffffff;
+}
+
+div[data-testid="trello-card"] > div:first-child > div {
+  display: flow-root;
+  min-height: 24px;
+  padding: 8px 12px 4px;
+  border-radius: 8px;
+  background-color: #ffffff;
+}
+
+div[data-testid="trello-card"] > div:last-child:empty {
+  width: 0;
+  height: 0;
+}
+
+.card-labels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 4px;
+  overflow: hidden;
+}
+
+.card-labels > div {
+  max-width: calc(100% - 4px);
+}
+
+/* 折りたたみ状態のラベル（実測: 40×8、角丸 4、文字は透明） */
+button[data-testid="compact-card-label"] {
+  display: block;
+  min-width: 40px;
+  max-width: 40px;
+  height: 8px;
+  overflow: hidden;
+  padding: 0;
+  border-radius: 4px;
+  color: transparent;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+a[data-testid="card-name"] {
+  display: block;
+  overflow: hidden;
+  margin-bottom: 4px;
+  color: var(--ds-text);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  overflow-wrap: anywhere;
+  text-decoration: none;
+}
+
+div[data-testid="card-front-badges"] {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  column-gap: 4px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  margin-bottom: 4px;
+  padding: 2px;
+  border-radius: 4px;
+  color: var(--ds-text-subtle);
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.badge-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+}
+
+.badge-text {
+  padding: 0 4px 0 2px;
+}
+
+.badge.is-due-soon {
+  background: #f5cd47;
+  color: #533f04;
+}
+
+.badge.is-overdue {
+  background: #ffd5d2;
+  color: #ae2e24;
+}
+
+.badge.is-complete {
+  background: #baf3db;
+  color: #216e4e;
+}
+
+.card-members {
+  display: flex;
+  gap: 2px;
+  margin: 0 0 4px auto;
+}
+
+/* リスト下端の「カードを追加」 */
+.list-footer {
+  display: flex;
+  gap: 4px;
+  padding: 8px 8px 4px;
+}
+
+.list-add-card {
+  display: inline-flex;
+  flex: 1 1 auto;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  padding: 6px 12px 6px 8px;
+  border-radius: 8px;
+  color: var(--ds-text-subtle);
+  font-weight: 500;
+  text-align: left;
+}
+
+.list-add-another {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 272px;
+  height: 44px;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.24);
+  color: #ffffff;
+  font-weight: 500;
+}
+
+/* アバター（イニシャルの丸） */
+.avatar {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 9999px;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 653;
+  line-height: 1;
+}
+
+.avatar.is-28 {
+  width: 28px;
+  height: 28px;
+  font-size: 12px;
+}
+
+.avatar.is-24 {
+  width: 24px;
+  height: 24px;
+  font-size: 11px;
+}
+
+/* ===================================================================
+   カード詳細（カードバック）
+   =================================================================== */
+#layer-manager-card-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  width: 0;
+  height: 0;
+}
+
+/* 背景の暗幕（実測: rgba(0,0,0,.75)、fixed、中央寄せ） */
+.card-back-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow-y: auto;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+#overlay-contents {
+  position: relative;
+  margin-top: 48px;
+}
+
+/* ダイアログ本体。コメント欄を開いた状態 1080px、閉じた状態 584px。高さ = ビューポート − 128 */
+div[role="dialog"][data-testid="card-back-name"] {
+  position: relative;
+  display: block;
+  width: 1080px;
+  height: calc(100vh - 128px);
+  border-radius: 12px;
+  outline: none;
+  background-color: #ffffff;
+  box-shadow: var(--shadow-overlay);
+}
+
+div[role="dialog"][data-testid="card-back-name"].is-panel-closed {
+  width: 584px;
+}
+
+.cb-outer {
+  position: relative;
+  height: 100%;
+}
+
+.cb-inner {
+  height: 100%;
+}
+
+.cb-frame {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-height: 100%;
+  border-radius: 12px;
+  background-color: #ffffff;
+}
+
+/* ヘッダー（カバーなし: 高さ 56 + 下線 1px） */
+.cb-header {
+  position: relative;
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  height: 57px;
+  padding: 0 16px 0 24px;
+  border-bottom: 1px solid var(--ds-border);
+}
+
+.cb-list-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  height: 24px;
+  padding: 2px 4px 2px 6px;
+  border-radius: 4px;
+  background: #dddee1;
+  color: #1e1f21;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.cb-header ul {
+  display: flex;
+  gap: 8px;
+}
+
+.cb-round-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 9999px;
+  background: #f0f1f2;
+  color: var(--ds-text-subtle);
+}
+
+.cb-round-btn.is-plain {
+  background: #ffffff;
+  color: var(--ds-text);
+}
+
+.cb-spacer {
+  height: 0;
+}
+
+/* 本体: main（説明欄側）と aside（コメントとアクティビティ）の横並び */
+.cb-body {
+  display: flex;
+  flex: 1 1 0%;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: 0 0 12px 12px;
+}
+
+div[role="dialog"][data-testid="card-back-name"] main {
+  display: grid;
+  flex: 1 1 460px;
+  align-content: start;
+  grid-template-columns: minmax(0, 1fr);
+  min-width: 460px;
+  overflow: hidden auto;
+}
+
+.cb-resizer {
+  position: relative;
+  z-index: 2;
+  flex: 0 0 8px;
+  margin: 0 -4px;
+  cursor: col-resize;
+}
+
+div[role="dialog"][data-testid="card-back-name"] aside {
+  flex: 0 1 auto;
+  width: 460px;
+  min-width: 460px;
+  overflow: hidden auto;
+  border-left: 1px solid var(--ds-border);
+  background-color: #f0f1f2;
+}
+
+/* コメント欄を閉じた状態: main が全幅、aside は右へ出て隠れる（Trello 標準の動き） */
+div[role="dialog"].is-panel-closed main {
+  flex: 1 0 100%;
+}
+
+div[role="dialog"].is-panel-closed aside {
+  transform: translateX(100%);
+}
+
+div[role="dialog"].is-panel-closed .cb-resizer {
+  display: none;
+}
+
+/* タイトル（実測: padding 24 20 16 20、hgroup の max-width 544、28px/32px 653） */
+section[data-testid="card-back-header"] {
+  display: grid;
+  grid-template-columns: [icon] 32px [body] minmax(0, 1fr);
+  column-gap: 4px;
+  margin-bottom: 8px;
+  padding: 24px 20px 16px;
+}
+
+.cb-title-icon {
+  display: flex;
+  justify-content: center;
+  width: 28px;
+  padding-top: 8px;
+}
+
+.cb-done-circle {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #8c8f97;
+  border-radius: 9999px;
+}
+
+section[data-testid="card-back-header"] hgroup {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2px 8px;
+  min-width: 0;
+  max-width: 544px;
+}
+
+textarea[data-testid="card-back-title-input"] {
+  display: block;
+  width: 100%;
+  height: 40px;
+  margin: -4px -8px;
+  overflow: hidden;
+  padding: 4px 8px;
+  border: 0;
+  border-radius: 4px;
+  outline: none;
+  background: transparent;
+  color: var(--ds-text);
+  font-family: var(--font);
+  font-size: 28px;
+  font-weight: 653;
+  line-height: 32px;
+  resize: none;
+}
+
+/* main 直下のラッパー（実測: max-width 620、padding 0 40 16 20） */
+div[role="dialog"][data-testid="card-back-name"] main > div {
+  max-width: 620px;
+  padding: 0 40px 16px 20px;
+}
+
+/* ログイン時のボタン行 */
+.cb-quick-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 24px 36px;
+}
+
+.cb-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 32px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  background: var(--ds-bg-neutral);
+  color: var(--ds-text);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.cb-btn.is-outline {
+  gap: 4px;
+  padding: 6px 10px;
+  border: 1px solid var(--ds-border);
+  background: transparent;
+  color: var(--ds-text-subtle);
+}
+
+.cb-btn.is-icon {
+  width: 32px;
+  padding: 0;
+}
+
+/* メタ情報（メンバー／ラベル／期限） */
+.cb-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 8px;
+  margin: 0 0 16px 36px;
+}
+
+.cb-meta h3 {
+  margin-bottom: 4px;
+  color: var(--ds-text-subtle);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.cb-meta [role="group"] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+span[data-testid="card-label"] {
+  display: inline-block;
+  height: 32px;
+  overflow: hidden;
+  padding: 0 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 32px;
+  white-space: nowrap;
+}
+
+.cb-due {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  padding: 6px 8px 6px 12px;
+  border-radius: 4px;
+  background: var(--ds-bg-neutral);
+  font-size: 14px;
+}
+
+.cb-checkbox {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #8c8f97;
+  border-radius: 2px;
+  background: #ffffff;
+  color: #ffffff;
+}
+
+.cb-checkbox.is-checked {
+  border-color: #1868db;
+  background: #1868db;
+}
+
+/* 本文のセクション（説明・チェックリスト）。実測: [icon] 32px [body]、gap 12 4、下 32 */
+.cb-section {
+  display: grid;
+  grid-template-columns: [icon] 32px [body] minmax(0, 1fr);
+  gap: 12px 4px;
+  margin-bottom: 32px;
+}
+
+.cb-section-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 32px;
+  color: var(--ds-text);
+}
+
+.cb-section > hgroup {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 32px;
+}
+
+.cb-section > hgroup h3 {
+  font-size: 14px;
+  font-weight: 653;
+  line-height: 20px;
+}
+
+.cb-section-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.cb-section > .cb-full {
+  grid-column: icon / -1;
+}
+
+.cb-section > .cb-body-col {
+  grid-column: body;
+}
+
+/* 説明の本文（実測: 段落 14px/24px、段落の間 12px） */
+.ak-renderer-document {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.ak-renderer-document p {
+  margin-top: 12px;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.ak-renderer-document > :first-child {
+  margin-top: 0;
+}
+
+.ak-renderer-document h3 {
+  margin-top: 24px;
+  font-size: 18.29px;
+  font-weight: 600;
+  line-height: 22.86px;
+}
+
+.ak-renderer-document ul {
+  margin-top: 12px;
+  padding-left: 24px;
+  list-style: disc;
+}
+
+.ak-renderer-document li > p {
+  margin-top: 4px;
+}
+
+.ak-renderer-document strong {
+  font-weight: 653;
+}
+
+/* 表（自作の表スタイル。枠線と見出しの背景は ADS の色に寄せている） */
+.pm-table-container {
+  margin-top: 12px;
+  overflow-x: auto;
+}
+
+.pm-table-container table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.pm-table-container th,
+.pm-table-container td {
+  min-width: 48px;
+  padding: 7px 10px;
+  border: 1px solid #dcdfe4;
+  text-align: left;
+  vertical-align: top;
+}
+
+.pm-table-container th {
+  background: #f1f2f4;
+  font-weight: 653;
+}
+
+.status-lozenge {
+  display: inline-block;
+  padding: 0 4px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 653;
+  line-height: 16px;
+  vertical-align: 1px;
+  white-space: nowrap;
+}
+
+.status-lozenge.is-done {
+  background: #baf3db;
+  color: #216e4e;
+}
+
+.status-lozenge.is-progress {
+  background: #cfe1fd;
+  color: #1558bc;
+}
+
+.status-lozenge.is-todo {
+  background: #dddee1;
+  color: #292a2e;
+}
+
+/* チェックリスト */
+.cl-progress {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr);
+  column-gap: 4px;
+  align-items: center;
+}
+
+span[data-testid="checklist-progress-percentage"] {
+  color: var(--ds-text-subtle);
+  font-size: 11px;
+  line-height: 10px;
+  text-align: center;
+}
+
+div[data-testid="progress-bar"] {
+  position: relative;
+  height: 6px;
+  overflow: hidden;
+  border-radius: 9999px;
+  background: var(--ds-bg-neutral);
+}
+
+div[data-testid="progress-bar"] > span {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 9999px;
+  background: #292a2e;
+}
+
+li[data-testid="check-item-container"] {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr);
+  column-gap: 4px;
+  align-items: center;
+  min-height: 36px;
+  border-radius: 12px;
+}
+
+label[data-testid="clickable-checkbox"] {
+  display: flex;
+  justify-content: center;
+}
+
+div[data-testid="check-item-name"] p {
+  padding: 6px 0;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+li[data-testid="check-item-container"].is-done div[data-testid="check-item-name"] p {
+  text-decoration: line-through;
+}
+
+/* ===================================================================
+   コメントとアクティビティ（aside）
+   =================================================================== */
+div[data-testid="card-back-panel"] {
+  padding: 16px;
+}
+
+.cb-activity {
+  display: grid;
+  grid-template-columns: [icon] 32px [body] minmax(0, 1fr);
+  gap: 12px 4px;
+  margin-bottom: 32px;
+}
+
+.cb-activity > hgroup {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px 8px;
+}
+
+.cb-activity > hgroup h3 {
+  padding: 6px 0;
+  white-space: nowrap;
+  font-size: 14px;
+  font-weight: 653;
+  line-height: 20px;
+}
+
+.cb-composer-row,
+.cb-activity > ul {
+  grid-column: icon / -1;
+}
+
+.cb-composer-row {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr);
+  column-gap: 4px;
+  align-items: start;
+}
+
+.cb-composer {
+  height: 40px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: var(--shadow-raised);
+  color: var(--ds-text-subtlest);
+  font-size: 14px;
+  line-height: 24px;
+}
+
+li[data-testid="card-back-action"] {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr);
+  column-gap: 4px;
+  padding: 8px 0;
+}
+
+div[data-testid="card-back-action-container"] {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.cb-action-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 8px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.cb-action-head .who {
+  font-weight: 653;
+}
+
+.cb-action-head.is-activity {
+  display: block;
+}
+
+.cb-action-head.is-activity .what {
+  font-weight: 400;
+}
+
+.cb-action-date {
+  color: var(--ds-link);
+  font-size: 12px;
+  line-height: 16px;
+  text-decoration: underline;
+}
+
+.cb-action-head.is-activity .cb-action-date {
+  display: block;
+  margin-top: 2px;
+}
+
+div[data-testid="comment-container"] > div {
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: var(--shadow-raised);
+}
+
+div[data-testid="comment-container"] p {
+  font-size: 14px;
+  line-height: 24px;
+  overflow-wrap: anywhere;
+}
+
+.cb-comment-tools {
+  display: flex;
+  gap: 4px;
+  color: var(--ds-text-subtle);
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.cb-comment-tools span + span::before {
+  display: inline-block; /* 区切りの「・」には下線を付けない */
+  content: "・";
+  text-decoration: none;
+}
+
+.cb-comment-tools .link {
+  text-decoration: underline;
+}
+
+/* ===================================================================
+   下部の浮いたナビ（実測: ダイアログの下 16px、角丸 12、padding 6、gap 6）
+   =================================================================== */
+nav.cb-nav {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 8px;
+  height: 46px;
+  transform: translateY(16px);
+}
+
+nav.cb-nav > div[role="group"] {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px;
+  border: 1px solid var(--ds-border);
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: var(--shadow-overlay);
+}
+
+nav.cb-nav button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 32px;
+  min-height: 32px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  color: var(--ds-text);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+nav.cb-nav span[role="separator"] {
+  width: 1px;
+  height: 20px;
+  background: var(--ds-border);
+}
+
+nav.cb-nav button[aria-checked="true"] {
+  background: var(--ds-bg-selected);
+  color: #1868db;
+}
+
+nav.cb-nav button[aria-checked="true"]::after {
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  width: 12px;
+  height: 2px;
+  border-radius: 2px;
+  background: #1868db;
+  content: "";
+  transform: translateX(-50%);
+}

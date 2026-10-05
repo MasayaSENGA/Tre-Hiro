@@ -1,1 +1,5 @@
 *.css linguist-detectable=false
+
+# 改行コードを LF にそろえる（Windows で clone しても、ツールの検査や ZIP の SHA-256 が変わらないように）
+* text=auto eol=lf
+*.png binary

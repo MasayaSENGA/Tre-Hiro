@@ -1,0 +1,17 @@
+# Chrome Web Store 提出用 zip（store-assets/tools/package.py の出力先）
+dist/
+*.zip
+
+# macOS が作るファイル
+.DS_Store
+
+# Python のキャッシュ（ツール類を import したときにできる）
+__pycache__/
+*.pyc
+
+# スクリーンショット・プロモーション画像の合成時の中間ファイル
+store-assets/tools/compose/build/
+
+# Claude Code のローカル設定（以前から git で管理されているので、追跡を外すには
+# git rm --cached .claude/settings.local.json が必要）
+.claude/settings.local.json

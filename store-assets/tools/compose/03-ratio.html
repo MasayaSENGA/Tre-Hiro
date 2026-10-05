@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>03 ratio</title>
+<link rel="stylesheet" href="common.css">
+<style>
+  /* 2 段: 左にラベルとポップアップの「左右の比率」欄、右にカード詳細（ダイアログ全幅の上部） */
+  .row-tag { position: absolute; z-index: 4; }
+  .pop-slice img { border-radius: 12px; }
+  /* 境目の印（▼）の左右に置く小さな見出し */
+  .split {
+    position: absolute; z-index: 4;
+    font-size: 14px; line-height: 1.2; font-weight: 700; color: #b45309;
+    letter-spacing: 0.02em; white-space: nowrap; font-feature-settings: "palt";
+  }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="stage"></div>
+
+  <div class="brand" data-block="brand"><img src="build/icon-art.png" alt=""><span class="brand-name">トレひろ</span></div>
+
+  <div class="head" data-block="head">
+    <h1 class="headline"><span class="l">説明欄とコメント欄の比率を<span class="mark">自由に</span></span></h1>
+    <p class="sub"><span class="l">スライダーを動かすと、開いているカードにその場で反映</span></p>
+  </div>
+
+  <div class="tag on row-tag t75" data-block="tag-75"><img src="build/icon-art.png" alt=""><span class="lbl-r75">75:25（説明欄を広く）</span></div>
+  <figure class="shot framed pop-slice p75" data-geom="pop_ratio_r75" data-block="pop-75"><img src="build/pop_ratio_r75.png" alt=""></figure>
+  <figure class="shot framed card-crop c75" data-geom="ratio_r75" data-block="card-75"><img src="build/ratio_r75.png" alt=""></figure>
+
+  <div class="tag on row-tag t35" data-block="tag-35"><img src="build/icon-art.png" alt=""><span class="lbl-r35">35:65（コメント欄を広く）</span></div>
+  <figure class="shot framed pop-slice p35" data-geom="pop_ratio_r35" data-block="pop-35"><img src="build/pop_ratio_r35.png" alt=""></figure>
+  <figure class="shot framed card-crop c35" data-geom="ratio_r35" data-block="card-35"><img src="build/ratio_r35.png" alt=""></figure>
+
+  <div class="footnotes" data-block="footnotes">
+    <span class="footnote">※非公式ツールです。Trello・Atlassian とは関係ありません。Trello は Atlassian の商標です。</span>
+    <span class="footnote2">※画面は、Trello を再現した確認用ページにトレひろの実際のコードを当てて撮影したものです。内容は架空です。</span>
+  </div>
+</div>
+<script src="build/geometry.js"></script>
+<script>
+  window.layout = function (H) {
+    const G = window.GEOM;
+    const stage = H.rectOf(document.querySelector(".stage"));
+    const padX = 24, padY = 14, rowGap = 44, colGap = 46;
+    const ps = 0.8;                                    // ポップアップの欄の倍率
+    const popW = G.pop_ratio_r75.css_w * ps;
+    const leftX = stage.x + padX;
+    const cardX = leftX + popW + colGap;
+    const cardW = stage.r - padX - cardX;
+    const s = Math.min(cardW / G.ratio_r75.css_w, 1);
+    // 2 段の高さは切り出しごとに違う（どちらも文字の行を切らない位置で切っている。render_assets.py RATIO_Y1）
+    const rowH75 = G.ratio_r75.css_h * s, rowH35 = G.ratio_r35.css_h * s;
+    const free = stage.h - 2 * padY - rowH75 - rowH35 - rowGap;
+    if (free < 0) H.issues.push("rows do not fit on the stage");
+    const y0 = stage.y + padY + Math.max(free, 0) / 2;
+    [["75", y0, rowH75], ["35", y0 + rowH75 + rowGap, rowH35]].forEach(([k, y, rowH]) => {
+      const card = document.querySelector(".c" + k), pop = document.querySelector(".p" + k);
+      const tag = document.querySelector(".t" + k);
+      card.style.left = cardX + "px"; card.style.top = y + "px";
+      card.querySelector("img").style.width = (G["ratio_r" + k].css_w * s) + "px";
+      pop.querySelector("img").style.width = popW + "px";
+      // ラベルとポップアップの欄を、カード詳細の高さの中で上下中央に
+      const tagH = 34, gap = 12, popH = G["pop_ratio_r" + k].css_h * ps;
+      const blockTop = y + (rowH - (tagH + gap + popH)) / 2;
+      tag.style.left = leftX + "px"; tag.style.top = blockTop + "px";
+      pop.style.left = leftX + "px"; pop.style.top = (blockTop + tagH + gap) + "px";
+    });
+    H.issues.push(`note: card dialogs at ${(s * 100).toFixed(1)}% (UI text 14px -> ${(14 * s).toFixed(1)}px), popup field at ${ps * 100}%`);
+    if (Math.abs(H.figScale(document.querySelector(".c75")) - H.figScale(document.querySelector(".c35"))) > 0.002)
+      H.issues.push("75:25 / 35:65 dialogs at different scales");
+    // 実測の比率（raw/manifest.json）がラベルと一致すること
+    if (G.ratio_r75.measured.ratio !== 0.75 || G.ratio_r35.measured.ratio !== 0.35)
+      H.issues.push(`measured ratios ${G.ratio_r75.measured.ratio} / ${G.ratio_r35.measured.ratio}`);
+    if (G.pop_ratio_r75.texts.ratio !== "75 : 25" || G.pop_ratio_r35.texts.ratio !== "35 : 65")
+      H.issues.push("popup ratio texts do not match the labels");
+  };
+  window.afterLayout = function (H) {
+    // ポップアップの欄 → カード詳細 の矢印（撮影画像の外、間の余白だけを通る）
+    ["75", "35"].forEach((k) => {
+      const pop = H.rectOf(document.querySelector(".p" + k + " img"));
+      const card = H.rectOf(document.querySelector(".c" + k + " img"));
+      const y = pop.cy;
+      if (y < card.y + 6 || y > card.b - 6) H.issues.push("arrow " + k + " would miss the dialog");
+      H.lineArrow({ x: pop.r + 8, y }, { x: card.x - 6, y }, { width: 4, size: 14 });
+      // 境目（説明欄｜コメント欄）の位置に、その段のカード詳細のすぐ上（撮影画像の外）へ印と小さな見出し
+      const fig = document.querySelector(".c" + k);
+      const main = H.boxRect(fig, "main");
+      const x = main.r;
+      H.path(`M ${x - 10} ${card.y - 16} L ${x + 10} ${card.y - 16} L ${x} ${card.y - 4} Z`, { color: "#f59e0b", width: 2 }).setAttribute("fill", "#f59e0b");
+      const canvas = document.querySelector(".canvas");
+      [["説明欄", "left"], ["コメント欄", "right"]].forEach(([t, side]) => {
+        const el = document.createElement("div");
+        el.className = "split split-" + k + "-" + side;
+        el.textContent = t;
+        canvas.appendChild(el);
+        el.style.top = (card.y - 10 - el.offsetHeight / 2) + "px";
+        el.style.left = (side === "left" ? x - 16 - el.offsetWidth : x + 16) + "px";
+        const r = H.rectOf(el);
+        const other = k === "35" ? H.rectOf(document.querySelector(".c75 img")) : null;
+        if (r.b > card.y - 1 || (other && r.y < other.b + 2)) H.issues.push(`split label ${k} ${t} does not fit in the gap`);
+      });
+    });
+  };
+</script>
+<script src="common.js"></script>
+</body>
+</html>

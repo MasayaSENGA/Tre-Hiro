@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>04 color</title>
+<link rel="stylesheet" href="common.css">
+<style>
+  /* 同じ範囲（リスト「未着手」「作業中」）を、色付けなし / 色付け 16% で同じ倍率に並べる。
+     右上は本物のポップアップの「カードの色付け」欄（濃さ 16%） */
+  .tag.std, .tag.on { top: 222px; }
+  .pop-color img { border-radius: 12px; }
+  .pop-cap {
+    position: absolute; z-index: 4;
+    font-size: 15px; line-height: 1.4; font-weight: 700; color: var(--brand-ink);
+    white-space: nowrap; font-feature-settings: "palt";
+  }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="stage"></div>
+
+  <div class="brand" data-block="brand"><img src="build/icon-art.png" alt=""><span class="brand-name">トレひろ</span></div>
+
+  <div class="head" data-block="head">
+    <h1 class="headline"><span class="l">カードを<span class="mark">ラベルの色</span>で塗り分け</span></h1>
+    <p class="sub"><span class="l">左端の帯はラベルごとに色分け。色の濃さも調整できます</span></p>
+  </div>
+
+  <figure class="shot framed pop-color" data-geom="pop_color" data-block="pop"><img src="build/pop_color.png" alt=""></figure>
+
+  <div class="tag std lbl-before" data-block="tag-off">色付けなし（Trello 標準の見た目）</div>
+  <figure class="shot framed fig-off" data-geom="board_off" data-block="fig-off"><img src="build/board_off.png" alt=""></figure>
+
+  <div class="tag on" data-block="tag-on"><img src="build/icon-art.png" alt=""><span class="lbl-after">トレひろで色付け（濃さ16%）</span></div>
+  <figure class="shot framed fig-on" data-geom="board_color" data-block="fig-on"><img src="build/board_color.png" alt=""></figure>
+
+  <div class="footnotes" data-block="footnotes">
+    <span class="footnote">※非公式ツールです。Trello・Atlassian とは関係ありません。Trello は Atlassian の商標です。</span>
+    <span class="footnote2">※画面は、Trello を再現した確認用ページにトレひろの実際のコードを当てて撮影したものです。内容は架空です。</span>
+  </div>
+</div>
+<script src="build/geometry.js"></script>
+<script>
+  window.layout = function (H) {
+    const G = window.GEOM;
+    const stage = H.rectOf(document.querySelector(".stage"));
+    const off = document.querySelector(".fig-off"), on = document.querySelector(".fig-on");
+    const top = 266, bottom = stage.b - 16, gap = 64;
+    const w = G.board_off.css_w, h = G.board_off.css_h;
+    const s = Math.min((stage.w - 48 - gap) / (2 * w), (bottom - top) / h, 1);
+    const x0 = stage.x + (stage.w - 2 * w * s - gap) / 2;
+    [[off, x0], [on, x0 + w * s + gap]].forEach(([f, x]) => {
+      f.style.left = x + "px"; f.style.top = top + "px";
+      f.querySelector("img").style.width = (w * s) + "px";
+    });
+    if (Math.abs(H.figScale(off) - H.figScale(on)) > 0.002) H.issues.push("before/after scales differ");
+    H.issues.push(`note: boards at ${(s * 100).toFixed(1)}% (card text 14px -> ${(14 * s).toFixed(1)}px)`);
+    document.querySelector(".tag.std").style.left = H.rectOf(off).x + "px";
+    document.querySelector(".tag.on").style.left = H.rectOf(on).x + "px";
+    // ポップアップの「カードの色付け」欄: 右上（見出しの右、台の上）
+    const pop = document.querySelector(".pop-color");
+    const ps = 0.84;
+    pop.querySelector("img").style.width = (G.pop_color.css_w * ps) + "px";
+    // 矢印は色付けしたボードの中央（2 本のリストの間）を指す。ラベルの右端より 24px 以上右にし、
+    // ポップアップの欄はその矢印の根元が欄の左寄りに来るよう置く（右端はボードの右端まで）
+    const onR = H.rectOf(on), tagOn = H.rectOf(document.querySelector(".tag.on"));
+    const ax = Math.max(onR.cx, tagOn.r + 24);
+    window.__ARROW_X = ax;
+    pop.style.left = Math.min(onR.r - G.pop_color.css_w * ps, ax - 36) + "px";
+    pop.style.top = (stage.y - 14 - G.pop_color.css_h * ps) + "px";
+    if (H.rectOf(pop).y < 16) H.issues.push("popup field too close to the top edge");
+    // 撮影時の設定がラベルと一致すること（raw/manifest.json）
+    const st = G.board_color.settings, so = G.board_off.settings;
+    if (!(st.colorCards === true && st.colorStrength === 16)) H.issues.push("board_color settings: " + JSON.stringify(st));
+    if (so.colorCards !== false) H.issues.push("board_off settings: " + JSON.stringify(so));
+    if (G.pop_color.texts.colorStrength !== "16%" || G.pop_color.texts.colorCards !== "ON")
+      H.issues.push("popup colour texts: " + JSON.stringify(G.pop_color.texts));
+  };
+  window.afterLayout = function (H) {
+    // ポップアップの欄 → 色付けしたボード（矢印は台の上の余白とラベルの右だけを通る）
+    const pop = H.rectOf(document.querySelector(".pop-color img"));
+    const tag = H.rectOf(document.querySelector(".tag.on"));
+    const on = H.rectOf(document.querySelector(".fig-on img"));
+    const x = window.__ARROW_X;
+    if (x < tag.r + 20) H.issues.push("arrow too close to the label");
+    if (Math.abs(x - on.cx) > 40) H.issues.push(`arrow is ${(x - on.cx).toFixed(0)}px from the board centre`);
+    if (x < pop.x + 10) H.issues.push("arrow starts left of the popup field");
+    const a = H.lineArrow({ x, y: pop.b + 8 }, { x, y: on.y - 8 }, { width: 4, size: 14 });
+    if (Math.abs(H.deg(a.ang) - 90) > 1) H.issues.push("arrow is not vertical");
+    if (x > pop.r - 10) H.issues.push("arrow starts outside the popup field");
+  };
+</script>
+<script src="common.js"></script>
+</body>
+</html>
