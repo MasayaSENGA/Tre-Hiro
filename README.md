@@ -54,6 +54,16 @@ https://chromewebstore.google.com/detail/mkggalenkddiimlbeipdnedgnpjonidi
 - ラベルの付いていないカードと、カバー画像付きのカードは塗りません。
 - 色付けは幅の調整と違い、ウィンドウ幅 750px 以下でも有効です。
 
+## Chrome ウェブストアへの提出
+
+アップロード用の ZIP は、リポジトリのルートで次のコマンドを実行すると `dist/tre-hiro-v<version>.zip` に作成されます（`dist/` は Git の管理対象外）。ZIP に入るのは、拡張機能の実行に必要なファイル（`manifest.json`、`*.js`、`*.css`、`popup.html`、`icons/`）だけです。
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\package.ps1
+```
+
+更新版を出すときは、`manifest.json` の `version` を公開中の版より大きくしてから ZIP を作り直します（表記は x.x.x にそろえます）。
+
 ## プライバシーポリシー
 
 https://privacy.love-live.jp/ で公開しています。全拡張機能で共通のポリシーで、このリポジトリとは別の、プライバシーポリシー用のリポジトリで管理しています。
@@ -69,6 +79,7 @@ https://privacy.love-live.jp/ で公開しています。全拡張機能で共�
 | `shared.js` | 既定値・上下限・値の正規化（content script とポップアップで共用） |
 | `popup.html` / `popup.css` / `popup.js` | 設定パネル |
 | `icons/` | 拡張機能アイコン |
+| `scripts/package.ps1` | Chrome ウェブストアにアップロードする ZIP を `dist/` に作るスクリプト |
 
 ## 実装メモ
 
