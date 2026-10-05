@@ -1,4 +1,4 @@
-# Chrome Web Store 提出用 zip（store-assets/tools/package.py の出力先）
+# Chrome Web Store 提出用 zip（scripts/package.ps1 と store-assets/tools/package.py の出力先）
 dist/
 *.zip
 

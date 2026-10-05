@@ -22,6 +22,8 @@ Trello 標準ではカード詳細の幅が `584px`（コメント欄を閉じ�
 
 ### 開発用（未署名の拡張機能を読み込む）
 
+このリポジトリは非公開です。開発中のコードを試すときは、手元のフォルダを読み込みます。
+
 1. Chrome で `chrome://extensions` を開く
 2. 右上の **デベロッパー モード** をオンにする
 3. **「パッケージ化されていない拡張機能を読み込む」** をクリック
@@ -61,6 +63,23 @@ Trello 標準ではカード詳細の幅が `584px`（コメント欄を閉じ�
 - ラベルの付いていないカードと、カバー画像付きのカードは塗りません。
 - 色付けは幅の調整と違い、ウィンドウ幅 750px 以下でも有効です。
 
+## Chrome ウェブストアへの提出
+
+アップロード用の ZIP は、リポジトリのルートで次のコマンドを実行すると `dist/tre-hiro-v<version>.zip` に作成されます（`dist/` は Git の管理対象外）。ZIP に入るのは、拡張機能の実行に必要なファイル（`manifest.json`、`*.js`、`*.css`、`popup.html`、`icons/`）だけです。
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\package.ps1
+```
+
+macOS などで PowerShell を使わない場合は、同じ 11 ファイルの ZIP を `python3 store-assets/tools/package.py` でも作れます（出力は `dist/tre-hiro-<version>.zip`。中身の検証も行います）。
+掲載文・スクリーンショット・プライバシー欄の回答と、ダッシュボードでの更新手順は [store-assets/listing.md](store-assets/listing.md) にまとめています。
+
+更新版を出すときは、`manifest.json` の `version` を公開中の版より大きくしてから ZIP を作り直します（表記は x.x.x にそろえます）。
+
+## プライバシーポリシー
+
+https://privacy.love-live.jp/tre-hiro/ に、トレひろ専用のポリシーを掲載します（v2.0.2 の掲載更新に合わせて公開。それまでは全拡張機能で共通の https://privacy.love-live.jp/ ）。どちらも、このリポジトリとは別の、プライバシーポリシー用のリポジトリで管理しています。
+
 ## ファイル構成
 
 | ファイル | 役割 |
@@ -72,6 +91,7 @@ Trello 標準ではカード詳細の幅が `584px`（コメント欄を閉じ�
 | `shared.js` | 既定値・上下限・値の正規化（content script とポップアップで共用） |
 | `popup.html` / `popup.css` / `popup.js` | 設定パネル |
 | `icons/` | 拡張機能アイコン |
+| `scripts/package.ps1` | Chrome ウェブストアにアップロードする ZIP を `dist/` に作るスクリプト |
 | `store-assets/` | Chrome ウェブストアの掲載素材（掲載文・スクリーンショット・プロモーション画像・ストア用アイコン）とその作成ツール。拡張機能のパッケージには含めない。提出用 ZIP は `python3 store-assets/tools/package.py` で `dist/` に作成 |
 
 ## 実装メモ
