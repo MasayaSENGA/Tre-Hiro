@@ -12,6 +12,8 @@ __pycache__/
 # スクリーンショット・プロモーション画像の合成時の中間ファイル
 store-assets/tools/compose/build/
 
-# Claude Code のローカル設定（以前から git で管理されているので、追跡を外すには
-# git rm --cached .claude/settings.local.json が必要）
+# Claude Code のローカル設定
 .claude/settings.local.json
+
+# Chrome ウェブストアの掲載作業用の資料（手元だけで管理し、リポジトリには入れない）
+store-assets/listing.md

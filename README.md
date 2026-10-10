@@ -22,7 +22,7 @@ Trello 標準ではカード詳細の幅が `584px`（コメント欄を閉じ�
 
 ### 開発用（未署名の拡張機能を読み込む）
 
-このリポジトリは非公開です。開発中のコードを試すときは、手元のフォルダを読み込みます。
+ストアを使わずに開発中のコードを試すときは、このリポジトリを手元にクローンし、次の手順で読み込みます。
 
 1. Chrome で `chrome://extensions` を開く
 2. 右上の **デベロッパー モード** をオンにする
@@ -72,7 +72,6 @@ powershell -ExecutionPolicy Bypass -File .\scripts\package.ps1
 ```
 
 macOS などで PowerShell を使わない場合は、同じ 11 ファイルの ZIP を `python3 store-assets/tools/package.py` でも作れます（出力は `dist/tre-hiro-<version>.zip`。中身の検証も行います）。
-掲載文・スクリーンショット・プライバシー欄の回答と、ダッシュボードでの更新手順は [store-assets/listing.md](store-assets/listing.md) にまとめています。
 
 更新版を出すときは、`manifest.json` の `version` を公開中の版より大きくしてから ZIP を作り直します（表記は x.x.x にそろえます）。
 
@@ -92,7 +91,8 @@ https://privacy.love-live.jp/tre-hiro/ に、トレひろ専用のポリシー�
 | `popup.html` / `popup.css` / `popup.js` | 設定パネル |
 | `icons/` | 拡張機能アイコン |
 | `scripts/package.ps1` | Chrome ウェブストアにアップロードする ZIP を `dist/` に作るスクリプト |
-| `store-assets/` | Chrome ウェブストアの掲載素材（掲載文・スクリーンショット・プロモーション画像・ストア用アイコン）とその作成ツール。拡張機能のパッケージには含めない。提出用 ZIP は `python3 store-assets/tools/package.py` で `dist/` に作成 |
+| `store-assets/` | Chrome ウェブストアの掲載素材（スクリーンショット・プロモーション画像・ストア用アイコン）とその作成ツール。拡張機能のパッケージには含めない。提出用 ZIP は `python3 store-assets/tools/package.py` で `dist/` に作成 |
+| `LICENSE` | ライセンス（MIT） |
 
 ## 実装メモ
 
@@ -152,3 +152,7 @@ CSS 変数（`--twc-*`）を付けるだけなので、Trello の React 描画�
   （1440px では 1368px = 820.8px + 547.2px）
 - コメント欄を閉じると、説明欄が全幅になる
 - ボードのカードがラベル色で塗られる（ラベルのないカードとカバー画像付きのカードは塗られない）
+
+## ライセンス
+
+[MIT](LICENSE)
