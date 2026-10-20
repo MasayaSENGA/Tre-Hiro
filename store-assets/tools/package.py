@@ -50,6 +50,7 @@ ALLOWLIST = (
     "shared.js",
     "content.js",
     "colorize.js",
+    "autobuttons.js",
     "content.css",
     "popup.html",
     "popup.css",

@@ -22,7 +22,7 @@
     {
       "matches": ["https://trello.com/*"],
       "css": ["content.css"],
-      "js": ["shared.js", "content.js", "colorize.js"],
+      "js": ["shared.js", "content.js", "colorize.js", "autobuttons.js"],
       "run_at": "document_start",
       "all_frames": false
     }

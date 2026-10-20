@@ -6,6 +6,7 @@ const TWC_DEFAULTS = {
   descRatio: 60, // 左カラム＝説明欄の割合（%）。残りがコメント欄。
   colorCards: true, // ボードのカードをラベル色で塗るか
   colorStrength: 16, // 背景に重ねるラベル色の濃さ（%）
+  autoButtons: true, // カード詳細の下部に自動化（カードボタン）を常に並べるか
 };
 
 const TWC_LIMITS = {
@@ -44,5 +45,6 @@ function twcNormalize(stored) {
       TWC_LIMITS.colorStrength.max,
       TWC_DEFAULTS.colorStrength
     ),
+    autoButtons: s.autoButtons !== false,
   };
 }

@@ -10,6 +10,8 @@
     descRatio: document.getElementById("descRatio"),
     ratioValue: document.getElementById("ratioValue"),
     previewLeft: document.getElementById("previewLeft"),
+    autoButtons: document.getElementById("autoButtons"),
+    autoButtonsText: document.getElementById("autoButtonsText"),
     colorField: document.getElementById("colorField"),
     colorCards: document.getElementById("colorCards"),
     colorCardsText: document.getElementById("colorCardsText"),
@@ -72,6 +74,9 @@
     el.ratioValue.textContent = s.descRatio + " : " + (100 - s.descRatio);
     el.previewLeft.style.flexBasis = s.descRatio + "%";
 
+    el.autoButtons.checked = s.autoButtons;
+    el.autoButtonsText.textContent = s.autoButtons ? "ON" : "OFF";
+
     el.colorCards.checked = s.colorCards;
     el.colorCardsText.textContent = s.colorCards ? "ON" : "OFF";
     el.colorField.classList.toggle("is-colors-off", !s.colorCards);
@@ -86,6 +91,7 @@
       enabled: el.enabled.checked,
       cardWidth: el.cardWidth.value,
       descRatio: el.descRatio.value,
+      autoButtons: el.autoButtons.checked,
       colorCards: el.colorCards.checked,
       colorStrength: el.colorStrength.value,
     });
@@ -108,6 +114,7 @@
   el.enabled.addEventListener("change", save);
   el.cardWidth.addEventListener("input", save);
   el.descRatio.addEventListener("input", save);
+  el.autoButtons.addEventListener("change", save);
   el.colorCards.addEventListener("change", save);
   el.colorStrength.addEventListener("input", save);
 

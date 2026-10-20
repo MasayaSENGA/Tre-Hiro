@@ -137,3 +137,133 @@
     background-repeat: no-repeat, no-repeat !important;
   }
 }
+
+/* -----------------------------------------------------------------
+   5. カードの自動化ボタンを常に表示する
+      autobuttons.js がカード詳細の枠の最後に足すボタン列。
+      色・角丸は Trello のデザイントークン（--ds-*）を借りるので、
+      ダークテーマにもそのまま追従する。
+   ----------------------------------------------------------------- */
+@media screen {
+  [data-twc-auto-bar] {
+    display: flex;
+    flex: 0 0 auto;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    box-sizing: border-box;
+    /* ボタンが多いときは 3 行（32px × 3 ＋ 行間 8px × 2 ＋ 上下の余白）までにしてスクロール */
+    max-height: 128px;
+    overflow-y: auto;
+    padding: 8px 16px;
+    border-top: 1px solid var(--ds-border, #091e4224);
+    color: var(--ds-text, #172b4d);
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  [data-twc-auto-bar] .twc-auto-head {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-right: 4px;
+    color: var(--ds-text-subtle, #44546f);
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  /* カード詳細の「ラベル」「日付」などのボタンと同じ、枠線だけのボタン */
+  [data-twc-auto-bar] .twc-auto-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    max-width: 280px;
+    height: 32px;
+    margin: 0;
+    padding: 4px 10px;
+    box-sizing: border-box;
+    border: 1px solid var(--ds-border, #091e4224);
+    border-radius: 6px;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  [data-twc-auto-bar] .twc-auto-btn:hover {
+    background: var(--ds-background-neutral-subtle-hovered, #091e420f);
+  }
+
+  [data-twc-auto-bar] .twc-auto-btn:active {
+    background: var(--ds-background-neutral-subtle-pressed, #091e4224);
+  }
+
+  [data-twc-auto-bar] .twc-auto-btn:focus-visible {
+    outline: 2px solid var(--ds-border-focused, #388bff);
+    outline-offset: 2px;
+  }
+
+  /* 1 つ実行している間は、ほかのボタンを押せなくする（autobuttons.js 側でも無視する） */
+  [data-twc-auto-bar][data-twc-auto-running] .twc-auto-btn {
+    cursor: default;
+  }
+
+  [data-twc-auto-bar][data-twc-auto-running] .twc-auto-btn:not([aria-busy]) {
+    opacity: 0.5;
+  }
+
+  [data-twc-auto-bar] .twc-auto-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* Butler のアイコンは黒い PNG なので、Trello と同じように文字色寄りの灰色に寄せる */
+  [data-twc-auto-bar] .twc-auto-icon {
+    flex: 0 0 auto;
+    width: 16px;
+    height: 16px;
+    box-sizing: border-box;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 16px;
+    filter: brightness(0) invert(0.3);
+  }
+
+  html[data-color-mode="dark"] [data-twc-auto-bar] .twc-auto-icon {
+    filter: brightness(0) invert(0.75);
+  }
+
+  /* 実行中はアイコンをくるくる回る輪に差し替える */
+  [data-twc-auto-bar] .twc-auto-btn[aria-busy="true"] .twc-auto-icon {
+    background-image: none !important;
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    filter: none;
+    animation: twc-auto-spin 0.8s linear infinite;
+  }
+
+  @keyframes twc-auto-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* 代理で操作している間の「自動化」ポップオーバーは見せない。
+     visibility: hidden にするとポップオーバー内のフォーカス移動が崩れるので、透明にするだけ。
+     BUSY は開いた直後（要素を特定する前）だけ、HIDDEN はその要素だけに付く。 */
+  html[data-twc-auto-busy] .atlaskit-portal section[role="dialog"],
+  .atlaskit-portal section[role="dialog"][data-twc-auto-hidden] {
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+}
+
+@media print {
+  [data-twc-auto-bar] {
+    display: none !important;
+  }
+}
