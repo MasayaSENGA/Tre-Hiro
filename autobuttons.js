@@ -11,6 +11,8 @@
  * 押して、終わったら閉じるだけ。実行・権限・成功／失敗の通知は Trello 自身に
  * 任せるので、Trello や Butler の API は一切たたかない。
  * ボタンの一覧も同じやり方で、カード詳細を開いたときにポップオーバーから読む。
+ * ページから読むのは、ポップオーバーの中のボタンの名前とアイコン（の画像の URL）だけ。
+ * ページの通信やカードの名前・説明・コメントは見ない。
  *
  * 想定している Trello 側の構造（2026 年 10 月時点）:
  *   div[role="dialog"][data-testid="card-back-name"]
@@ -53,16 +55,15 @@
    * Power-Up ボタンなどを取り違えて押さないよう、場所（何番目か）では探さない。
    */
   const BOLT_PATH = "M10.377.102";
-  /** Trello がボタン一覧を取りに行く通信の URL（privateButlerButtons=true など）。 */
-  const BUTTONS_REQUEST = /butlerbuttons=/i;
 
   /** トグルを押してから、開いた状態になるまで待つ上限。 */
   const TOGGLE_TIMEOUT = 1000;
   /** ポップオーバーが開いて一覧の ul が出るまで待つ上限（初回は中身の JS の読み込みがある）。 */
   const OPEN_TIMEOUT = 8000;
-  /** ボタン 0 件のまま、ボタン一覧の通信が終わってから「0 件」とみなすまでの時間。 */
-  const EMPTY_AFTER_RESPONSE = 800;
-  /** ボタン 0 件のまま、通信も見えないときに「0 件」とみなすまでの時間。 */
+  /**
+   * ul が出てからボタン 0 件のまま、「0 件」とみなすまでの時間。
+   * 初回は ul が出てから一覧が届くまで 0.3〜0.6 秒ほどかかった（実測）ので、余裕を持たせる。
+   */
   const EMPTY_TIMEOUT = 1500;
   /**
    * 前にボタンが 0 件だったボードでの EMPTY_TIMEOUT。Trello が一覧を覚えているときは
@@ -95,11 +96,12 @@
   /** 入力中なので読み取りを後回しにしているか。 */
   let deferred = false;
   /**
-   * ボタンが 0 件だったボードの名前（ページを開いている間だけ覚える）。
-   * DOM にはボードの ID が無いので名前で見分ける。同名のボードがあっても、
-   * 待ち時間が短くなるだけで、ボタンがあれば読める。
+   * ボタンが 0 件だったボードの画面の要素（ページを開いている間だけ覚える）。
+   * DOM にはボードの ID が無く、名前などの文字は読みたくないので、要素そのもので見分ける。
+   * Trello が別のボードでも同じ要素を使い回していても、待ち時間が短くなるだけで、
+   * Trello が一覧を覚えていればボタンは読める。
    */
-  const emptyBoards = new Set();
+  const emptyBoards = new WeakSet();
 
   /* ------------------------------------------------------------------
      Trello 側の要素を探す
@@ -196,10 +198,9 @@
     );
   }
 
-  /** カードの後ろに出ているボードの名前。 */
-  function boardName() {
-    const h = document.querySelector('[data-testid="board-name-display"]');
-    return h ? h.textContent.trim() : "";
+  /** カードの後ろに出ているボードの画面の要素。 */
+  function boardView() {
+    return document.querySelector('[data-testid="board-view"]');
   }
 
   /** カードを区別するキー。URL の /c/<shortLink>/ を使う。 */
@@ -256,23 +257,6 @@
     });
   }
 
-  /** Trello が出すボタン一覧の通信が、最後に終わった時刻（performance.now()）を記録する。 */
-  function watchButtonsRequests() {
-    const state = { lastEnd: 0, stop() {} };
-    try {
-      const po = new PerformanceObserver((list) => {
-        for (const entry of list.getEntries()) {
-          if (BUTTONS_REQUEST.test(entry.name)) state.lastEnd = performance.now();
-        }
-      });
-      po.observe({ type: "resource" });
-      state.stop = () => po.disconnect();
-    } catch (_) {
-      // 使えないときは EMPTY_TIMEOUT だけで判断する。
-    }
-    return state;
-  }
-
   function onPointerDown(event) {
     if (event.isTrusted) interrupted = true;
   }
@@ -293,19 +277,14 @@
 
   /**
    * 一覧が出そろうのを待つ。ボタンが 1 つでも出たら、書き換えが落ち着いたところで終わり。
-   * 0 件のままなら、ボタン一覧の通信が終わってから少し待って（通信が見えなければ
-   * emptyWait 待って）0 件とみなす。途中で閉じられたら CLOSED。
+   * 0 件のまま emptyWait たったら 0 件とみなす。途中で閉じられたら CLOSED。
    */
-  async function whenListed(pop, requests, emptyWait) {
+  async function whenListed(pop, emptyWait) {
     const since = performance.now();
     const state = await waitFor(() => {
       if (interrupted || !pop.isConnected) return CLOSED;
       if (itemButtons(pop).length) return "items";
-      const now = performance.now();
-      if (requests.lastEnd) {
-        return now - requests.lastEnd > EMPTY_AFTER_RESPONSE ? "empty" : null;
-      }
-      return now - since > emptyWait ? "empty" : null;
+      return performance.now() - since > emptyWait ? "empty" : null;
     }, OPEN_TIMEOUT);
     if (state === "items") await settle(pop);
     return state || "empty";
@@ -315,7 +294,7 @@
    * ポップオーバーを開いて fn(pop) を実行し、閉じる。
    * ユーザーが自分で開いているときは、それをそのまま使い、閉じない。
    * 開けなかった（途中で閉じられた・時間切れ）ときは null を返す。
-   * emptyWait は、ボタン 0 件のまま通信も見えないときに待つ時間（whenListed）。
+   * emptyWait は、ボタン 0 件のまま待つ時間（whenListed）。
    */
   async function withPopover(toggle, fn, emptyWait = EMPTY_TIMEOUT) {
     const opened = isOpen(toggle) && openPopover();
@@ -323,7 +302,6 @@
 
     const root = document.documentElement;
     const previousFocus = document.activeElement;
-    const requests = watchButtonsRequests();
     // 押す前から出ているポップオーバーは、これから開くものではない。
     const before = new Set(portalPopovers());
     let pop = null;
@@ -349,10 +327,9 @@
       if (!found || found === CLOSED) return null;
       pop = found;
 
-      if ((await whenListed(pop, requests, emptyWait)) === CLOSED) return null;
+      if ((await whenListed(pop, emptyWait)) === CLOSED) return null;
       return await fn(pop);
     } finally {
-      requests.stop();
       window.removeEventListener("pointerdown", onPointerDown, true);
       for (const type of KEY_EVENTS) window.removeEventListener(type, onKey, true);
       // ユーザーが押した場合は Trello が閉じている最中なので、ここで押すと開き直してしまう。
@@ -397,8 +374,8 @@
     if (attempts.key !== key) attempts = { key, count: 0, retryAt: 0 };
     attempts.count++;
 
-    const board = boardName();
-    const emptyWait = emptyBoards.has(board) ? EMPTY_TIMEOUT_KNOWN : EMPTY_TIMEOUT;
+    const board = boardView();
+    const emptyWait = board && emptyBoards.has(board) ? EMPTY_TIMEOUT_KNOWN : EMPTY_TIMEOUT;
     const items = await withPopover(toggle, (pop) => itemsOf(pop), emptyWait);
     if (cardKey() !== key || !cardDialog()) return; // 読んでいる間に別のカードに移った
     if (items) {

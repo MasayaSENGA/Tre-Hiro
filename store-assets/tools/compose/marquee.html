@@ -41,7 +41,7 @@
       <div class="name l">トレひろ</div>
     </div>
     <div class="tagline l"><span class="soft">Trello の</span>カード詳細を、<span class="accent">画面いっぱいに</span></div>
-    <div class="support l">説明欄とコメント欄の比率調整・ラベル色の塗り分け（非公式ツール）</div>
+    <div class="support l">比率調整・自動化ボタンの常時表示・ラベル色の塗り分け（非公式ツール）</div>
   </div>
   <figure class="shot popup-fig" data-geom="popup_default" data-block="popup"><img src="build/popup_default.png" alt=""></figure>
 </div>
@@ -50,7 +50,8 @@
   window.layout = function (H) {
     const G = window.GEOM;
     const pop = document.querySelector(".popup-fig");
-    const ps = 0.9;
+    // v2.1.0 でポップアップに「自動化ボタンを常に表示」の欄が増えて背が伸びたので、上下に 32px 以上残る 80% にした
+    const ps = 0.8;
     const w = G.popup_default.css_w * ps, h = G.popup_default.css_h * ps;
     pop.querySelector("img").style.width = w + "px";
     // 文字のまとまりの右の余白の中央に置く（右端から 72px 以上内側）

@@ -1,6 +1,6 @@
 {
  "notes": [
-  "Extensions.loadUnpacked OK: id=bofakppkoiadngjfajbpfdnkglfleomn"
+  "Extensions.loadUnpacked OK: id=iajfiahokgbcmigkhcdiembfaibgbhik"
  ],
  "shots": [
   {
@@ -12,9 +12,11 @@
     "cardWidth": 95,
     "descRatio": 60,
     "colorCards": true,
-    "colorStrength": 16
+    "colorStrength": 16,
+    "autoButtons": true
    },
    "settings_stored": {
+    "autoButtons": true,
     "cardWidth": 95,
     "colorCards": true,
     "colorStrength": 16,
@@ -26,6 +28,7 @@
      "enabled": "ON",
      "cardWidth": "95%",
      "ratio": "60 : 40",
+     "autoButtons": "ON",
      "colorCards": "ON",
      "colorStrength": "16%"
     },
@@ -35,7 +38,7 @@
    "actions": [],
    "size": [
     600,
-    1034
+    1194
    ],
    "viewport": [
     300,
@@ -46,14 +49,14 @@
     "x": 0,
     "y": 0,
     "width": 300,
-    "height": 517.5
+    "height": 597.5
    },
    "rects": {
     "body": {
      "x": 0,
      "y": 0,
      "width": 300,
-     "height": 517.5
+     "height": 597.5
     },
     "head": {
      "x": 0,
@@ -65,29 +68,35 @@
      "x": 16,
      "y": 50,
      "width": 268,
-     "height": 111.5
+     "height": 110
     },
     "descRatio_field": {
      "x": 16,
-     "y": 161.5,
+     "y": 160,
      "width": 268,
-     "height": 129.5
+     "height": 128
+    },
+    "autoButtons_field": {
+     "x": 16,
+     "y": 288,
+     "width": 268,
+     "height": 84
     },
     "colorField": {
      "x": 16,
-     "y": 291,
+     "y": 372,
      "width": 268,
-     "height": 165.5
+     "height": 164.5
     },
     "foot": {
      "x": 0,
-     "y": 464.5,
+     "y": 544.5,
      "width": 300,
      "height": 53
     },
     "swatch": {
      "x": 16,
-     "y": 376.5,
+     "y": 456.5,
      "width": 268,
      "height": 29
     }
@@ -103,9 +112,11 @@
     "cardWidth": 95,
     "descRatio": 60,
     "colorCards": true,
-    "colorStrength": 16
+    "colorStrength": 16,
+    "autoButtons": true
    },
    "settings_stored": {
+    "autoButtons": true,
     "cardWidth": 95,
     "colorCards": true,
     "colorStrength": 16,
@@ -117,6 +128,7 @@
      "enabled": "ON",
      "cardWidth": "95%",
      "ratio": "60 : 40",
+     "autoButtons": "ON",
      "colorCards": "ON",
      "colorStrength": "16%"
     },
@@ -196,19 +208,19 @@
      "x": 36,
      "y": 105,
      "width": 820.81,
-     "height": 715
+     "height": 666
     },
     "aside": {
      "x": 856.81,
      "y": 105,
      "width": 547.19,
-     "height": 715
+     "height": 666
     },
     "aside_visible": {
      "x": 856.81,
      "y": 105,
      "width": 547.19,
-     "height": 715
+     "height": 666
     },
     "title": {
      "rect": {
@@ -257,13 +269,13 @@
       "x": 56,
       "y": 313,
       "width": 760.81,
-      "height": 482
+      "height": 434
      },
      "visible": {
       "x": 56,
       "y": 313,
       "width": 760.81,
-      "height": 482
+      "height": 434
      }
     },
     "description_body": {
@@ -271,25 +283,25 @@
       "x": 92,
       "y": 357,
       "width": 724.81,
-      "height": 438
+      "height": 390
      },
      "visible": {
       "x": 92,
       "y": 357,
       "width": 724.81,
-      "height": 438
+      "height": 390
      }
     },
     "table": {
      "rect": {
       "x": 92,
-      "y": 477,
+      "y": 429,
       "width": 724.81,
       "height": 223
      },
      "visible": {
       "x": 92,
-      "y": 477,
+      "y": 429,
       "width": 724.81,
       "height": 223
      }
@@ -297,7 +309,7 @@
     "checklist": {
      "rect": {
       "x": 56,
-      "y": 827,
+      "y": 779,
       "width": 760.81,
       "height": 290
      },
@@ -336,13 +348,13 @@
       "x": 873.81,
       "y": 217,
       "width": 514.19,
-      "height": 524
+      "height": 480
      },
      "visible": {
       "x": 873.81,
       "y": 217,
       "width": 514.19,
-      "height": 524
+      "height": 480
      }
     },
     "comment_items": [
@@ -353,13 +365,13 @@
        "x": 873.81,
        "y": 217,
        "width": 514.19,
-       "height": 100
+       "height": 76
       },
       "visible": {
        "x": 873.81,
        "y": 217,
        "width": 514.19,
-       "height": 100
+       "height": 76
       }
      },
      {
@@ -367,13 +379,13 @@
       "kind": "comment",
       "rect": {
        "x": 873.81,
-       "y": 317,
+       "y": 293,
        "width": 514.19,
        "height": 100
       },
       "visible": {
        "x": 873.81,
-       "y": 317,
+       "y": 293,
        "width": 514.19,
        "height": 100
       }
@@ -383,13 +395,13 @@
       "kind": "activity",
       "rect": {
        "x": 873.81,
-       "y": 417,
+       "y": 393,
        "width": 514.19,
        "height": 54
       },
       "visible": {
        "x": 873.81,
-       "y": 417,
+       "y": 393,
        "width": 514.19,
        "height": 54
       }
@@ -399,13 +411,13 @@
       "kind": "comment",
       "rect": {
        "x": 873.81,
-       "y": 471,
+       "y": 447,
        "width": 514.19,
        "height": 120
       },
       "visible": {
        "x": 873.81,
-       "y": 471,
+       "y": 447,
        "width": 514.19,
        "height": 120
       }
@@ -415,13 +427,13 @@
       "kind": "comment",
       "rect": {
        "x": 873.81,
-       "y": 591,
+       "y": 567,
        "width": 514.19,
        "height": 76
       },
       "visible": {
        "x": 873.81,
-       "y": 591,
+       "y": 567,
        "width": 514.19,
        "height": 76
       }
@@ -431,38 +443,90 @@
       "kind": "activity",
       "rect": {
        "x": 873.81,
-       "y": 667,
+       "y": 643,
        "width": 514.19,
-       "height": 74
+       "height": 54
       },
       "visible": {
        "x": 873.81,
-       "y": 667,
+       "y": 643,
        "width": 514.19,
-       "height": 74
+       "height": 54
       }
      }
     ],
     "nav": {
      "rect": {
-      "x": 552.64,
+      "x": 561.45,
       "y": 836,
-      "width": 334.72,
+      "width": 317.09,
       "height": 46
      },
      "visible": {
-      "x": 552.64,
+      "x": 561.45,
       "y": 836,
-      "width": 334.72,
+      "width": 317.09,
       "height": 46
      }
     },
     "activity_button": {
-     "x": 778.36,
+     "x": 784.84,
      "y": 843,
-     "width": 102,
+     "width": 86.7,
      "height": 32
-    }
+    },
+    "automation_toggle": {
+     "x": 683.84,
+     "y": 843,
+     "width": 88,
+     "height": 32
+    },
+    "automation_popover": null,
+    "automation_items": [],
+    "auto_bar": {
+     "x": 36,
+     "y": 771,
+     "width": 1368,
+     "height": 49
+    },
+    "auto_buttons": [
+     {
+      "x": 118,
+      "y": 780,
+      "width": 110.38,
+      "height": 32
+     },
+     {
+      "x": 236.38,
+      "y": 780,
+      "width": 136.44,
+      "height": 32
+     },
+     {
+      "x": 380.81,
+      "y": 780,
+      "width": 105.8,
+      "height": 32
+     },
+     {
+      "x": 494.61,
+      "y": 780,
+      "width": 122.02,
+      "height": 32
+     },
+     {
+      "x": 624.63,
+      "y": 780,
+      "width": 136.02,
+      "height": 32
+     },
+     {
+      "x": 768.64,
+      "y": 780,
+      "width": 164.78,
+      "height": 32
+     }
+    ]
    },
    "html_state": {
     "on": true,
@@ -478,6 +542,21 @@
     "cards": 13,
     "labeled_cards": 10,
     "painted_cards": 10
+   },
+   "auto": {
+    "bar": true,
+    "buttons": [
+     "レビュー依頼",
+     "確認待ちへ移動",
+     "完了にする",
+     "担当を自分に",
+     "期限を今週末に",
+     "公開前チェックを追加"
+    ],
+    "busy": false,
+    "pressed": "false",
+    "popover_items": 0,
+    "popover_opacity": null
    },
    "size": [
     2880,
@@ -498,9 +577,11 @@
     "cardWidth": 95,
     "descRatio": 75,
     "colorCards": true,
-    "colorStrength": 16
+    "colorStrength": 16,
+    "autoButtons": true
    },
    "settings_stored": {
+    "autoButtons": true,
     "cardWidth": 95,
     "colorCards": true,
     "colorStrength": 16,
@@ -512,6 +593,7 @@
      "enabled": "ON",
      "cardWidth": "95%",
      "ratio": "75 : 25",
+     "autoButtons": "ON",
      "colorCards": "ON",
      "colorStrength": "16%"
     },
@@ -593,19 +675,19 @@
      "x": 36,
      "y": 105,
      "width": 1026,
-     "height": 715
+     "height": 666
     },
     "aside": {
      "x": 1062,
      "y": 105,
      "width": 342,
-     "height": 715
+     "height": 666
     },
     "aside_visible": {
      "x": 1062,
      "y": 105,
      "width": 342,
-     "height": 715
+     "height": 666
     },
     "title": {
      "rect": {
@@ -698,37 +780,32 @@
       "width": 966,
       "height": 290
      },
-     "visible": {
-      "x": 56,
-      "y": 779,
-      "width": 966,
-      "height": 41
-     }
+     "visible": null
     },
     "comments_header": {
      "rect": {
       "x": 1115,
       "y": 121,
       "width": 273,
-      "height": 68
+      "height": 32
      },
      "visible": {
       "x": 1115,
       "y": 121,
       "width": 273,
-      "height": 68
+      "height": 32
      }
     },
     "comment_composer": {
      "rect": {
       "x": 1079,
-      "y": 201,
+      "y": 165,
       "width": 309,
       "height": 40
      },
      "visible": {
       "x": 1079,
-      "y": 201,
+      "y": 165,
       "width": 309,
       "height": 40
      }
@@ -736,15 +813,15 @@
     "comments_list": {
      "rect": {
       "x": 1079,
-      "y": 253,
+      "y": 217,
       "width": 309,
-      "height": 680
+      "height": 616
      },
      "visible": {
       "x": 1079,
-      "y": 253,
+      "y": 217,
       "width": 309,
-      "height": 567
+      "height": 554
      }
     },
     "comment_items": [
@@ -753,13 +830,13 @@
       "kind": "comment",
       "rect": {
        "x": 1079,
-       "y": 253,
+       "y": 217,
        "width": 309,
        "height": 116
       },
       "visible": {
        "x": 1079,
-       "y": 253,
+       "y": 217,
        "width": 309,
        "height": 116
       }
@@ -769,15 +846,15 @@
       "kind": "comment",
       "rect": {
        "x": 1079,
-       "y": 369,
+       "y": 333,
        "width": 309,
-       "height": 140
+       "height": 124
       },
       "visible": {
        "x": 1079,
-       "y": 369,
+       "y": 333,
        "width": 309,
-       "height": 140
+       "height": 124
       }
      },
      {
@@ -785,13 +862,13 @@
       "kind": "activity",
       "rect": {
        "x": 1079,
-       "y": 509,
+       "y": 457,
        "width": 309,
        "height": 74
       },
       "visible": {
        "x": 1079,
-       "y": 509,
+       "y": 457,
        "width": 309,
        "height": 74
       }
@@ -801,15 +878,15 @@
       "kind": "comment",
       "rect": {
        "x": 1079,
-       "y": 583,
+       "y": 531,
        "width": 309,
-       "height": 160
+       "height": 136
       },
       "visible": {
        "x": 1079,
-       "y": 583,
+       "y": 531,
        "width": 309,
-       "height": 160
+       "height": 136
       }
      },
      {
@@ -817,15 +894,15 @@
       "kind": "comment",
       "rect": {
        "x": 1079,
-       "y": 743,
+       "y": 667,
        "width": 309,
-       "height": 116
+       "height": 92
       },
       "visible": {
        "x": 1079,
-       "y": 743,
+       "y": 667,
        "width": 309,
-       "height": 77
+       "height": 92
       }
      },
      {
@@ -833,33 +910,90 @@
       "kind": "activity",
       "rect": {
        "x": 1079,
-       "y": 859,
+       "y": 759,
        "width": 309,
        "height": 74
       },
-      "visible": null
+      "visible": {
+       "x": 1079,
+       "y": 759,
+       "width": 309,
+       "height": 12
+      }
      }
     ],
     "nav": {
      "rect": {
-      "x": 552.64,
+      "x": 561.45,
       "y": 836,
-      "width": 334.72,
+      "width": 317.09,
       "height": 46
      },
      "visible": {
-      "x": 552.64,
+      "x": 561.45,
       "y": 836,
-      "width": 334.72,
+      "width": 317.09,
       "height": 46
      }
     },
     "activity_button": {
-     "x": 778.36,
+     "x": 784.84,
      "y": 843,
-     "width": 102,
+     "width": 86.7,
      "height": 32
-    }
+    },
+    "automation_toggle": {
+     "x": 683.84,
+     "y": 843,
+     "width": 88,
+     "height": 32
+    },
+    "automation_popover": null,
+    "automation_items": [],
+    "auto_bar": {
+     "x": 36,
+     "y": 771,
+     "width": 1368,
+     "height": 49
+    },
+    "auto_buttons": [
+     {
+      "x": 118,
+      "y": 780,
+      "width": 110.38,
+      "height": 32
+     },
+     {
+      "x": 236.38,
+      "y": 780,
+      "width": 136.44,
+      "height": 32
+     },
+     {
+      "x": 380.81,
+      "y": 780,
+      "width": 105.8,
+      "height": 32
+     },
+     {
+      "x": 494.61,
+      "y": 780,
+      "width": 122.02,
+      "height": 32
+     },
+     {
+      "x": 624.63,
+      "y": 780,
+      "width": 136.02,
+      "height": 32
+     },
+     {
+      "x": 768.64,
+      "y": 780,
+      "width": 164.78,
+      "height": 32
+     }
+    ]
    },
    "html_state": {
     "on": true,
@@ -875,6 +1009,21 @@
     "cards": 13,
     "labeled_cards": 10,
     "painted_cards": 10
+   },
+   "auto": {
+    "bar": true,
+    "buttons": [
+     "レビュー依頼",
+     "確認待ちへ移動",
+     "完了にする",
+     "担当を自分に",
+     "期限を今週末に",
+     "公開前チェックを追加"
+    ],
+    "busy": false,
+    "pressed": "false",
+    "popover_items": 0,
+    "popover_opacity": null
    },
    "size": [
     2880,
@@ -895,9 +1044,11 @@
     "cardWidth": 95,
     "descRatio": 75,
     "colorCards": true,
-    "colorStrength": 16
+    "colorStrength": 16,
+    "autoButtons": true
    },
    "settings_stored": {
+    "autoButtons": true,
     "cardWidth": 95,
     "colorCards": true,
     "colorStrength": 16,
@@ -909,6 +1060,7 @@
      "enabled": "ON",
      "cardWidth": "95%",
      "ratio": "75 : 25",
+     "autoButtons": "ON",
      "colorCards": "ON",
      "colorStrength": "16%"
     },
@@ -918,7 +1070,7 @@
    "actions": [],
    "size": [
     600,
-    1034
+    1194
    ],
    "viewport": [
     300,
@@ -929,14 +1081,14 @@
     "x": 0,
     "y": 0,
     "width": 300,
-    "height": 517.5
+    "height": 597.5
    },
    "rects": {
     "body": {
      "x": 0,
      "y": 0,
      "width": 300,
-     "height": 517.5
+     "height": 597.5
     },
     "head": {
      "x": 0,
@@ -948,29 +1100,35 @@
      "x": 16,
      "y": 50,
      "width": 268,
-     "height": 111.5
+     "height": 110
     },
     "descRatio_field": {
      "x": 16,
-     "y": 161.5,
+     "y": 160,
      "width": 268,
-     "height": 129.5
+     "height": 128
+    },
+    "autoButtons_field": {
+     "x": 16,
+     "y": 288,
+     "width": 268,
+     "height": 84
     },
     "colorField": {
      "x": 16,
-     "y": 291,
+     "y": 372,
      "width": 268,
-     "height": 165.5
+     "height": 164.5
     },
     "foot": {
      "x": 0,
-     "y": 464.5,
+     "y": 544.5,
      "width": 300,
      "height": 53
     },
     "swatch": {
      "x": 16,
-     "y": 376.5,
+     "y": 456.5,
      "width": 268,
      "height": 29
     }
@@ -986,9 +1144,11 @@
     "cardWidth": 95,
     "descRatio": 35,
     "colorCards": true,
-    "colorStrength": 16
+    "colorStrength": 16,
+    "autoButtons": true
    },
    "settings_stored": {
+    "autoButtons": true,
     "cardWidth": 95,
     "colorCards": true,
     "colorStrength": 16,
@@ -1000,6 +1160,7 @@
      "enabled": "ON",
      "cardWidth": "95%",
      "ratio": "35 : 65",
+     "autoButtons": "ON",
      "colorCards": "ON",
      "colorStrength": "16%"
     },
@@ -1035,11 +1196,11 @@
    },
    "table_row_heights": [
     37,
+    59,
     81,
-    103,
-    103,
-    103,
-    81
+    81,
+    81,
+    59
    ],
    "check_vs_expected": {
     "dialog": {
@@ -1081,44 +1242,44 @@
      "x": 36,
      "y": 105,
      "width": 478.81,
-     "height": 715
+     "height": 666
     },
     "aside": {
      "x": 514.81,
      "y": 105,
      "width": 889.19,
-     "height": 715
+     "height": 666
     },
     "aside_visible": {
      "x": 514.81,
      "y": 105,
      "width": 889.19,
-     "height": 715
+     "height": 666
     },
     "title": {
      "rect": {
       "x": 92,
       "y": 129,
       "width": 402.81,
-      "height": 64
+      "height": 32
      },
      "visible": {
       "x": 92,
       "y": 129,
       "width": 402.81,
-      "height": 64
+      "height": 32
      }
     },
     "quick_actions": {
      "rect": {
       "x": 92,
-      "y": 217,
+      "y": 185,
       "width": 382.81,
       "height": 72
      },
      "visible": {
       "x": 92,
-      "y": 217,
+      "y": 185,
       "width": 382.81,
       "height": 72
      }
@@ -1126,13 +1287,13 @@
     "meta": {
      "rect": {
       "x": 92,
-      "y": 313,
+      "y": 281,
       "width": 382.81,
       "height": 128
      },
      "visible": {
       "x": 92,
-      "y": 313,
+      "y": 281,
       "width": 382.81,
       "height": 128
      }
@@ -1140,49 +1301,49 @@
     "description": {
      "rect": {
       "x": 56,
-      "y": 457,
+      "y": 425,
       "width": 418.81,
-      "height": 888
+      "height": 682
      },
      "visible": {
       "x": 56,
-      "y": 457,
+      "y": 425,
       "width": 418.81,
-      "height": 363
+      "height": 346
      }
     },
     "description_body": {
      "rect": {
       "x": 92,
-      "y": 501,
+      "y": 469,
       "width": 382.81,
-      "height": 844
+      "height": 638
      },
      "visible": {
       "x": 92,
-      "y": 501,
+      "y": 469,
       "width": 382.81,
-      "height": 319
+      "height": 302
      }
     },
     "table": {
      "rect": {
       "x": 92,
-      "y": 669,
+      "y": 589,
       "width": 382.81,
-      "height": 509
+      "height": 399
      },
      "visible": {
       "x": 92,
-      "y": 669,
+      "y": 589,
       "width": 382.81,
-      "height": 151
+      "height": 182
      }
     },
     "checklist": {
      "rect": {
       "x": 56,
-      "y": 1377,
+      "y": 1139,
       "width": 418.81,
       "height": 290
      },
@@ -1330,24 +1491,76 @@
     ],
     "nav": {
      "rect": {
-      "x": 552.64,
+      "x": 561.45,
       "y": 836,
-      "width": 334.72,
+      "width": 317.09,
       "height": 46
      },
      "visible": {
-      "x": 552.64,
+      "x": 561.45,
       "y": 836,
-      "width": 334.72,
+      "width": 317.09,
       "height": 46
      }
     },
     "activity_button": {
-     "x": 778.36,
+     "x": 784.84,
      "y": 843,
-     "width": 102,
+     "width": 86.7,
      "height": 32
-    }
+    },
+    "automation_toggle": {
+     "x": 683.84,
+     "y": 843,
+     "width": 88,
+     "height": 32
+    },
+    "automation_popover": null,
+    "automation_items": [],
+    "auto_bar": {
+     "x": 36,
+     "y": 771,
+     "width": 1368,
+     "height": 49
+    },
+    "auto_buttons": [
+     {
+      "x": 118,
+      "y": 780,
+      "width": 110.38,
+      "height": 32
+     },
+     {
+      "x": 236.38,
+      "y": 780,
+      "width": 136.44,
+      "height": 32
+     },
+     {
+      "x": 380.81,
+      "y": 780,
+      "width": 105.8,
+      "height": 32
+     },
+     {
+      "x": 494.61,
+      "y": 780,
+      "width": 122.02,
+      "height": 32
+     },
+     {
+      "x": 624.63,
+      "y": 780,
+      "width": 136.02,
+      "height": 32
+     },
+     {
+      "x": 768.64,
+      "y": 780,
+      "width": 164.78,
+      "height": 32
+     }
+    ]
    },
    "html_state": {
     "on": true,
@@ -1363,6 +1576,21 @@
     "cards": 13,
     "labeled_cards": 10,
     "painted_cards": 10
+   },
+   "auto": {
+    "bar": true,
+    "buttons": [
+     "レビュー依頼",
+     "確認待ちへ移動",
+     "完了にする",
+     "担当を自分に",
+     "期限を今週末に",
+     "公開前チェックを追加"
+    ],
+    "busy": false,
+    "pressed": "false",
+    "popover_items": 0,
+    "popover_opacity": null
    },
    "size": [
     2880,
@@ -1383,9 +1611,11 @@
     "cardWidth": 95,
     "descRatio": 35,
     "colorCards": true,
-    "colorStrength": 16
+    "colorStrength": 16,
+    "autoButtons": true
    },
    "settings_stored": {
+    "autoButtons": true,
     "cardWidth": 95,
     "colorCards": true,
     "colorStrength": 16,
@@ -1397,6 +1627,7 @@
      "enabled": "ON",
      "cardWidth": "95%",
      "ratio": "35 : 65",
+     "autoButtons": "ON",
      "colorCards": "ON",
      "colorStrength": "16%"
     },
@@ -1406,7 +1637,7 @@
    "actions": [],
    "size": [
     600,
-    1034
+    1194
    ],
    "viewport": [
     300,
@@ -1417,14 +1648,14 @@
     "x": 0,
     "y": 0,
     "width": 300,
-    "height": 517.5
+    "height": 597.5
    },
    "rects": {
     "body": {
      "x": 0,
      "y": 0,
      "width": 300,
-     "height": 517.5
+     "height": 597.5
     },
     "head": {
      "x": 0,
@@ -1436,29 +1667,35 @@
      "x": 16,
      "y": 50,
      "width": 268,
-     "height": 111.5
+     "height": 110
     },
     "descRatio_field": {
      "x": 16,
-     "y": 161.5,
+     "y": 160,
      "width": 268,
-     "height": 129.5
+     "height": 128
+    },
+    "autoButtons_field": {
+     "x": 16,
+     "y": 288,
+     "width": 268,
+     "height": 84
     },
     "colorField": {
      "x": 16,
-     "y": 291,
+     "y": 372,
      "width": 268,
-     "height": 165.5
+     "height": 164.5
     },
     "foot": {
      "x": 0,
-     "y": 464.5,
+     "y": 544.5,
      "width": 300,
      "height": 53
     },
     "swatch": {
      "x": 16,
-     "y": 376.5,
+     "y": 456.5,
      "width": 268,
      "height": 29
     }
@@ -1474,9 +1711,11 @@
     "cardWidth": 95,
     "descRatio": 60,
     "colorCards": true,
-    "colorStrength": 16
+    "colorStrength": 16,
+    "autoButtons": true
    },
    "settings_stored": {
+    "autoButtons": true,
     "cardWidth": 95,
     "colorCards": true,
     "colorStrength": 16,
@@ -1488,6 +1727,7 @@
      "enabled": "ON",
      "cardWidth": "95%",
      "ratio": "60 : 40",
+     "autoButtons": "ON",
      "colorCards": "ON",
      "colorStrength": "16%"
     },
@@ -1565,13 +1805,13 @@
      "x": 36,
      "y": 105,
      "width": 1368,
-     "height": 715
+     "height": 666
     },
     "aside": {
      "x": 1951.19,
      "y": 105,
      "width": 547.19,
-     "height": 715
+     "height": 666
     },
     "aside_visible": null,
     "title": {
@@ -1665,12 +1905,7 @@
       "width": 1308,
       "height": 290
      },
-     "visible": {
-      "x": 56,
-      "y": 779,
-      "width": 1308,
-      "height": 41
-     }
+     "visible": null
     },
     "comments_header": {
      "rect": {
@@ -1695,7 +1930,7 @@
       "x": 1968.19,
       "y": 217,
       "width": 514.19,
-      "height": 524
+      "height": 480
      },
      "visible": null
     },
@@ -1707,7 +1942,7 @@
        "x": 1968.19,
        "y": 217,
        "width": 514.19,
-       "height": 100
+       "height": 76
       },
       "visible": null
      },
@@ -1716,7 +1951,7 @@
       "kind": "comment",
       "rect": {
        "x": 1968.19,
-       "y": 317,
+       "y": 293,
        "width": 514.19,
        "height": 100
       },
@@ -1727,7 +1962,7 @@
       "kind": "activity",
       "rect": {
        "x": 1968.19,
-       "y": 417,
+       "y": 393,
        "width": 514.19,
        "height": 54
       },
@@ -1738,7 +1973,7 @@
       "kind": "comment",
       "rect": {
        "x": 1968.19,
-       "y": 471,
+       "y": 447,
        "width": 514.19,
        "height": 120
       },
@@ -1749,7 +1984,7 @@
       "kind": "comment",
       "rect": {
        "x": 1968.19,
-       "y": 591,
+       "y": 567,
        "width": 514.19,
        "height": 76
       },
@@ -1760,33 +1995,85 @@
       "kind": "activity",
       "rect": {
        "x": 1968.19,
-       "y": 667,
+       "y": 643,
        "width": 514.19,
-       "height": 74
+       "height": 54
       },
       "visible": null
      }
     ],
     "nav": {
      "rect": {
-      "x": 552.64,
+      "x": 561.45,
       "y": 836,
-      "width": 334.72,
+      "width": 317.09,
       "height": 46
      },
      "visible": {
-      "x": 552.64,
+      "x": 561.45,
       "y": 836,
-      "width": 334.72,
+      "width": 317.09,
       "height": 46
      }
     },
     "activity_button": {
-     "x": 778.36,
+     "x": 784.84,
      "y": 843,
-     "width": 102,
+     "width": 86.7,
      "height": 32
-    }
+    },
+    "automation_toggle": {
+     "x": 683.84,
+     "y": 843,
+     "width": 88,
+     "height": 32
+    },
+    "automation_popover": null,
+    "automation_items": [],
+    "auto_bar": {
+     "x": 36,
+     "y": 771,
+     "width": 1368,
+     "height": 49
+    },
+    "auto_buttons": [
+     {
+      "x": 118,
+      "y": 780,
+      "width": 110.38,
+      "height": 32
+     },
+     {
+      "x": 236.38,
+      "y": 780,
+      "width": 136.44,
+      "height": 32
+     },
+     {
+      "x": 380.81,
+      "y": 780,
+      "width": 105.8,
+      "height": 32
+     },
+     {
+      "x": 494.61,
+      "y": 780,
+      "width": 122.02,
+      "height": 32
+     },
+     {
+      "x": 624.63,
+      "y": 780,
+      "width": 136.02,
+      "height": 32
+     },
+     {
+      "x": 768.64,
+      "y": 780,
+      "width": 164.78,
+      "height": 32
+     }
+    ]
    },
    "html_state": {
     "on": true,
@@ -1802,6 +2089,21 @@
     "cards": 13,
     "labeled_cards": 10,
     "painted_cards": 10
+   },
+   "auto": {
+    "bar": true,
+    "buttons": [
+     "レビュー依頼",
+     "確認待ちへ移動",
+     "完了にする",
+     "担当を自分に",
+     "期限を今週末に",
+     "公開前チェックを追加"
+    ],
+    "busy": false,
+    "pressed": "false",
+    "popover_items": 0,
+    "popover_opacity": null
    },
    "size": [
     2880,
@@ -1822,9 +2124,11 @@
     "cardWidth": 95,
     "descRatio": 60,
     "colorCards": true,
-    "colorStrength": 16
+    "colorStrength": 16,
+    "autoButtons": true
    },
    "settings_stored": {
+    "autoButtons": true,
     "cardWidth": 95,
     "colorCards": true,
     "colorStrength": 16,
@@ -1836,6 +2140,7 @@
      "enabled": "OFF",
      "cardWidth": "95%",
      "ratio": "60 : 40",
+     "autoButtons": "ON",
      "colorCards": "ON",
      "colorStrength": "16%"
     },
@@ -1940,25 +2245,25 @@
       "x": 484,
       "y": 185,
       "width": 488,
-      "height": 72
+      "height": 32
      },
      "visible": {
       "x": 484,
       "y": 185,
       "width": 488,
-      "height": 72
+      "height": 32
      }
     },
     "meta": {
      "rect": {
       "x": 484,
-      "y": 281,
+      "y": 241,
       "width": 488,
       "height": 128
      },
      "visible": {
       "x": 484,
-      "y": 281,
+      "y": 241,
       "width": 488,
       "height": 128
      }
@@ -1966,49 +2271,49 @@
     "description": {
      "rect": {
       "x": 448,
-      "y": 425,
+      "y": 385,
       "width": 524,
-      "height": 616
+      "height": 592
      },
      "visible": {
       "x": 448,
-      "y": 425,
+      "y": 385,
       "width": 524,
-      "height": 395
+      "height": 435
      }
     },
     "description_body": {
      "rect": {
       "x": 484,
-      "y": 469,
+      "y": 429,
       "width": 488,
-      "height": 572
+      "height": 548
      },
      "visible": {
       "x": 484,
-      "y": 469,
+      "y": 429,
       "width": 488,
-      "height": 351
+      "height": 391
      }
     },
     "table": {
      "rect": {
       "x": 484,
-      "y": 589,
+      "y": 549,
       "width": 488,
       "height": 333
      },
      "visible": {
       "x": 484,
-      "y": 589,
+      "y": 549,
       "width": 488,
-      "height": 231
+      "height": 271
      }
     },
     "checklist": {
      "rect": {
       "x": 448,
-      "y": 1073,
+      "y": 1009,
       "width": 524,
       "height": 290
      },
@@ -2037,7 +2342,7 @@
       "x": 1489,
       "y": 217,
       "width": 427,
-      "height": 544
+      "height": 524
      },
      "visible": null
     },
@@ -2071,7 +2376,7 @@
        "x": 1489,
        "y": 417,
        "width": 427,
-       "height": 74
+       "height": 54
       },
       "visible": null
      },
@@ -2080,7 +2385,7 @@
       "kind": "comment",
       "rect": {
        "x": 1489,
-       "y": 491,
+       "y": 471,
        "width": 427,
        "height": 120
       },
@@ -2091,7 +2396,7 @@
       "kind": "comment",
       "rect": {
        "x": 1489,
-       "y": 611,
+       "y": 591,
        "width": 427,
        "height": 76
       },
@@ -2102,7 +2407,7 @@
       "kind": "activity",
       "rect": {
        "x": 1489,
-       "y": 687,
+       "y": 667,
        "width": 427,
        "height": 74
       },
@@ -2111,24 +2416,34 @@
     ],
     "nav": {
      "rect": {
-      "x": 552.64,
+      "x": 561.45,
       "y": 836,
-      "width": 334.72,
+      "width": 317.09,
       "height": 46
      },
      "visible": {
-      "x": 552.64,
+      "x": 561.45,
       "y": 836,
-      "width": 334.72,
+      "width": 317.09,
       "height": 46
      }
     },
     "activity_button": {
-     "x": 778.36,
+     "x": 784.84,
      "y": 843,
-     "width": 102,
+     "width": 86.7,
      "height": 32
-    }
+    },
+    "automation_toggle": {
+     "x": 683.84,
+     "y": 843,
+     "width": 88,
+     "height": 32
+    },
+    "automation_popover": null,
+    "automation_items": [],
+    "auto_bar": null,
+    "auto_buttons": []
    },
    "html_state": {
     "on": false,
@@ -2144,6 +2459,14 @@
     "cards": 13,
     "labeled_cards": 10,
     "painted_cards": 0
+   },
+   "auto": {
+    "bar": false,
+    "buttons": [],
+    "busy": false,
+    "pressed": "false",
+    "popover_items": 0,
+    "popover_opacity": null
    },
    "size": [
     2880,
@@ -2164,9 +2487,11 @@
     "cardWidth": 95,
     "descRatio": 60,
     "colorCards": true,
-    "colorStrength": 16
+    "colorStrength": 16,
+    "autoButtons": true
    },
    "settings_stored": {
+    "autoButtons": true,
     "cardWidth": 95,
     "colorCards": true,
     "colorStrength": 16,
@@ -2178,6 +2503,7 @@
      "enabled": "OFF",
      "cardWidth": "95%",
      "ratio": "60 : 40",
+     "autoButtons": "ON",
      "colorCards": "ON",
      "colorStrength": "16%"
     },
@@ -2187,7 +2513,7 @@
    "actions": [],
    "size": [
     600,
-    1034
+    1194
    ],
    "viewport": [
     300,
@@ -2198,14 +2524,14 @@
     "x": 0,
     "y": 0,
     "width": 300,
-    "height": 517.5
+    "height": 597.5
    },
    "rects": {
     "body": {
      "x": 0,
      "y": 0,
      "width": 300,
-     "height": 517.5
+     "height": 597.5
     },
     "head": {
      "x": 0,
@@ -2217,29 +2543,35 @@
      "x": 16,
      "y": 50,
      "width": 268,
-     "height": 111.5
+     "height": 110
     },
     "descRatio_field": {
      "x": 16,
-     "y": 161.5,
+     "y": 160,
      "width": 268,
-     "height": 129.5
+     "height": 128
+    },
+    "autoButtons_field": {
+     "x": 16,
+     "y": 288,
+     "width": 268,
+     "height": 84
     },
     "colorField": {
      "x": 16,
-     "y": 291,
+     "y": 372,
      "width": 268,
-     "height": 165.5
+     "height": 164.5
     },
     "foot": {
      "x": 0,
-     "y": 464.5,
+     "y": 544.5,
      "width": 300,
      "height": 53
     },
     "swatch": {
      "x": 16,
-     "y": 376.5,
+     "y": 456.5,
      "width": 268,
      "height": 29
     }
@@ -2255,9 +2587,11 @@
     "cardWidth": 95,
     "descRatio": 60,
     "colorCards": true,
-    "colorStrength": 16
+    "colorStrength": 16,
+    "autoButtons": true
    },
    "settings_stored": {
+    "autoButtons": true,
     "cardWidth": 95,
     "colorCards": true,
     "colorStrength": 16,
@@ -2269,6 +2603,7 @@
      "enabled": "OFF",
      "cardWidth": "95%",
      "ratio": "60 : 40",
+     "autoButtons": "ON",
      "colorCards": "ON",
      "colorStrength": "16%"
     },
@@ -2490,13 +2825,13 @@
       "x": 817,
       "y": 217,
       "width": 427,
-      "height": 544
+      "height": 524
      },
      "visible": {
       "x": 817,
       "y": 217,
       "width": 427,
-      "height": 544
+      "height": 524
      }
     },
     "comment_items": [
@@ -2539,13 +2874,13 @@
        "x": 817,
        "y": 417,
        "width": 427,
-       "height": 74
+       "height": 54
       },
       "visible": {
        "x": 817,
        "y": 417,
        "width": 427,
-       "height": 74
+       "height": 54
       }
      },
      {
@@ -2553,13 +2888,13 @@
       "kind": "comment",
       "rect": {
        "x": 817,
-       "y": 491,
+       "y": 471,
        "width": 427,
        "height": 120
       },
       "visible": {
        "x": 817,
-       "y": 491,
+       "y": 471,
        "width": 427,
        "height": 120
       }
@@ -2569,13 +2904,13 @@
       "kind": "comment",
       "rect": {
        "x": 817,
-       "y": 611,
+       "y": 591,
        "width": 427,
        "height": 76
       },
       "visible": {
        "x": 817,
-       "y": 611,
+       "y": 591,
        "width": 427,
        "height": 76
       }
@@ -2585,13 +2920,13 @@
       "kind": "activity",
       "rect": {
        "x": 817,
-       "y": 687,
+       "y": 667,
        "width": 427,
        "height": 74
       },
       "visible": {
        "x": 817,
-       "y": 687,
+       "y": 667,
        "width": 427,
        "height": 74
       }
@@ -2599,24 +2934,34 @@
     ],
     "nav": {
      "rect": {
-      "x": 552.64,
+      "x": 561.45,
       "y": 836,
-      "width": 334.72,
+      "width": 317.09,
       "height": 46
      },
      "visible": {
-      "x": 552.64,
+      "x": 561.45,
       "y": 836,
-      "width": 334.72,
+      "width": 317.09,
       "height": 46
      }
     },
     "activity_button": {
-     "x": 778.36,
+     "x": 784.84,
      "y": 843,
-     "width": 102,
+     "width": 86.7,
      "height": 32
-    }
+    },
+    "automation_toggle": {
+     "x": 683.84,
+     "y": 843,
+     "width": 88,
+     "height": 32
+    },
+    "automation_popover": null,
+    "automation_items": [],
+    "auto_bar": null,
+    "auto_buttons": []
    },
    "html_state": {
     "on": false,
@@ -2632,6 +2977,475 @@
     "cards": 13,
     "labeled_cards": 10,
     "painted_cards": 0
+   },
+   "auto": {
+    "bar": false,
+    "buttons": [],
+    "busy": false,
+    "pressed": "false",
+    "popover_items": 0,
+    "popover_opacity": null
+   },
+   "size": [
+    2880,
+    1800
+   ],
+   "viewport": [
+    1440,
+    900
+   ],
+   "dpr": 2
+  },
+  {
+   "file": "card_off_auto.png",
+   "page": "card",
+   "description": "カード詳細（トレひろ OFF＝Trello 標準・下部のナビの「自動化」を押してカードボタンの一覧を開いた状態）",
+   "settings_target": {
+    "enabled": false,
+    "cardWidth": 95,
+    "descRatio": 60,
+    "colorCards": true,
+    "colorStrength": 16,
+    "autoButtons": true
+   },
+   "settings_stored": {
+    "autoButtons": true,
+    "cardWidth": 95,
+    "colorCards": true,
+    "colorStrength": 16,
+    "descRatio": 60,
+    "enabled": false
+   },
+   "popup_ui": {
+    "texts": {
+     "enabled": "OFF",
+     "cardWidth": "95%",
+     "ratio": "60 : 40",
+     "autoButtons": "ON",
+     "colorCards": "ON",
+     "colorStrength": "16%"
+    },
+    "bodyOff": true,
+    "colorsOff": false
+   },
+   "actions": [
+    "click: 再現ページの下部ナビ「自動化」→ 開く",
+    "click: 再現ページの下部ナビ「自動化」→ 閉じる"
+   ],
+   "comments": "open",
+   "measured": {
+    "dialog": 1080,
+    "main": 620,
+    "aside": 460,
+    "aside_visible": 460,
+    "main_div": 620,
+    "hgroup": 544,
+    "description": 524,
+    "table": 524,
+    "ratio": 0.5741
+   },
+   "computed": {
+    "dialog_width": "1080px",
+    "dialog_max_width": "none",
+    "main_flex": "1 1 460px",
+    "main_min_width": "460px",
+    "aside_flex": "0 1 auto",
+    "aside_width": "460px",
+    "aside_min_width": "460px",
+    "aside_transform": "none",
+    "main_div_max_width": "620px",
+    "hgroup_max_width": "544px"
+   },
+   "table_row_heights": [
+    37,
+    59,
+    59,
+    59,
+    59,
+    59
+   ],
+   "check_vs_expected": {
+    "dialog": {
+     "expected": 1080.0,
+     "measured": 1080,
+     "ok": true
+    },
+    "main": {
+     "expected": 620.0,
+     "measured": 620,
+     "ok": true
+    },
+    "aside": {
+     "expected": 460.0,
+     "measured": 460,
+     "ok": true
+    }
+   },
+   "rects": {
+    "viewport": {
+     "x": 0,
+     "y": 0,
+     "width": 1440,
+     "height": 900
+    },
+    "dialog": {
+     "x": 180,
+     "y": 48,
+     "width": 1080,
+     "height": 772
+    },
+    "dialog_header": {
+     "x": 180,
+     "y": 48,
+     "width": 1080,
+     "height": 57
+    },
+    "main": {
+     "x": 180,
+     "y": 105,
+     "width": 620,
+     "height": 715
+    },
+    "aside": {
+     "x": 800,
+     "y": 105,
+     "width": 460,
+     "height": 715
+    },
+    "aside_visible": {
+     "x": 800,
+     "y": 105,
+     "width": 460,
+     "height": 715
+    },
+    "title": {
+     "rect": {
+      "x": 236,
+      "y": 129,
+      "width": 544,
+      "height": 32
+     },
+     "visible": {
+      "x": 236,
+      "y": 129,
+      "width": 544,
+      "height": 32
+     }
+    },
+    "quick_actions": {
+     "rect": {
+      "x": 236,
+      "y": 185,
+      "width": 524,
+      "height": 32
+     },
+     "visible": {
+      "x": 236,
+      "y": 185,
+      "width": 524,
+      "height": 32
+     }
+    },
+    "meta": {
+     "rect": {
+      "x": 236,
+      "y": 241,
+      "width": 524,
+      "height": 56
+     },
+     "visible": {
+      "x": 236,
+      "y": 241,
+      "width": 524,
+      "height": 56
+     }
+    },
+    "description": {
+     "rect": {
+      "x": 200,
+      "y": 313,
+      "width": 560,
+      "height": 592
+     },
+     "visible": {
+      "x": 200,
+      "y": 313,
+      "width": 560,
+      "height": 507
+     }
+    },
+    "description_body": {
+     "rect": {
+      "x": 236,
+      "y": 357,
+      "width": 524,
+      "height": 548
+     },
+     "visible": {
+      "x": 236,
+      "y": 357,
+      "width": 524,
+      "height": 463
+     }
+    },
+    "table": {
+     "rect": {
+      "x": 236,
+      "y": 477,
+      "width": 524,
+      "height": 333
+     },
+     "visible": {
+      "x": 236,
+      "y": 477,
+      "width": 524,
+      "height": 333
+     }
+    },
+    "checklist": {
+     "rect": {
+      "x": 200,
+      "y": 937,
+      "width": 560,
+      "height": 290
+     },
+     "visible": null
+    },
+    "comments_header": {
+     "rect": {
+      "x": 853,
+      "y": 121,
+      "width": 391,
+      "height": 32
+     },
+     "visible": {
+      "x": 853,
+      "y": 121,
+      "width": 391,
+      "height": 32
+     }
+    },
+    "comment_composer": {
+     "rect": {
+      "x": 817,
+      "y": 165,
+      "width": 427,
+      "height": 40
+     },
+     "visible": {
+      "x": 817,
+      "y": 165,
+      "width": 427,
+      "height": 40
+     }
+    },
+    "comments_list": {
+     "rect": {
+      "x": 817,
+      "y": 217,
+      "width": 427,
+      "height": 524
+     },
+     "visible": {
+      "x": 817,
+      "y": 217,
+      "width": 427,
+      "height": 524
+     }
+    },
+    "comment_items": [
+     {
+      "who": "高橋 さくらさんがコメントしました。",
+      "kind": "comment",
+      "rect": {
+       "x": 817,
+       "y": 217,
+       "width": 427,
+       "height": 100
+      },
+      "visible": {
+       "x": 817,
+       "y": 217,
+       "width": 427,
+       "height": 100
+      }
+     },
+     {
+      "who": "鈴木 健さんがコメントしました。",
+      "kind": "comment",
+      "rect": {
+       "x": 817,
+       "y": 317,
+       "width": 427,
+       "height": 100
+      },
+      "visible": {
+       "x": 817,
+       "y": 317,
+       "width": 427,
+       "height": 100
+      }
+     },
+     {
+      "who": "鈴木 健",
+      "kind": "activity",
+      "rect": {
+       "x": 817,
+       "y": 417,
+       "width": 427,
+       "height": 54
+      },
+      "visible": {
+       "x": 817,
+       "y": 417,
+       "width": 427,
+       "height": 54
+      }
+     },
+     {
+      "who": "佐藤 美咲さんがコメントしました。",
+      "kind": "comment",
+      "rect": {
+       "x": 817,
+       "y": 471,
+       "width": 427,
+       "height": 120
+      },
+      "visible": {
+       "x": 817,
+       "y": 471,
+       "width": 427,
+       "height": 120
+      }
+     },
+     {
+      "who": "高橋 さくらさんがコメントしました。",
+      "kind": "comment",
+      "rect": {
+       "x": 817,
+       "y": 591,
+       "width": 427,
+       "height": 76
+      },
+      "visible": {
+       "x": 817,
+       "y": 591,
+       "width": 427,
+       "height": 76
+      }
+     },
+     {
+      "who": "佐藤 美咲",
+      "kind": "activity",
+      "rect": {
+       "x": 817,
+       "y": 667,
+       "width": 427,
+       "height": 74
+      },
+      "visible": {
+       "x": 817,
+       "y": 667,
+       "width": 427,
+       "height": 74
+      }
+     }
+    ],
+    "nav": {
+     "rect": {
+      "x": 561.45,
+      "y": 836,
+      "width": 317.09,
+      "height": 46
+     },
+     "visible": {
+      "x": 561.45,
+      "y": 836,
+      "width": 317.09,
+      "height": 46
+     }
+    },
+    "activity_button": {
+     "x": 784.84,
+     "y": 843,
+     "width": 86.7,
+     "height": 32
+    },
+    "automation_toggle": {
+     "x": 683.84,
+     "y": 843,
+     "width": 88,
+     "height": 32
+    },
+    "automation_popover": {
+     "x": 683.84,
+     "y": 503,
+     "width": 304,
+     "height": 332
+    },
+    "automation_items": [
+     {
+      "x": 695.84,
+      "y": 551,
+      "width": 280,
+      "height": 32
+     },
+     {
+      "x": 695.84,
+      "y": 591,
+      "width": 280,
+      "height": 32
+     },
+     {
+      "x": 695.84,
+      "y": 631,
+      "width": 280,
+      "height": 32
+     },
+     {
+      "x": 695.84,
+      "y": 671,
+      "width": 280,
+      "height": 32
+     },
+     {
+      "x": 695.84,
+      "y": 711,
+      "width": 280,
+      "height": 32
+     },
+     {
+      "x": 695.84,
+      "y": 751,
+      "width": 280,
+      "height": 32
+     }
+    ],
+    "auto_bar": null,
+    "auto_buttons": []
+   },
+   "html_state": {
+    "on": false,
+    "color": true,
+    "vars": {
+     "--twc-card-width": "95vw",
+     "--twc-card-max-width": "calc(100vw - 24px)",
+     "--twc-desc-ratio": "60%",
+     "--twc-color-strength": "16%"
+    }
+   },
+   "counts": {
+    "cards": 13,
+    "labeled_cards": 10,
+    "painted_cards": 0
+   },
+   "auto": {
+    "bar": false,
+    "buttons": [],
+    "busy": false,
+    "pressed": "true",
+    "popover_items": 6,
+    "popover_opacity": "1"
    },
    "size": [
     2880,
@@ -2652,9 +3466,11 @@
     "cardWidth": 95,
     "descRatio": 60,
     "colorCards": true,
-    "colorStrength": 16
+    "colorStrength": 16,
+    "autoButtons": true
    },
    "settings_stored": {
+    "autoButtons": true,
     "cardWidth": 95,
     "colorCards": true,
     "colorStrength": 16,
@@ -2666,6 +3482,7 @@
      "enabled": "OFF",
      "cardWidth": "95%",
      "ratio": "60 : 40",
+     "autoButtons": "ON",
      "colorCards": "ON",
      "colorStrength": "16%"
     },
@@ -2885,7 +3702,7 @@
       "x": 737,
       "y": 217,
       "width": 427,
-      "height": 544
+      "height": 524
      },
      "visible": {
       "x": 737,
@@ -2934,13 +3751,13 @@
        "x": 737,
        "y": 417,
        "width": 427,
-       "height": 74
+       "height": 54
       },
       "visible": {
        "x": 737,
        "y": 417,
        "width": 427,
-       "height": 74
+       "height": 54
       }
      },
      {
@@ -2948,13 +3765,13 @@
       "kind": "comment",
       "rect": {
        "x": 737,
-       "y": 491,
+       "y": 471,
        "width": 427,
        "height": 120
       },
       "visible": {
        "x": 737,
-       "y": 491,
+       "y": 471,
        "width": 427,
        "height": 120
       }
@@ -2964,13 +3781,13 @@
       "kind": "comment",
       "rect": {
        "x": 737,
-       "y": 611,
+       "y": 591,
        "width": 427,
        "height": 76
       },
       "visible": {
        "x": 737,
-       "y": 611,
+       "y": 591,
        "width": 427,
        "height": 76
       }
@@ -2980,38 +3797,48 @@
       "kind": "activity",
       "rect": {
        "x": 737,
-       "y": 687,
+       "y": 667,
        "width": 427,
        "height": 74
       },
       "visible": {
        "x": 737,
-       "y": 687,
+       "y": 667,
        "width": 427,
-       "height": 33
+       "height": 53
       }
      }
     ],
     "nav": {
      "rect": {
-      "x": 472.64,
+      "x": 481.45,
       "y": 736,
-      "width": 334.72,
+      "width": 317.09,
       "height": 46
      },
      "visible": {
-      "x": 472.64,
+      "x": 481.45,
       "y": 736,
-      "width": 334.72,
+      "width": 317.09,
       "height": 46
      }
     },
     "activity_button": {
-     "x": 698.36,
+     "x": 704.84,
      "y": 743,
-     "width": 102,
+     "width": 86.7,
      "height": 32
-    }
+    },
+    "automation_toggle": {
+     "x": 603.84,
+     "y": 743,
+     "width": 88,
+     "height": 32
+    },
+    "automation_popover": null,
+    "automation_items": [],
+    "auto_bar": null,
+    "auto_buttons": []
    },
    "html_state": {
     "on": false,
@@ -3027,6 +3854,14 @@
     "cards": 13,
     "labeled_cards": 10,
     "painted_cards": 0
+   },
+   "auto": {
+    "bar": false,
+    "buttons": [],
+    "busy": false,
+    "pressed": "false",
+    "popover_items": 0,
+    "popover_opacity": null
    },
    "size": [
     2560,
@@ -3047,9 +3882,11 @@
     "cardWidth": 95,
     "descRatio": 60,
     "colorCards": true,
-    "colorStrength": 16
+    "colorStrength": 16,
+    "autoButtons": true
    },
    "settings_stored": {
+    "autoButtons": true,
     "cardWidth": 95,
     "colorCards": true,
     "colorStrength": 16,
@@ -3061,6 +3898,7 @@
      "enabled": "ON",
      "cardWidth": "95%",
      "ratio": "60 : 40",
+     "autoButtons": "ON",
      "colorCards": "ON",
      "colorStrength": "16%"
     },
@@ -3096,10 +3934,10 @@
    },
    "table_row_heights": [
     37,
-    59,
-    59,
-    59,
-    59,
+    37,
+    37,
+    37,
+    37,
     37
    ],
    "check_vs_expected": {
@@ -3142,19 +3980,19 @@
      "x": 32,
      "y": 105,
      "width": 729.61,
-     "height": 615
+     "height": 566
     },
     "aside": {
      "x": 761.61,
      "y": 105,
      "width": 486.39,
-     "height": 615
+     "height": 566
     },
     "aside_visible": {
      "x": 761.61,
      "y": 105,
      "width": 486.39,
-     "height": 615
+     "height": 566
     },
     "title": {
      "rect": {
@@ -3203,13 +4041,13 @@
       "x": 52,
       "y": 313,
       "width": 669.61,
-      "height": 570
+      "height": 482
      },
      "visible": {
       "x": 52,
       "y": 313,
       "width": 669.61,
-      "height": 407
+      "height": 358
      }
     },
     "description_body": {
@@ -3217,13 +4055,13 @@
       "x": 88,
       "y": 357,
       "width": 633.61,
-      "height": 526
+      "height": 438
      },
      "visible": {
       "x": 88,
       "y": 357,
       "width": 633.61,
-      "height": 363
+      "height": 314
      }
     },
     "table": {
@@ -3231,19 +4069,19 @@
       "x": 88,
       "y": 477,
       "width": 633.61,
-      "height": 311
+      "height": 223
      },
      "visible": {
       "x": 88,
       "y": 477,
       "width": 633.61,
-      "height": 243
+      "height": 194
      }
     },
     "checklist": {
      "rect": {
       "x": 52,
-      "y": 915,
+      "y": 827,
       "width": 669.61,
       "height": 290
      },
@@ -3282,13 +4120,13 @@
       "x": 778.61,
       "y": 217,
       "width": 453.39,
-      "height": 544
+      "height": 500
      },
      "visible": {
       "x": 778.61,
       "y": 217,
       "width": 453.39,
-      "height": 503
+      "height": 454
      }
     },
     "comment_items": [
@@ -3299,13 +4137,13 @@
        "x": 778.61,
        "y": 217,
        "width": 453.39,
-       "height": 100
+       "height": 76
       },
       "visible": {
        "x": 778.61,
        "y": 217,
        "width": 453.39,
-       "height": 100
+       "height": 76
       }
      },
      {
@@ -3313,13 +4151,13 @@
       "kind": "comment",
       "rect": {
        "x": 778.61,
-       "y": 317,
+       "y": 293,
        "width": 453.39,
        "height": 100
       },
       "visible": {
        "x": 778.61,
-       "y": 317,
+       "y": 293,
        "width": 453.39,
        "height": 100
       }
@@ -3329,15 +4167,15 @@
       "kind": "activity",
       "rect": {
        "x": 778.61,
-       "y": 417,
+       "y": 393,
        "width": 453.39,
-       "height": 74
+       "height": 54
       },
       "visible": {
        "x": 778.61,
-       "y": 417,
+       "y": 393,
        "width": 453.39,
-       "height": 74
+       "height": 54
       }
      },
      {
@@ -3345,13 +4183,13 @@
       "kind": "comment",
       "rect": {
        "x": 778.61,
-       "y": 491,
+       "y": 447,
        "width": 453.39,
        "height": 120
       },
       "visible": {
        "x": 778.61,
-       "y": 491,
+       "y": 447,
        "width": 453.39,
        "height": 120
       }
@@ -3361,13 +4199,13 @@
       "kind": "comment",
       "rect": {
        "x": 778.61,
-       "y": 611,
+       "y": 567,
        "width": 453.39,
        "height": 76
       },
       "visible": {
        "x": 778.61,
-       "y": 611,
+       "y": 567,
        "width": 453.39,
        "height": 76
       }
@@ -3377,38 +4215,90 @@
       "kind": "activity",
       "rect": {
        "x": 778.61,
-       "y": 687,
+       "y": 643,
        "width": 453.39,
        "height": 74
       },
       "visible": {
        "x": 778.61,
-       "y": 687,
+       "y": 643,
        "width": 453.39,
-       "height": 33
+       "height": 28
       }
      }
     ],
     "nav": {
      "rect": {
-      "x": 472.64,
+      "x": 481.45,
       "y": 736,
-      "width": 334.72,
+      "width": 317.09,
       "height": 46
      },
      "visible": {
-      "x": 472.64,
+      "x": 481.45,
       "y": 736,
-      "width": 334.72,
+      "width": 317.09,
       "height": 46
      }
     },
     "activity_button": {
-     "x": 698.36,
+     "x": 704.84,
      "y": 743,
-     "width": 102,
+     "width": 86.7,
      "height": 32
-    }
+    },
+    "automation_toggle": {
+     "x": 603.84,
+     "y": 743,
+     "width": 88,
+     "height": 32
+    },
+    "automation_popover": null,
+    "automation_items": [],
+    "auto_bar": {
+     "x": 32,
+     "y": 671,
+     "width": 1216,
+     "height": 49
+    },
+    "auto_buttons": [
+     {
+      "x": 114,
+      "y": 680,
+      "width": 110.38,
+      "height": 32
+     },
+     {
+      "x": 232.38,
+      "y": 680,
+      "width": 136.44,
+      "height": 32
+     },
+     {
+      "x": 376.81,
+      "y": 680,
+      "width": 105.8,
+      "height": 32
+     },
+     {
+      "x": 490.61,
+      "y": 680,
+      "width": 122.02,
+      "height": 32
+     },
+     {
+      "x": 620.63,
+      "y": 680,
+      "width": 136.02,
+      "height": 32
+     },
+     {
+      "x": 764.64,
+      "y": 680,
+      "width": 164.78,
+      "height": 32
+     }
+    ]
    },
    "html_state": {
     "on": true,
@@ -3424,6 +4314,21 @@
     "cards": 13,
     "labeled_cards": 10,
     "painted_cards": 10
+   },
+   "auto": {
+    "bar": true,
+    "buttons": [
+     "レビュー依頼",
+     "確認待ちへ移動",
+     "完了にする",
+     "担当を自分に",
+     "期限を今週末に",
+     "公開前チェックを追加"
+    ],
+    "busy": false,
+    "pressed": "false",
+    "popover_items": 0,
+    "popover_opacity": null
    },
    "size": [
     2560,
@@ -3444,9 +4349,11 @@
     "cardWidth": 95,
     "descRatio": 60,
     "colorCards": true,
-    "colorStrength": 16
+    "colorStrength": 16,
+    "autoButtons": true
    },
    "settings_stored": {
+    "autoButtons": true,
     "cardWidth": 95,
     "colorCards": true,
     "colorStrength": 16,
@@ -3458,6 +4365,7 @@
      "enabled": "ON",
      "cardWidth": "95%",
      "ratio": "60 : 40",
+     "autoButtons": "ON",
      "colorCards": "ON",
      "colorStrength": "16%"
     },
@@ -3481,7 +4389,7 @@
     "board_name": {
      "x": 12,
      "y": 12,
-     "width": 203.7,
+     "width": 168.69,
      "height": 32
     },
     "lists": [
@@ -3491,7 +4399,7 @@
        "x": 12,
        "y": 68,
        "width": 272,
-       "height": 436
+       "height": 416
       }
      },
      {
@@ -3509,7 +4417,7 @@
        "x": 580,
        "y": 68,
        "width": 272,
-       "height": 324
+       "height": 304
       }
      },
      {
@@ -3543,13 +4451,13 @@
        "x": 20,
        "y": 116,
        "width": 256,
-       "height": 96
+       "height": 76
       },
       "visible": {
        "x": 20,
        "y": 116,
        "width": 256,
-       "height": 96
+       "height": 76
       }
      },
      {
@@ -3566,13 +4474,13 @@
       "painted_element": "trello-card > div > div",
       "rect": {
        "x": 20,
-       "y": 220,
+       "y": 200,
        "width": 256,
        "height": 76
       },
       "visible": {
        "x": 20,
-       "y": 220,
+       "y": 200,
        "width": 256,
        "height": 76
       }
@@ -3595,13 +4503,13 @@
       "painted_element": "trello-card > div > div",
       "rect": {
        "x": 20,
-       "y": 304,
+       "y": 284,
        "width": 256,
        "height": 76
       },
       "visible": {
        "x": 20,
-       "y": 304,
+       "y": 284,
        "width": 256,
        "height": 76
       }
@@ -3615,13 +4523,13 @@
       "painted_element": null,
       "rect": {
        "x": 20,
-       "y": 388,
+       "y": 368,
        "width": 256,
        "height": 64
       },
       "visible": {
        "x": 20,
-       "y": 388,
+       "y": 368,
        "width": 256,
        "height": 64
       }
@@ -3758,13 +4666,13 @@
        "x": 588,
        "y": 200,
        "width": 256,
-       "height": 96
+       "height": 76
       },
       "visible": {
        "x": 588,
        "y": 200,
        "width": 256,
-       "height": 96
+       "height": 76
       }
      },
      {
@@ -3776,13 +4684,13 @@
       "painted_element": null,
       "rect": {
        "x": 588,
-       "y": 304,
+       "y": 284,
        "width": 256,
        "height": 36
       },
       "visible": {
        "x": 588,
-       "y": 304,
+       "y": 284,
        "width": 256,
        "height": 36
       }
@@ -3897,9 +4805,11 @@
     "cardWidth": 95,
     "descRatio": 60,
     "colorCards": true,
-    "colorStrength": 28
+    "colorStrength": 28,
+    "autoButtons": true
    },
    "settings_stored": {
+    "autoButtons": true,
     "cardWidth": 95,
     "colorCards": true,
     "colorStrength": 28,
@@ -3911,6 +4821,7 @@
      "enabled": "ON",
      "cardWidth": "95%",
      "ratio": "60 : 40",
+     "autoButtons": "ON",
      "colorCards": "ON",
      "colorStrength": "28%"
     },
@@ -3936,7 +4847,7 @@
     "board_name": {
      "x": 12,
      "y": 12,
-     "width": 203.7,
+     "width": 168.69,
      "height": 32
     },
     "lists": [
@@ -3946,7 +4857,7 @@
        "x": 12,
        "y": 68,
        "width": 272,
-       "height": 436
+       "height": 416
       }
      },
      {
@@ -3964,7 +4875,7 @@
        "x": 580,
        "y": 68,
        "width": 272,
-       "height": 324
+       "height": 304
       }
      },
      {
@@ -3998,13 +4909,13 @@
        "x": 20,
        "y": 116,
        "width": 256,
-       "height": 96
+       "height": 76
       },
       "visible": {
        "x": 20,
        "y": 116,
        "width": 256,
-       "height": 96
+       "height": 76
       }
      },
      {
@@ -4021,13 +4932,13 @@
       "painted_element": "trello-card > div > div",
       "rect": {
        "x": 20,
-       "y": 220,
+       "y": 200,
        "width": 256,
        "height": 76
       },
       "visible": {
        "x": 20,
-       "y": 220,
+       "y": 200,
        "width": 256,
        "height": 76
       }
@@ -4050,13 +4961,13 @@
       "painted_element": "trello-card > div > div",
       "rect": {
        "x": 20,
-       "y": 304,
+       "y": 284,
        "width": 256,
        "height": 76
       },
       "visible": {
        "x": 20,
-       "y": 304,
+       "y": 284,
        "width": 256,
        "height": 76
       }
@@ -4070,13 +4981,13 @@
       "painted_element": null,
       "rect": {
        "x": 20,
-       "y": 388,
+       "y": 368,
        "width": 256,
        "height": 64
       },
       "visible": {
        "x": 20,
-       "y": 388,
+       "y": 368,
        "width": 256,
        "height": 64
       }
@@ -4213,13 +5124,13 @@
        "x": 588,
        "y": 200,
        "width": 256,
-       "height": 96
+       "height": 76
       },
       "visible": {
        "x": 588,
        "y": 200,
        "width": 256,
-       "height": 96
+       "height": 76
       }
      },
      {
@@ -4231,13 +5142,13 @@
       "painted_element": null,
       "rect": {
        "x": 588,
-       "y": 304,
+       "y": 284,
        "width": 256,
        "height": 36
       },
       "visible": {
        "x": 588,
-       "y": 304,
+       "y": 284,
        "width": 256,
        "height": 36
       }
@@ -4352,9 +5263,11 @@
     "cardWidth": 95,
     "descRatio": 60,
     "colorCards": true,
-    "colorStrength": 28
+    "colorStrength": 28,
+    "autoButtons": true
    },
    "settings_stored": {
+    "autoButtons": true,
     "cardWidth": 95,
     "colorCards": true,
     "colorStrength": 28,
@@ -4366,6 +5279,7 @@
      "enabled": "ON",
      "cardWidth": "95%",
      "ratio": "60 : 40",
+     "autoButtons": "ON",
      "colorCards": "ON",
      "colorStrength": "28%"
     },
@@ -4375,7 +5289,7 @@
    "actions": [],
    "size": [
     600,
-    1034
+    1194
    ],
    "viewport": [
     300,
@@ -4386,14 +5300,14 @@
     "x": 0,
     "y": 0,
     "width": 300,
-    "height": 517.5
+    "height": 597.5
    },
    "rects": {
     "body": {
      "x": 0,
      "y": 0,
      "width": 300,
-     "height": 517.5
+     "height": 597.5
     },
     "head": {
      "x": 0,
@@ -4405,29 +5319,35 @@
      "x": 16,
      "y": 50,
      "width": 268,
-     "height": 111.5
+     "height": 110
     },
     "descRatio_field": {
      "x": 16,
-     "y": 161.5,
+     "y": 160,
      "width": 268,
-     "height": 129.5
+     "height": 128
+    },
+    "autoButtons_field": {
+     "x": 16,
+     "y": 288,
+     "width": 268,
+     "height": 84
     },
     "colorField": {
      "x": 16,
-     "y": 291,
+     "y": 372,
      "width": 268,
-     "height": 165.5
+     "height": 164.5
     },
     "foot": {
      "x": 0,
-     "y": 464.5,
+     "y": 544.5,
      "width": 300,
      "height": 53
     },
     "swatch": {
      "x": 16,
-     "y": 376.5,
+     "y": 456.5,
      "width": 268,
      "height": 29
     }
@@ -4443,9 +5363,11 @@
     "cardWidth": 95,
     "descRatio": 60,
     "colorCards": false,
-    "colorStrength": 16
+    "colorStrength": 16,
+    "autoButtons": true
    },
    "settings_stored": {
+    "autoButtons": true,
     "cardWidth": 95,
     "colorCards": false,
     "colorStrength": 16,
@@ -4457,6 +5379,7 @@
      "enabled": "ON",
      "cardWidth": "95%",
      "ratio": "60 : 40",
+     "autoButtons": "ON",
      "colorCards": "OFF",
      "colorStrength": "16%"
     },
@@ -4483,7 +5406,7 @@
     "board_name": {
      "x": 12,
      "y": 12,
-     "width": 203.7,
+     "width": 168.69,
      "height": 32
     },
     "lists": [
@@ -4493,7 +5416,7 @@
        "x": 12,
        "y": 68,
        "width": 272,
-       "height": 436
+       "height": 416
       }
      },
      {
@@ -4511,7 +5434,7 @@
        "x": 580,
        "y": 68,
        "width": 272,
-       "height": 324
+       "height": 304
       }
      },
      {
@@ -4545,13 +5468,13 @@
        "x": 20,
        "y": 116,
        "width": 256,
-       "height": 96
+       "height": 76
       },
       "visible": {
        "x": 20,
        "y": 116,
        "width": 256,
-       "height": 96
+       "height": 76
       }
      },
      {
@@ -4568,13 +5491,13 @@
       "painted_element": null,
       "rect": {
        "x": 20,
-       "y": 220,
+       "y": 200,
        "width": 256,
        "height": 76
       },
       "visible": {
        "x": 20,
-       "y": 220,
+       "y": 200,
        "width": 256,
        "height": 76
       }
@@ -4597,13 +5520,13 @@
       "painted_element": null,
       "rect": {
        "x": 20,
-       "y": 304,
+       "y": 284,
        "width": 256,
        "height": 76
       },
       "visible": {
        "x": 20,
-       "y": 304,
+       "y": 284,
        "width": 256,
        "height": 76
       }
@@ -4617,13 +5540,13 @@
       "painted_element": null,
       "rect": {
        "x": 20,
-       "y": 388,
+       "y": 368,
        "width": 256,
        "height": 64
       },
       "visible": {
        "x": 20,
-       "y": 388,
+       "y": 368,
        "width": 256,
        "height": 64
       }
@@ -4760,13 +5683,13 @@
        "x": 588,
        "y": 200,
        "width": 256,
-       "height": 96
+       "height": 76
       },
       "visible": {
        "x": 588,
        "y": 200,
        "width": 256,
-       "height": 96
+       "height": 76
       }
      },
      {
@@ -4778,13 +5701,13 @@
       "painted_element": null,
       "rect": {
        "x": 588,
-       "y": 304,
+       "y": 284,
        "width": 256,
        "height": 36
       },
       "visible": {
        "x": 588,
-       "y": 304,
+       "y": 284,
        "width": 256,
        "height": 36
       }
@@ -4891,7 +5814,7 @@
    "dpr": 2
   }
  ],
- "started": "2026-10-04T22:02:13",
+ "started": "2026-10-20T11:07:57",
  "tool": "store-assets/tools/capture_raw.py",
  "dpr": 2,
  "mock": {
@@ -4900,13 +5823,13 @@
   "card_url": "https://trello.com/c/Hr8dT0pK/14-top-page-design"
  },
  "browser": {
-  "executable": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+  "executable": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
   "version": {
    "protocolVersion": "1.3",
-   "product": "Chrome/154.0.8037.97",
-   "revision": "@b510e9d7cd3a2fbd78d0ddc42234103206c5f78d",
-   "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
-   "jsVersion": "15.4.80.20"
+   "product": "Chrome/155.0.8059.84",
+   "revision": "@5869fe313571d75152b77813cf0a4ee26a4e6df0",
+   "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+   "jsVersion": "15.5.35.25"
   },
   "argv": [
    "--user-data-dir=<一時プロファイル>",
@@ -4917,7 +5840,6 @@
    "--mute-audio",
    "--lang=ja",
    "--window-size=1280,800",
-   "--use-mock-keychain",
    "--host-resolver-rules=MAP * ~NOTFOUND",
    "--disable-sync",
    "--disable-default-apps",
@@ -4965,14 +5887,14 @@
     },
     {
      "name": "トレひろ",
-     "origin": "chrome-extension://bofakppkoiadngjfajbpfdnkglfleomn",
+     "origin": "chrome-extension://iajfiahokgbcmigkhcdiembfaibgbhik",
      "type": "isolated"
     }
    ],
    "content_script_world": [
     {
      "name": "トレひろ",
-     "origin": "chrome-extension://bofakppkoiadngjfajbpfdnkglfleomn",
+     "origin": "chrome-extension://iajfiahokgbcmigkhcdiembfaibgbhik",
      "type": "isolated"
     }
    ]
@@ -4992,14 +5914,14 @@
     },
     {
      "name": "トレひろ",
-     "origin": "chrome-extension://bofakppkoiadngjfajbpfdnkglfleomn",
+     "origin": "chrome-extension://iajfiahokgbcmigkhcdiembfaibgbhik",
      "type": "isolated"
     }
    ],
    "content_script_world": [
     {
      "name": "トレひろ",
-     "origin": "chrome-extension://bofakppkoiadngjfajbpfdnkglfleomn",
+     "origin": "chrome-extension://iajfiahokgbcmigkhcdiembfaibgbhik",
      "type": "isolated"
     }
    ]
@@ -5091,14 +6013,14 @@
   }
  },
  "extension": {
-  "id": "bofakppkoiadngjfajbpfdnkglfleomn",
+  "id": "iajfiahokgbcmigkhcdiembfaibgbhik",
   "path": "（リポジトリのルートを Extensions.loadUnpacked で読み込み）",
-  "popup_url": "chrome-extension://bofakppkoiadngjfajbpfdnkglfleomn/popup.html",
+  "popup_url": "chrome-extension://iajfiahokgbcmigkhcdiembfaibgbhik/popup.html",
   "manifest_as_loaded": {
    "name": "トレひろ",
-   "version": "2.0.2",
+   "version": "2.1.0",
    "manifest_version": 3,
-   "description": "Trello のカード詳細を画面いっぱいに広げ、説明欄とコメント欄の左右比率を自由に調整できます。ボードのカードをラベル色で塗り分けることもできます（非公式ツール）。"
+   "description": "Trello のカード詳細を画面いっぱいに広げ、説明欄とコメント欄の左右比率を自由に調整できます。自動化ボタンをカード詳細の下部に常に並べたり、ボードのカードをラベル色で塗り分けたりもできます（非公式ツール）。"
   },
   "action_default_title": "トレひろの設定",
   "content_scripts": [
@@ -5109,7 +6031,8 @@
     "js": [
      "shared.js",
      "content.js",
-     "colorize.js"
+     "colorize.js",
+     "autobuttons.js"
     ],
     "css": [
      "content.css"
@@ -5123,6 +6046,7 @@
   "host_permissions": null
  },
  "final_settings_stored": {
+  "autoButtons": true,
   "cardWidth": 95,
   "colorCards": false,
   "colorStrength": 16,
@@ -5145,7 +6069,7 @@
   "continued_local_scheme": 7,
   "errors": []
  },
- "finished": "2026-10-04T22:02:30",
+ "finished": "2026-10-20T11:08:17",
  "summary": [
   {
    "file": "popup_default.png",
@@ -5159,7 +6083,8 @@
     "cardWidth": 95,
     "descRatio": 60,
     "colorCards": true,
-    "colorStrength": 16
+    "colorStrength": 16,
+    "autoButtons": true
    }
   },
   {
@@ -5174,7 +6099,8 @@
     "cardWidth": 95,
     "descRatio": 60,
     "colorCards": true,
-    "colorStrength": 16
+    "colorStrength": 16,
+    "autoButtons": true
    },
    "comments": "open",
    "dialog": 1368,
@@ -5185,7 +6111,9 @@
    "matches_expected": true,
    "labeled_cards": 10,
    "painted_cards": 10,
-   "html_data_twc_on": true
+   "html_data_twc_on": true,
+   "auto_bar_buttons": 6,
+   "automation_popover_items": 0
   },
   {
    "file": "card_r75.png",
@@ -5199,7 +6127,8 @@
     "cardWidth": 95,
     "descRatio": 75,
     "colorCards": true,
-    "colorStrength": 16
+    "colorStrength": 16,
+    "autoButtons": true
    },
    "comments": "open",
    "dialog": 1368,
@@ -5210,7 +6139,9 @@
    "matches_expected": true,
    "labeled_cards": 10,
    "painted_cards": 10,
-   "html_data_twc_on": true
+   "html_data_twc_on": true,
+   "auto_bar_buttons": 6,
+   "automation_popover_items": 0
   },
   {
    "file": "popup_r75.png",
@@ -5224,7 +6155,8 @@
     "cardWidth": 95,
     "descRatio": 75,
     "colorCards": true,
-    "colorStrength": 16
+    "colorStrength": 16,
+    "autoButtons": true
    }
   },
   {
@@ -5239,7 +6171,8 @@
     "cardWidth": 95,
     "descRatio": 35,
     "colorCards": true,
-    "colorStrength": 16
+    "colorStrength": 16,
+    "autoButtons": true
    },
    "comments": "open",
    "dialog": 1368,
@@ -5250,7 +6183,9 @@
    "matches_expected": true,
    "labeled_cards": 10,
    "painted_cards": 10,
-   "html_data_twc_on": true
+   "html_data_twc_on": true,
+   "auto_bar_buttons": 6,
+   "automation_popover_items": 0
   },
   {
    "file": "popup_r35.png",
@@ -5264,7 +6199,8 @@
     "cardWidth": 95,
     "descRatio": 35,
     "colorCards": true,
-    "colorStrength": 16
+    "colorStrength": 16,
+    "autoButtons": true
    }
   },
   {
@@ -5279,7 +6215,8 @@
     "cardWidth": 95,
     "descRatio": 60,
     "colorCards": true,
-    "colorStrength": 16
+    "colorStrength": 16,
+    "autoButtons": true
    },
    "comments": "closed",
    "dialog": 1368,
@@ -5290,7 +6227,9 @@
    "matches_expected": true,
    "labeled_cards": 10,
    "painted_cards": 10,
-   "html_data_twc_on": true
+   "html_data_twc_on": true,
+   "auto_bar_buttons": 6,
+   "automation_popover_items": 0
   },
   {
    "file": "card_off_closed.png",
@@ -5304,7 +6243,8 @@
     "cardWidth": 95,
     "descRatio": 60,
     "colorCards": true,
-    "colorStrength": 16
+    "colorStrength": 16,
+    "autoButtons": true
    },
    "comments": "closed",
    "dialog": 584,
@@ -5315,7 +6255,9 @@
    "matches_expected": true,
    "labeled_cards": 10,
    "painted_cards": 0,
-   "html_data_twc_on": false
+   "html_data_twc_on": false,
+   "auto_bar_buttons": 0,
+   "automation_popover_items": 0
   },
   {
    "file": "popup_off.png",
@@ -5329,7 +6271,8 @@
     "cardWidth": 95,
     "descRatio": 60,
     "colorCards": true,
-    "colorStrength": 16
+    "colorStrength": 16,
+    "autoButtons": true
    }
   },
   {
@@ -5344,7 +6287,8 @@
     "cardWidth": 95,
     "descRatio": 60,
     "colorCards": true,
-    "colorStrength": 16
+    "colorStrength": 16,
+    "autoButtons": true
    },
    "comments": "open",
    "dialog": 1080,
@@ -5355,7 +6299,37 @@
    "matches_expected": true,
    "labeled_cards": 10,
    "painted_cards": 0,
-   "html_data_twc_on": false
+   "html_data_twc_on": false,
+   "auto_bar_buttons": 0,
+   "automation_popover_items": 0
+  },
+  {
+   "file": "card_off_auto.png",
+   "page": "card",
+   "viewport": [
+    1440,
+    900
+   ],
+   "settings": {
+    "enabled": false,
+    "cardWidth": 95,
+    "descRatio": 60,
+    "colorCards": true,
+    "colorStrength": 16,
+    "autoButtons": true
+   },
+   "comments": "open",
+   "dialog": 1080,
+   "main": 620,
+   "aside": 460,
+   "ratio": 0.5741,
+   "table": 524,
+   "matches_expected": true,
+   "labeled_cards": 10,
+   "painted_cards": 0,
+   "html_data_twc_on": false,
+   "auto_bar_buttons": 0,
+   "automation_popover_items": 6
   },
   {
    "file": "card_off_1280.png",
@@ -5369,7 +6343,8 @@
     "cardWidth": 95,
     "descRatio": 60,
     "colorCards": true,
-    "colorStrength": 16
+    "colorStrength": 16,
+    "autoButtons": true
    },
    "comments": "open",
    "dialog": 1080,
@@ -5380,7 +6355,9 @@
    "matches_expected": true,
    "labeled_cards": 10,
    "painted_cards": 0,
-   "html_data_twc_on": false
+   "html_data_twc_on": false,
+   "auto_bar_buttons": 0,
+   "automation_popover_items": 0
   },
   {
    "file": "card_default_1280.png",
@@ -5394,7 +6371,8 @@
     "cardWidth": 95,
     "descRatio": 60,
     "colorCards": true,
-    "colorStrength": 16
+    "colorStrength": 16,
+    "autoButtons": true
    },
    "comments": "open",
    "dialog": 1216,
@@ -5405,7 +6383,9 @@
    "matches_expected": true,
    "labeled_cards": 10,
    "painted_cards": 10,
-   "html_data_twc_on": true
+   "html_data_twc_on": true,
+   "auto_bar_buttons": 6,
+   "automation_popover_items": 0
   },
   {
    "file": "board_color.png",
@@ -5419,7 +6399,8 @@
     "cardWidth": 95,
     "descRatio": 60,
     "colorCards": true,
-    "colorStrength": 16
+    "colorStrength": 16,
+    "autoButtons": true
    },
    "labeled_cards": 10,
    "painted_cards": 10,
@@ -5437,7 +6418,8 @@
     "cardWidth": 95,
     "descRatio": 60,
     "colorCards": true,
-    "colorStrength": 28
+    "colorStrength": 28,
+    "autoButtons": true
    },
    "labeled_cards": 10,
    "painted_cards": 10,
@@ -5455,7 +6437,8 @@
     "cardWidth": 95,
     "descRatio": 60,
     "colorCards": true,
-    "colorStrength": 28
+    "colorStrength": 28,
+    "autoButtons": true
    }
   },
   {
@@ -5470,7 +6453,8 @@
     "cardWidth": 95,
     "descRatio": 60,
     "colorCards": false,
-    "colorStrength": 16
+    "colorStrength": 16,
+    "autoButtons": true
    },
    "labeled_cards": 10,
    "painted_cards": 0,

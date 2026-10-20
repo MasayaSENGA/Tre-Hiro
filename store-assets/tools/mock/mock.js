@@ -44,6 +44,9 @@
     check: '<path d="M6.5 12.5l3.5 3.5 7.5-8"/>',
     tag: '<path d="M4 4.5h7.2l8.3 8.3a1.5 1.5 0 0 1 0 2.1l-4.6 4.6a1.5 1.5 0 0 1-2.1 0L4.5 11.2V4.5z"/><circle cx="8.5" cy="8.5" r="1.4"/>',
     rocket: '<path d="M12 3c3 2 4.5 5 4.5 9l-2 3h-5l-2-3C7.5 8 9 5 12 3z"/><circle cx="12" cy="9.5" r="1.5"/><path d="M9.5 15l-2 3.5M14.5 15l2 3.5"/>',
+    arrow: '<path d="M5 12h14M13 6l6 6-6 6"/>',
+    person: '<circle cx="12" cy="8" r="3.5"/><path d="M5 20a7 7 0 0 1 14 0"/>',
+    edit: '<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/>',
   };
 
   function icon(name, size = 16, stroke = 2) {
@@ -56,6 +59,14 @@
   const esc = (s) =>
     String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 
+  /** 本物のカードボタンのアイコンと同じく、黒い図形の画像（背景に敷く）。自作の SVG を data: URL にする。 */
+  function glyphUrl(name) {
+    const svg =
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#000" ' +
+      `stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">${PATHS[name]}</svg>`;
+    return `url("data:image/svg+xml,${encodeURIComponent(svg)}")`;
+  }
+
   /* ------------------------------------------------------------------
      架空のデータ
      ------------------------------------------------------------------ */
@@ -65,6 +76,16 @@
     takahashi: { name: "高橋 さくら", initial: "高", color: "#a54800" },
   };
   const ME = "sato"; // ログインしている人（コメント入力欄のアバター）
+
+  // カード詳細の下部のナビ「自動化」の一覧に出る、架空のカードボタン
+  const CARD_BUTTONS = [
+    { name: "レビュー依頼", icon: "comment" },
+    { name: "確認待ちへ移動", icon: "arrow" },
+    { name: "完了にする", icon: "check" },
+    { name: "担当を自分に", icon: "person" },
+    { name: "期限を今週末に", icon: "clock" },
+    { name: "公開前チェックを追加", icon: "checklist" },
+  ];
 
   // Trello の標準ラベル色（調査 §2.5 の背景色・文字色）
   const COLORS = {
@@ -474,8 +495,8 @@
                   </div>
                   <nav class="cb-nav" aria-label="カードの操作">
                     <div role="group">
-                      <button type="button" aria-label="Power-Up">${icon("plug", 16)}<span>Power-Up</span></button>
-                      <button type="button" aria-label="自動化">${icon("bolt", 16)}<span>自動化</span></button>
+                      <button type="button" aria-label="Power-Up" aria-pressed="false">${icon("plug", 16)}<span>Power-Up</span></button>
+                      <button type="button" aria-label="自動化" aria-pressed="false">${icon("bolt", 16)}<span>自動化</span></button>
                       <span role="separator"></span>
                       <button type="button" data-testid="card-back-activity-button" role="checkbox" aria-checked="true" aria-label="コメントとアクティビティ">${icon("comment", 16)}<span>コメント</span></button>
                     </div>
@@ -496,6 +517,106 @@
     const btn = dialog.querySelector('[data-testid="card-back-activity-button"]');
     btn.setAttribute("aria-checked", open ? "true" : "false");
     dialog.classList.toggle("is-panel-closed", !open);
+  }
+
+  /*
+   * ナビの「自動化」のポップオーバー。本物と同じく body の直下のポータルに出す:
+   *   .atlaskit-portal-container > .atlaskit-portal > div > section[role="dialog"]
+   *     section > hgroup（h2「自動化」＋編集ボタン）＋ ul > li > button（カードボタン）、ul > button「ボタンを追加」
+   * 本物で確かめた振る舞いのうち、拡張が頼るものを再現する:
+   *   ・トグルの aria-pressed は、クリックした直後ではなく次のマイクロタスクで変わる
+   *   ・開くと中の編集ボタンにフォーカスが入る。外を押すか、トグルをもう一度押すと閉じる
+   *   ・ボタンを押すとアイコンが [data-testid="spinner-wrapper"] に変わり、終わると外に「成功！」が出る
+   *     （ポップオーバーは開いたまま）
+   */
+  function automationPopover(toggle) {
+    const r = toggle.getBoundingClientRect();
+    const container = document.createElement("div");
+    container.className = "atlaskit-portal-container";
+    container.innerHTML = `
+      <div class="atlaskit-portal">
+        <div>
+          <section role="dialog" data-elevation="2" class="auto-pop">
+            <div tabindex="-1">
+              <section>
+                <hgroup><h2>自動化</h2><button type="button" class="auto-edit" aria-label="自動化を編集">${icon("edit", 16)}</button></hgroup>
+                <ul>
+                  ${CARD_BUTTONS.map((b) => `<li><button type="button"><span class="auto-ic-wrap"><div class="auto-ic" aria-label="${esc(b.name)}"></div></span><span>${esc(b.name)}</span></button></li>`).join("")}
+                  <button type="button" class="auto-add" title="ボタンを追加">${icon("plus", 16)}<span>ボタンを追加</span></button>
+                </ul>
+              </section>
+            </div>
+          </section>
+        </div>
+      </div>`;
+    const pop = container.querySelector("section.auto-pop");
+    // 本物は左端をトグルにそろえ、トグルの 8px 上に置く（position: fixed）
+    pop.style.left = r.left + "px";
+    pop.style.bottom = innerHeight - r.top + 8 + "px";
+    container.querySelectorAll(".auto-ic").forEach((el, i) => {
+      el.style.backgroundImage = glyphUrl(CARD_BUTTONS[i].icon);
+    });
+    return container;
+  }
+
+  function showFlag(text) {
+    const flag = document.createElement("div");
+    flag.className = "mock-flag";
+    flag.setAttribute("role", "alert");
+    flag.textContent = text;
+    document.body.appendChild(flag);
+    setTimeout(() => flag.remove(), 3000);
+  }
+
+  function setupAutomation(dialog) {
+    const toggle = dialog.querySelector('nav.cb-nav button[aria-label="自動化"]');
+    let portal = null;
+
+    function close(returnFocus) {
+      if (!portal) return;
+      portal.remove();
+      portal = null;
+      queueMicrotask(() => toggle.setAttribute("aria-pressed", "false"));
+      document.removeEventListener("pointerdown", onOutside, true);
+      if (returnFocus) toggle.focus();
+    }
+    function onOutside(e) {
+      if (portal && !portal.contains(e.target) && !toggle.contains(e.target)) close(false);
+    }
+    function run(button) {
+      const wrap = button.querySelector(".auto-ic-wrap");
+      const glyph = wrap.querySelector(".auto-ic");
+      if (!glyph) return; // 実行中
+      const spinner = document.createElement("span");
+      spinner.className = "auto-spinner";
+      spinner.setAttribute("data-testid", "spinner-wrapper");
+      wrap.replaceChild(spinner, glyph);
+      setTimeout(() => {
+        wrap.replaceChild(glyph, spinner);
+        showFlag("成功！");
+      }, 900);
+    }
+    function open() {
+      portal = automationPopover(toggle);
+      document.body.appendChild(portal);
+      queueMicrotask(() => toggle.setAttribute("aria-pressed", "true"));
+      portal.querySelector(".auto-edit").focus();
+      document.addEventListener("pointerdown", onOutside, true);
+      portal.querySelectorAll("ul > li > button").forEach((b) => b.addEventListener("click", () => run(b)));
+    }
+
+    toggle.addEventListener("click", () => (portal ? close(true) : open()));
+    // Esc は、ポップオーバーが開いていればそれだけを閉じる（カード詳細は閉じない）
+    document.addEventListener(
+      "keydown",
+      (e) => {
+        if (e.key === "Escape" && portal) {
+          close(true);
+          e.stopImmediatePropagation();
+        }
+      },
+      true
+    );
   }
 
   function render() {
@@ -538,6 +659,9 @@
       const open = e.currentTarget.getAttribute("aria-checked") !== "true";
       setPanelOpen(dialog, open);
     });
+    setupAutomation(dialog);
+    // 本物の Trello は、カード詳細を開くとダイアログ（tabindex="-1"）にフォーカスを置く
+    dialog.focus({ preventScroll: true });
     const close = () => {
       location.href = boardUrl();
     };

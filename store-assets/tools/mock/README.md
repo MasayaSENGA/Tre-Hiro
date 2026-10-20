@@ -67,7 +67,20 @@ div#layer-manager-card-back
             div[role="slider"]（幅 8・左右 −4px）
             aside（幅 460px、min-width 460px、背景 #F0F1F2、左に 1px の線）… コメントとアクティビティ
         nav（ダイアログの下 16px に浮く）> div[role="group"]
-          Power-Up / 自動化 / button[data-testid="card-back-activity-button"][role="checkbox"][aria-checked]「コメント」
+          button[aria-pressed]「Power-Up」 / button[aria-pressed]「自動化」 / button[data-testid="card-back-activity-button"][role="checkbox"][aria-checked]「コメント」
+.atlaskit-portal-container > .atlaskit-portal > div > section[role="dialog"]   「自動化」を押すと body の直下に出る（幅 304、角丸 8）
+  section > hgroup（h2「自動化」・編集ボタン）
+            ul > li > button × 6（架空のカードボタン。アイコンは黒い図形の data: URL の画像を背景に敷く）
+               > button[title="ボタンを追加"]（li に入っていない）
 ```
 
 コメント欄を閉じた状態は、Trello と同じく main が全幅（`flex: 1 0 100%`）、aside は右へ押し出されて見えなくなります。
+
+「自動化」のポップオーバーは、2026-10-20 にログインした実際の Trello で確かめた振る舞いのうち、トレひろの自動化ボタンが頼るものを再現しています。
+
+- トグルの `aria-pressed` は、クリックした直後ではなく次のマイクロタスクで変わる
+- 開くと中の編集ボタンにフォーカスが入る。外を押すか、トグルをもう一度押すと閉じる（Esc でも閉じる。カード詳細は閉じない）
+- カードボタンを押すとアイコンが `[data-testid="spinner-wrapper"]` に変わり、0.9 秒後に元に戻って、画面の左下に「成功！」が出る（ポップオーバーは開いたまま）
+- カード詳細を開くと、ダイアログ（`tabindex="-1"`）にフォーカスを置く
+
+架空のカードボタンは「レビュー依頼」「確認待ちへ移動」「完了にする」「担当を自分に」「期限を今週末に」「公開前チェックを追加」の 6 個で、押しても何も変わりません（スピナーと「成功！」が出るだけ）。

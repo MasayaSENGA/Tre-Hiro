@@ -162,6 +162,13 @@
     line-height: 20px;
   }
 
+  /* ボタン列の直前（main と aside の横並び）は、Trello では枠の下端に合わせて下の角が 12px 丸い。
+     ボタン列を足すと下端ではなくなり、コメント欄の背景の角だけが欠けて見えるので、角丸を外す。 */
+  :has(+ [data-twc-auto-bar]) {
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+
   [data-twc-auto-bar] .twc-auto-head {
     display: inline-flex;
     align-items: center;

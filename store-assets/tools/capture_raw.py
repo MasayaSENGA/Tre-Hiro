@@ -23,6 +23,9 @@
        設定は chrome.storage.sync → storage.onChanged の本来の経路で、開いている再現ページに反映される。
     6. 撮る前に、再現ページが期待どおりの状態になったこと（html[data-twc-on] の有無、--twc-* 変数、
        塗られたカードの枚数＝ラベル付きカードの枚数、フォントの読み込み完了）を待って確かめる。
+       カード詳細では、自動化ボタンの列（拡張が「自動化」の一覧を見えない状態で開いて読み、閉じた後に並ぶ）が
+       設定どおり並んでいること（OFF なら無いこと）と、一覧が閉じていることも待つ。
+    7. card_off_auto だけは、下部のナビの「自動化」を本物のクリックで開き、一覧が見えている状態で撮って閉じる。
 
 出力: store-assets/raw/*.png（既定は 1440x900、deviceScaleFactor 2）と store-assets/raw/manifest.json
       （ファイル名は後工程の合成との約束。--only で一部だけ撮り直すと manifest.json は差し替えで更新する）
@@ -60,7 +63,10 @@ DPR = 2
 POPUP_VIEW = (300, 800)   # ポップアップは本来の幅 300px のまま（body だけを切り出す）
 
 # shared.js の TWC_DEFAULTS と同じ（ポップアップの「既定値に戻す」で保存される値）
-DEFAULTS = {"enabled": True, "cardWidth": 95, "descRatio": 60, "colorCards": True, "colorStrength": 16}
+DEFAULTS = {"enabled": True, "cardWidth": 95, "descRatio": 60, "colorCards": True, "colorStrength": 16,
+            "autoButtons": True}
+# 再現ページのナビ「自動化」の一覧にあるカードボタンの数（mock.js の CARD_BUTTONS）
+AUTO_BUTTONS = 6
 
 
 def S(**kw) -> dict:
@@ -91,6 +97,9 @@ SHOTS = [
          desc="ポップアップ（メインスイッチ OFF）"),
     dict(name="card_off", page="card", view=(1440, 900), settings=S(enabled=False), comments="open",
          desc="カード詳細（トレひろ OFF＝Trello 標準・コメント欄を開いた状態、幅 1080px）"),
+    dict(name="card_off_auto", page="card", view=(1440, 900), settings=S(enabled=False), comments="open",
+         automation="open",
+         desc="カード詳細（トレひろ OFF＝Trello 標準・下部のナビの「自動化」を押してカードボタンの一覧を開いた状態）"),
     dict(name="card_off_1280", page="card", view=(1280, 800), settings=S(enabled=False), comments="open",
          desc="カード詳細 1280x800（トレひろ OFF＝Trello 標準・コメント欄を開いた状態）"),
     dict(name="card_default_1280", page="card", view=(1280, 800), settings=S(), comments="open",
@@ -158,12 +167,21 @@ const boardCards = () => [...document.querySelectorAll('li[data-testid="list-car
 const counts = () => { const cs = boardCards();
   return {cards: cs.length, labeled_cards: cs.filter(c => c.labels.length).length,
           painted_cards: document.querySelectorAll('[data-twc-card-color]').length}; };
+const autoToggle = () => document.querySelector('nav.cb-nav button[aria-label="自動化"]');
+const autoPopover = () => document.querySelector('.atlaskit-portal section[role="dialog"]');
+const auto = () => { const t = autoToggle(), p = autoPopover();
+  return {bar: !!document.querySelector('[data-twc-auto-bar]'),
+          buttons: [...document.querySelectorAll('[data-twc-auto-bar] .twc-auto-btn')].map(b => b.textContent.trim()),
+          busy: html.hasAttribute('data-twc-auto-busy') || !!document.querySelector('[data-twc-auto-hidden]'),
+          pressed: t ? t.getAttribute('aria-pressed') : null,
+          popover_items: p ? p.querySelectorAll('ul > li > button').length : 0,
+          popover_opacity: p ? getComputedStyle(p).opacity : null}; };
 """
 
 STATE_JS = "(() => {" + JS_HELPERS + r"""
   const btn = document.querySelector('[data-testid="card-back-activity-button"]');
   return {twc: twc(), counts: counts(), comments: btn ? btn.getAttribute('aria-checked') : null,
-          fonts: document.fonts.status, ready: document.readyState};
+          auto: auto(), fonts: document.fonts.status, ready: document.readyState};
 })()"""
 
 CARD_MEASURE_JS = "(() => {" + JS_HELPERS + r"""
@@ -209,7 +227,12 @@ CARD_MEASURE_JS = "(() => {" + JS_HELPERS + r"""
       comment_items: actions,
       nav: {rect: R(q('nav.cb-nav [role="group"]')), visible: clip(R(q('nav.cb-nav [role="group"]')), VP)},
       activity_button: R(btn),
-    }};
+      automation_toggle: R(autoToggle()),
+      automation_popover: R(autoPopover()),
+      automation_items: [...document.querySelectorAll('.atlaskit-portal section[role="dialog"] ul > li > button')].map(R),
+      auto_bar: R(q('[data-twc-auto-bar]')),
+      auto_buttons: [...document.querySelectorAll('[data-twc-auto-bar] .twc-auto-btn')].map(R),
+    }, auto: auto()};
 })()"""
 
 BOARD_MEASURE_JS = "(() => {" + JS_HELPERS + r"""
@@ -228,6 +251,7 @@ POPUP_MEASURE_JS = r"""(() => {
   const f = (id) => document.getElementById(id).closest('.field');
   return {body: R(document.body), head: R(document.querySelector('.head')),
           cardWidth_field: R(f('cardWidth')), descRatio_field: R(f('descRatio')),
+          autoButtons_field: R(f('autoButtons')),
           colorField: R(document.getElementById('colorField')), foot: R(document.querySelector('.foot')),
           swatch: R(document.getElementById('swatch'))};
 })()"""
@@ -236,10 +260,12 @@ POPUP_UI_JS = r"""(() => ({
   enabled: document.getElementById('enabled').checked,
   cardWidth: +document.getElementById('cardWidth').value,
   descRatio: +document.getElementById('descRatio').value,
+  autoButtons: document.getElementById('autoButtons').checked,
   colorCards: document.getElementById('colorCards').checked,
   colorStrength: +document.getElementById('colorStrength').value,
   texts: {enabled: document.getElementById('enabledText').textContent, cardWidth: document.getElementById('cardWidthValue').textContent,
-          ratio: document.getElementById('ratioValue').textContent, colorCards: document.getElementById('colorCardsText').textContent,
+          ratio: document.getElementById('ratioValue').textContent, autoButtons: document.getElementById('autoButtonsText').textContent,
+          colorCards: document.getElementById('colorCardsText').textContent,
           colorStrength: document.getElementById('colorStrengthValue').textContent},
   bodyOff: document.body.classList.contains('is-off'),
   colorsOff: document.getElementById('colorField').classList.contains('is-colors-off'),
@@ -341,7 +367,8 @@ def apply_settings(p: cdp.Session, target: dict, actions: list):
     """ポップアップを利用者と同じ手順で操作して target の設定にする。"""
     ui = popup_ui(p)
     keys = ["cardWidth", "descRatio", "colorStrength"]
-    need_inner = any(ui[k] != target[k] for k in keys) or ui["colorCards"] != target["colorCards"]
+    need_inner = (any(ui[k] != target[k] for k in keys) or ui["colorCards"] != target["colorCards"]
+                  or ui["autoButtons"] != target["autoButtons"])
     # 全体スイッチが OFF の間は項目が操作できないので、先に ON にする
     if (target["enabled"] or need_inner) and not ui["enabled"]:
         user_click(p, "document.querySelector('#enabled + .track')")
@@ -356,6 +383,10 @@ def apply_settings(p: cdp.Session, target: dict, actions: list):
             popup_set_range(p, k, target[k])
             actions.append(f"range: {k} = {target[k]}（input を発火）")
     ui = popup_ui(p)
+    if ui["autoButtons"] != target["autoButtons"]:
+        user_click(p, "document.querySelector('#autoButtons + .track')")
+        actions.append(f"click: 自動化ボタンを常に表示 → {'ON' if target['autoButtons'] else 'OFF'}")
+        ui = popup_ui(p)
     if not target["colorCards"] and ui["colorCards"]:
         user_click(p, "document.querySelector('#colorCards + .track')")
         actions.append("click: カードの色付け → OFF")
@@ -378,9 +409,11 @@ def popup_wait_clean(p: cdp.Session):
 # ---------------------------------------------------------------------------
 # 再現ページの状態を待つ
 # ---------------------------------------------------------------------------
-def wait_page_state(s: cdp.Session, settings: dict, comments: str | None, timeout: float = 15.0):
+def wait_page_state(s: cdp.Session, settings: dict, comments: str | None, timeout: float = 15.0,
+                    page: str | None = None):
     on = settings["enabled"]
     color_on = settings["enabled"] and settings["colorCards"]
+    auto_on = settings["enabled"] and settings["autoButtons"]
     conds = [
         f"st.twc.on === {json.dumps(on)}",
         f"st.twc.color === {json.dumps(settings['colorCards'])}",
@@ -393,11 +426,35 @@ def wait_page_state(s: cdp.Session, settings: dict, comments: str | None, timeou
     ]
     if comments:
         conds.append(f"st.comments === '{'true' if comments == 'open' else 'false'}'")
+    if page == "card":
+        # 自動化ボタン: 拡張が「自動化」の一覧を見えない状態で開いて読み、閉じ終わって、列が並んだところで撮る
+        conds += ["!st.auto.busy", "st.auto.pressed === 'false'", "st.auto.popover_items === 0"]
+        conds.append(f"st.auto.buttons.length === {AUTO_BUTTONS}" if auto_on else "!st.auto.bar")
     expr = f"(() => {{ const st = {STATE_JS}; return ({' && '.join(conds)}) ? st : null; }})()"
     try:
         return s.wait_for(expr, timeout=timeout)
     except TimeoutError:
         raise RuntimeError("再現ページが期待した状態になりません: " + json.dumps(s.evaluate(STATE_JS), ensure_ascii=False))
+
+
+AUTO_TOGGLE = "document.querySelector('nav.cb-nav button[aria-label=\"自動化\"]')"
+
+
+def set_automation(s: cdp.Session, want: str, actions: list):
+    """下部のナビの「自動化」を本物のクリックで開閉し、一覧が見えている（閉じた）状態になるまで待つ。"""
+    open_ = want == "open"
+    cur = s.evaluate(f"{AUTO_TOGGLE}.getAttribute('aria-pressed')")
+    if (cur == "true") != open_:
+        user_click(s, AUTO_TOGGLE)
+        actions.append(f"click: 再現ページの下部ナビ「自動化」→ {'開く' if open_ else '閉じる'}")
+    if open_:
+        s.wait_for(f"(() => {{ const p = document.querySelector('.atlaskit-portal section[role=\"dialog\"]');"
+                   f" return {AUTO_TOGGLE}.getAttribute('aria-pressed') === 'true' && !!p &&"
+                   f" p.querySelectorAll('ul > li > button').length === {AUTO_BUTTONS} &&"
+                   f" getComputedStyle(p).opacity === '1'; }})()", timeout=5)
+    else:
+        s.wait_for(f"{AUTO_TOGGLE}.getAttribute('aria-pressed') === 'false' && "
+                   "!document.querySelector('.atlaskit-portal section[role=\"dialog\"]')", timeout=5)
 
 
 def set_comments(s: cdp.Session, want: str, actions: list):
@@ -569,7 +626,9 @@ def capture(args):
                 s = tab(shot["page"], view)
                 if shot["page"] == "card":
                     set_comments(s, shot["comments"], actions)
-                st = wait_page_state(s, shot["settings"], shot.get("comments"))
+                st = wait_page_state(s, shot["settings"], shot.get("comments"), page=shot["page"])
+                if shot.get("automation") == "open":
+                    set_automation(s, "open", actions)
                 settle(s)
                 if shot["page"] == "card":
                     m = s.evaluate(CARD_MEASURE_JS)
@@ -581,8 +640,13 @@ def capture(args):
                     m = s.evaluate(BOARD_MEASURE_JS)
                     entry.update(rects=m["rects"])
                 entry.update(html_state=st["twc"], counts=m["counts"])
+                if shot["page"] == "card":
+                    entry.update(auto=m["auto"])
                 size = screenshot(s, path)
                 entry.update(size=size, viewport=list(view), dpr=DPR)
+                if shot.get("automation") == "open":
+                    # 次の素材に一覧が写り込まないよう、撮ったら閉じる
+                    set_automation(s, "closed", actions)
                 bad = [k for k, v in entry.get("check_vs_expected", {}).items() if not v["ok"]]
                 if bad:
                     note(f"{name}: 期待値と違う幅があります: {bad}")
@@ -623,6 +687,9 @@ def summarize(shots: list) -> list:
         if s["page"] in ("card", "board"):
             row.update(labeled_cards=s["counts"]["labeled_cards"], painted_cards=s["counts"]["painted_cards"],
                        html_data_twc_on=s["html_state"]["on"])
+        if s["page"] == "card" and s.get("auto"):
+            row.update(auto_bar_buttons=len(s["auto"]["buttons"]),
+                       automation_popover_items=s["auto"]["popover_items"])
         out.append(row)
     return out
 
@@ -644,7 +711,8 @@ def write_manifest(out_dir: str, only):
         data["shots"] = merged
         data["summary"] = summarize(merged)
         data["partial_update"] = sorted(new_files)
-    with open(path, "w", encoding="utf-8") as f:
+    # 改行は OS によらず LF（リポジトリの .gitattributes と同じ。Windows でも作業コピーと差分が出ないように）
+    with open(path, "w", encoding="utf-8", newline="\n") as f:
         json.dump(data, f, ensure_ascii=False, indent=1)
 
 

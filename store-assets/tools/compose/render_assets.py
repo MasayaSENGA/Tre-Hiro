@@ -11,7 +11,7 @@
         途中のファイルは --out-root に関係なく、git の対象外の tools/compose/build/ に書く）。
     python3 store-assets/tools/compose/render_assets.py --preview-dir DIR
         確認用の縮小版も書く（スクリーンショットは 640x400 ＝ストアの表示サイズ、タイルは半分の大きさ）。
-    python3 store-assets/tools/compose/render_assets.py --only 02-wide.html 04-color.html
+    python3 store-assets/tools/compose/render_assets.py --only 02-auto.html 04-color.html
         指定したページだけ描き出す。
     python3 store-assets/tools/compose/render_assets.py --browser PATH
         Chrome の実行ファイルを指定する（既定は自動検出。macOS は /Applications/Google Chrome.app/...、
@@ -80,7 +80,7 @@ import cdp  # noqa: E402
 PAGES = [
     # (html, 出力（--out-root からの相対）, (幅, 高さ))。すべて RGB で保存する
     ("01-hero.html", Path("screenshots") / "01-hero.png", (1280, 800)),
-    ("02-wide.html", Path("screenshots") / "02-wide.png", (1280, 800)),
+    ("02-auto.html", Path("screenshots") / "02-auto.png", (1280, 800)),
     ("03-ratio.html", Path("screenshots") / "03-ratio.png", (1280, 800)),
     ("04-color.html", Path("screenshots") / "04-color.png", (1280, 800)),
     ("05-privacy.html", Path("screenshots") / "05-privacy.png", (1280, 800)),
@@ -100,11 +100,15 @@ EXPECTED = {
         ".dim-pill": "ウィンドウ幅の95%",
         ".brand-name": BRAND, ".footnote": FOOTNOTE, ".footnote2": FOOTNOTE2,
     },
-    "02-wide.html": {
-        ".headline": "横に長い説明や表も、広々と",
-        ".sub": "標準の幅と、トレひろ（幅95%・比率60:40）の比較",
+    "02-auto.html": {
+        ".headline": "自動化ボタンを、1クリックで",
+        ".sub": "「自動化」の一覧を開かなくても、カード詳細の下部から実行",
         ".lbl-before": "Trello 標準",
-        ".lbl-after": "トレひろ（幅95%・比率60:40）",
+        ".note-off": "「自動化」を開いて選ぶ",
+        ".lbl-after": "トレひろ（自動化ボタンを常に表示）",
+        ".note-on": "カード詳細の下部に並ぶ",
+        ".result": "押すと、その場で実行",
+        ".measure": "名前・アイコン・並び順は「自動化」の一覧と同じ",
         ".brand-name": BRAND, ".footnote": FOOTNOTE, ".footnote2": FOOTNOTE2,
     },
     "03-ratio.html": {
@@ -128,15 +132,18 @@ EXPECTED = {
         #         storage だけとは書かない（facts.md 12章 R4）。fact-4: 読むのはラベル色だけではない（10章・R3）
         ".fact-1 .t": "権限は、設定の保存（storage）と trello.com へのアクセスだけ",
         ".fact-2 .t": "動くのは trello.com のページだけ",
+        ".fact-1 .d": "保存するのは、幅・比率・色付けなどの設定6つだけ Chrome の同期が有効なら、ほかの端末にも同期",
+        ".fact-2 .d": "ほかのサイトでは動きません 自動化ボタンは、押したときだけ Trello が実行",
         ".fact-3 .t": "外部送信・アクセス解析なし",
         ".fact-4 .t": "カードの文字は読まない。保存も送信もしない",
+        ".fact-4 .d": "読むのは、ラベルの色や自動化ボタンの名前など 読んだ情報はその場で使うだけで、残しません",
         ".brand-name": BRAND, ".footnote": FOOTNOTE,
     },
     "small-tile.html": {".name": BRAND, ".tag": "カード詳細を、画面いっぱいに"},
     "marquee.html": {
         ".name": BRAND,
         ".tagline": "Trello のカード詳細を、画面いっぱいに",
-        ".support": "説明欄とコメント欄の比率調整・ラベル色の塗り分け（非公式ツール）",
+        ".support": "比率調整・自動化ボタンの常時表示・ラベル色の塗り分け（非公式ツール）",
     },
 }
 # 2 行目の注記（再現画面の説明）は、再現画面が写っていない 05 とタイルには出さない
@@ -208,25 +215,49 @@ def prepare(font_css: str) -> dict:
     r = rects("card_default.png")
     d, main, aside, table = _r(r["dialog"]), _r(r["main"]), _r(r["aside_visible"]), _r(r["table"])
     vw = r["viewport"]["width"]
-    # 下端は「最後のコメントの下端 - 2px」。右のコメント欄は項目の切れ目、左の説明欄は箇条書き 1 行目と 2 行目の
-    # 間になり、文字の行を途中で切らない（表の最終行も全部入る）。raw/card_default.png で目視確認済み
+    # 下端は「自動化ボタンの列の上端 - 1px」。左の説明欄は箇条書きの下、右のコメント欄は最後の項目の下の
+    # 余白になり、文字の行を途中で切らない（表の最終行と、最後のコメントも全部入る）。raw/card_default.png で目視確認済み。
+    # 列が無い素材（自動化ボタンを OFF にして撮った場合）は、以前と同じ「最後のコメントの下端 - 2px」
     last_comment = _r(r["comment_items"][-1])
-    hero_y1 = last_comment[3] - 2
+    bar = _r(r.get("auto_bar"))
+    hero_y1 = bar[1] - 1 if bar else last_comment[3] - 2
+    if bar and not last_comment[3] <= hero_y1:
+        raise SystemExit(f"hero_card: the last comment ({last_comment[3]}) runs into the button row ({bar[1]})")
     if not table[3] + 20 <= hero_y1 <= d[3]:
         raise SystemExit(f"hero_card: bottom {hero_y1} is not between the table end and the dialog end")
     crop("hero_card", "card_default.png", (0, d[1] - 14, vw, hero_y1),
          {"dialog": d, "main": main, "aside": aside, "table": table},
          measured=shots["card_default.png"]["measured"], viewport=r["viewport"])
 
-    # --- 02: 説明欄（見出し・本文・横に長い表）。OFF（Trello 標準）と ON（95%・60:40）の同じ範囲 ----------
-    for name, src in (("wide_off", "card_off.png"), ("wide_on", "card_default.png")):
-        r = rects(src)
-        desc, body, table, dlg = _r(r["description"]), _r(r["description_body"]), _r(r["table"]), _r(r["dialog"])
-        y1 = min(table[3] + 10, dlg[3] - 1)
-        crop(name, src, (desc[0] - 10, desc[1] - 8, desc[2] + 10, y1),
-             {"description": desc, "body": body, "table": table},
-             measured=shots[src]["measured"], rows=shots[src]["table_row_heights"],
-             dialog_w=shots[src]["measured"]["dialog"], viewport=shots[src]["viewport"])
+    # --- 02: 自動化。Trello 標準（ナビの「自動化」で一覧を開いた状態）と、トレひろ（カード詳細の下部の列） ---
+    # 縦の範囲は両方とも同じ（一覧の上端の 20px 上〜ナビの下端の 12px 下）。2 枚はビューポートもナビの位置も同じ
+    r = rects("card_off_auto.png")
+    pop, nav, toggle = _r(r["automation_popover"]), _r(r["nav"]), _r(r["automation_toggle"])
+    if pop is None or len(r["automation_items"]) != 6:
+        raise SystemExit("card_off_auto.png: the automation popover is not open with 6 buttons")
+    auto_y0, auto_y1 = pop[1] - 20, nav[3] + 12
+    # 上端は、トレひろ側（card_default）で表の行の文字を途中で切らないよう、その上の行の境目の 1px 下にそろえる
+    # （Trello 標準側では、表の上端より上の余白になる）
+    t = _r(shots["card_default.png"]["rects"]["table"])
+    rows = [t[1]]
+    for h in shots["card_default.png"]["table_row_heights"]:
+        rows.append(rows[-1] + h)
+    above = [y for y in rows if y < auto_y0]
+    if above:
+        auto_y0 = max(above) + 1
+    crop("auto_std", "card_off_auto.png", (min(pop[0], nav[0]) - 24, auto_y0, max(pop[2], nav[2]) + 24, auto_y1),
+         {"popover": pop, "nav": nav, "toggle": toggle}, viewport=shots["card_off_auto.png"]["viewport"])
+    r = rects("card_default.png")
+    bar, nav2, d = _r(r["auto_bar"]), _r(r["nav"]), _r(r["dialog"])
+    btns = [_r(b) for b in r["auto_buttons"]]
+    if bar is None or len(btns) != 6 or nav2 != nav:
+        raise SystemExit("card_default.png: the button row is missing, or the nav moved")
+    if not (auto_y0 < bar[1] - 40 and bar[3] < auto_y1):
+        raise SystemExit(f"auto_on: the button row {bar} is not inside {auto_y0}..{auto_y1}")
+    # 横はダイアログの左端の少し外から、最後のボタン（とナビ）の右まで
+    crop("auto_on", "card_default.png", (d[0] - 12, auto_y0, max(btns[-1][2], nav2[2]) + 28, auto_y1),
+         {"bar": bar, "buttons": [btns[0][0], btns[0][1], btns[-1][2], btns[-1][3]], "nav": nav2, "dialog": d},
+         buttons=shots["card_default.png"]["auto"]["buttons"], viewport=shots["card_default.png"]["viewport"])
 
     # --- 03: 比率 75:25 / 35:65。ダイアログ全幅、本体の上部（左はタイトル〜、右はコメント） --------------------
     # 下端は、左右どちらでも文字の行や入力欄を途中で切らない位置（raw を目視して決めた CSS px）。
