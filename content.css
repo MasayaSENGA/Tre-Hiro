@@ -7,12 +7,14 @@
  * Trello 側の実クラス名はビルドごとに変わるハッシュ値（例: .mqI1p85XmC2MaW）なので、
  * ここでは data-testid / role / 要素名など変わりにくい目印だけを使っている。
  *
- * 想定している Trello 側のカードバック構造:
+ * 想定している Trello 側のカードバック構造（2026 年 10 月時点）:
  *   #layer-manager-card-back
- *     div[role="dialog"][data-testid="card-back-name"]   ← width: 768px / 1008px
- *       … > div (flex 行)
- *            main   ← 説明欄・添付・チェックリスト（min-width: 460px, 内側に max-width: 620px）
- *            aside  ← コメントとアクティビティ（min-width: 460px, 閉じると translateX(100%)）
+ *     div[role="dialog"][data-testid="card-back-name"]   ← width: auto（以前はここが固定幅）
+ *       div   ← width: 584px / 1080px（コメント欄を閉じた／開いた状態）
+ *         … > div (flex 行)
+ *              main   ← 説明欄・添付・チェックリスト（min-width: 460px, 内側に max-width: 620px）
+ *              div[role="slider"]   ← コメント欄の幅をドラッグで変えるつまみ（460〜620px）
+ *              aside  ← コメントとアクティビティ（min-width: 460px, 幅はインライン style）
  */
 
 :root {
@@ -28,12 +30,21 @@
    印刷時にも適用しないよう screen に限定する。 */
 @media screen and (min-width: 751px) {
   /* ---------------------------------------------------------------
-     1. カード全体の幅（既定の 768px / 1008px 固定を解除）
+     1. カード全体の幅（既定の 584px / 1080px 固定を解除）
      --------------------------------------------------------------- */
   html[data-twc-on] #layer-manager-card-back div[role="dialog"],
   html[data-twc-on] div[role="dialog"][data-testid="card-back-name"] {
     width: var(--twc-card-width) !important;
     max-width: var(--twc-card-max-width) !important;
+  }
+
+  /* 2026 年 10 月の Trello の更新で、固定幅が dialog から直下のラッパー div に移った。
+     dialog だけ広げても中身は 1080px のままなので、ラッパーも dialog いっぱいに広げる。
+     dialog の直下には絶対配置の小さな div もあるため、main を含む子だけに絞っている。 */
+  html[data-twc-on] #layer-manager-card-back div[role="dialog"] > div:has(main),
+  html[data-twc-on] div[role="dialog"][data-testid="card-back-name"] > div:has(main) {
+    width: 100% !important;
+    max-width: none !important;
   }
 
   /* ---------------------------------------------------------------
@@ -70,6 +81,14 @@
     width: calc(100% - var(--twc-desc-ratio)) !important;
     min-width: 0 !important;
     max-width: none !important;
+  }
+
+  /* Trello 標準の「ドラッグしてサイズを変更」つまみ（main と aside の間）。
+     aside の幅は上で固定しているのでドラッグしても変わらない。効かない操作を残さないよう隠す。
+     つまみは margin: 0 -4px で幅を打ち消しているので、隠してもレイアウトは変わらない。 */
+  html[data-twc-on] #layer-manager-card-back div[role="dialog"] main ~ [role="slider"],
+  html[data-twc-on] div[role="dialog"][data-testid="card-back-name"] main ~ [role="slider"] {
+    display: none !important;
   }
 
   /* コメント欄が開いている間だけ main を縮ませる（Trello 側の修飾クラスに依存しない保険）。 */
