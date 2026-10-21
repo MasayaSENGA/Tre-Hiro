@@ -145,6 +145,38 @@
       ダークテーマにもそのまま追従する。
    ----------------------------------------------------------------- */
 @media screen {
+  /* カード詳細ヘッダーのURLコピー操作 */
+  .twc-copy-card-url {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: 0;
+    border-radius: 9999px;
+    background: var(--ds-background-neutral, #f0f1f2);
+    color: var(--ds-text-subtle, #44546f);
+    cursor: pointer;
+  }
+
+  .twc-copy-card-url:hover {
+    background: var(--ds-background-neutral-hovered, #dcdfe4);
+  }
+
+  .twc-copy-card-url:focus-visible {
+    outline: 2px solid var(--ds-border-focused, #388bff);
+    outline-offset: 2px;
+  }
+
+  .twc-copy-card-url[data-copied="true"] {
+    color: var(--ds-text-success, #216e4e);
+  }
+
+  .twc-copy-card-url[data-copied="false"] {
+    color: var(--ds-text-danger, #ae2e24);
+  }
+
   [data-twc-auto-bar] {
     display: flex;
     flex: 0 0 auto;
@@ -270,6 +302,10 @@
 }
 
 @media print {
+  [data-twc-copy-card-url] {
+    display: none !important;
+  }
+
   [data-twc-auto-bar] {
     display: none !important;
   }

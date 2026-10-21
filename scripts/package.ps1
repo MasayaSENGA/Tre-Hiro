@@ -20,6 +20,7 @@ $files = @(
   'content.js',
   'colorize.js',
   'autobuttons.js',
+  'cardurl.js',
   'content.css',
   'popup.html',
   'popup.css',
