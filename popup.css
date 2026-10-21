@@ -212,6 +212,13 @@ input[type="range"] {
   font-size: 10px;
 }
 
+.subfield-label {
+  display: block;
+  margin: 10px 0 2px;
+  color: var(--fg-subtle);
+  font-size: 11px;
+}
+
 /* 色付け OFF のときは、この節の操作だけを無効化する */
 .field.is-colors-off input[type="range"],
 .field.is-colors-off .scale,

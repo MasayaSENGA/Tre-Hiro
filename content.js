@@ -22,6 +22,7 @@
     );
     root.style.setProperty("--twc-desc-ratio", s.descRatio + "%");
     root.style.setProperty("--twc-color-strength", s.colorStrength + "%");
+    root.style.setProperty("--twc-color-vibrancy-factor", String(s.colorVibrancy / 100));
 
     if (s.enabled) {
       root.setAttribute("data-twc-on", "");
@@ -54,6 +55,7 @@
       "descRatio",
       "colorCards",
       "colorStrength",
+      "colorVibrancy",
     ].some((key) => key in changes);
     if (!touched) return;
     chrome.storage.sync.get(TWC_DEFAULTS, (stored) => applySettings(stored));

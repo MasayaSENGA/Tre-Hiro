@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "トレひろ",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Trello のカード詳細を画面いっぱいに広げ、説明欄とコメント欄の左右比率を自由に調整できます。自動化ボタンをカード詳細の下部に常に並べたり、ボードのカードをラベル色で塗り分けたりもできます（非公式ツール）。",
   "permissions": ["storage"],
   "action": {

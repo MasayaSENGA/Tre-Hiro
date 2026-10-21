@@ -263,7 +263,9 @@
 
   /** 左端の縦帯。ラベルが複数なら等分して積む。 */
   function barGradient(colors) {
-    const list = colors.slice(0, MAX_BAR);
+    const list = colors
+      .slice(0, MAX_BAR)
+      .map((color) => `hsl(from ${color} h calc(s * var(--twc-color-vibrancy-factor)) l)`);
     if (list.length === 1) return `linear-gradient(${list[0]}, ${list[0]})`;
     const step = 100 / list.length;
     const stops = list.map(

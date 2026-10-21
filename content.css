@@ -23,6 +23,7 @@
   --twc-card-max-width: calc(100vw - 24px);
   --twc-desc-ratio: 60%;
   --twc-color-strength: 16%;
+  --twc-color-vibrancy-factor: 1;
   --twc-bar-width: 4px;
 }
 
@@ -125,7 +126,13 @@
   html[data-twc-on][data-twc-color] [data-twc-card-color] {
     --twc-card-tint: color-mix(
       in srgb,
-      var(--twc-card-color) var(--twc-color-strength),
+      hsl(
+        from var(--twc-card-color)
+        h
+        calc(s * var(--twc-color-vibrancy-factor))
+        l
+      )
+        var(--twc-color-strength),
       transparent
     );
 

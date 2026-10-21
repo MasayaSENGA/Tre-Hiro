@@ -89,9 +89,23 @@
           <output class="value value-mini" id="colorStrengthValue">16%</output>
           <span>濃い</span>
         </div>
+        <label class="subfield-label" for="colorVibrancy">鮮やかさ</label>
+        <input
+          type="range"
+          id="colorVibrancy"
+          min="0"
+          max="200"
+          step="1"
+          value="100"
+        />
+        <div class="scale">
+          <span>控えめ</span>
+          <output class="value value-mini" id="colorVibrancyValue">100%</output>
+          <span>200%</span>
+        </div>
         <div class="swatch" id="swatch" aria-hidden="true"></div>
         <p class="hint">
-          ボードのカードに、付いているラベルの色を重ねます。左端の帯はラベルごとに分かれます。
+          鮮やかさを調整して、カードに重ねるラベル色の印象を変えられます。左端の帯はラベルごとに分かれます。
         </p>
       </section>
     </main>
