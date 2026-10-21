@@ -3,9 +3,9 @@
 const TWC_DEFAULTS = {
   enabled: true,
   cardWidth: 95, // カード幅（ウィンドウ幅に対する %）
-  descRatio: 60, // 左カラム＝説明欄の割合（%）。残りがコメント欄。
+  descRatio: 40, // 左カラム＝説明欄の割合（%）。残りがコメント欄。
   colorCards: true, // ボードのカードをラベル色で塗るか
-  colorStrength: 16, // 背景に重ねるラベル色の濃さ（%）
+  colorStrength: 45, // 背景に重ねるラベル色の濃さ（%）
   colorVibrancy: 100, // ラベル色の鮮やかさ（%）
   autoButtons: true, // カード詳細の下部に自動化（カードボタン）を常に並べるか
 };
