@@ -29,6 +29,7 @@
   let pendingSettings = null;
   let lastRangeSaveAt = 0;
   const RANGE_SAVE_INTERVAL = 1000;
+  const VIBRANCY_DETENT = 4;
 
   /* 色付けプレビュー。Trello の標準ラベル色から代表的なものを借りている。 */
   const SWATCHES = [
@@ -129,6 +130,10 @@
 
   /** ドラッグ中はプレビューを即時更新し、ストレージ書き込みは毎秒までに抑える。 */
   function saveRange() {
+    const vibrancy = Number(el.colorVibrancy.value);
+    if (Math.abs(vibrancy - 100) <= VIBRANCY_DETENT) {
+      el.colorVibrancy.value = "100";
+    }
     pendingSettings = collect();
     render(pendingSettings);
     clearTimeout(rangeSaveTimer);
