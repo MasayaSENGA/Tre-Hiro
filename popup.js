@@ -9,6 +9,7 @@
     cardWidthValue: document.getElementById("cardWidthValue"),
     descRatio: document.getElementById("descRatio"),
     ratioValue: document.getElementById("ratioValue"),
+    ratioRightValue: document.getElementById("ratioRightValue"),
     previewLeft: document.getElementById("previewLeft"),
     autoButtons: document.getElementById("autoButtons"),
     autoButtonsText: document.getElementById("autoButtonsText"),
@@ -80,10 +81,11 @@
     el.body.classList.toggle("is-off", !s.enabled);
 
     el.cardWidth.value = String(s.cardWidth);
-    el.cardWidthValue.textContent = s.cardWidth + "%";
+    el.cardWidthValue.value = String(s.cardWidth);
 
     el.descRatio.value = String(s.descRatio);
-    el.ratioValue.textContent = s.descRatio + " : " + (100 - s.descRatio);
+    el.ratioValue.value = String(s.descRatio);
+    el.ratioRightValue.value = String(100 - s.descRatio);
     el.previewLeft.style.flexBasis = s.descRatio + "%";
 
     el.autoButtons.checked = s.autoButtons;
@@ -93,9 +95,9 @@
     el.colorCardsText.textContent = s.colorCards ? "ON" : "OFF";
     el.colorField.classList.toggle("is-colors-off", !s.colorCards);
     el.colorStrength.value = String(s.colorStrength);
-    el.colorStrengthValue.textContent = s.colorStrength + "%";
+    el.colorStrengthValue.value = String(s.colorStrength);
     el.colorVibrancy.value = String(s.colorVibrancy);
-    el.colorVibrancyValue.textContent = s.colorVibrancy + "%";
+    el.colorVibrancyValue.value = String(s.colorVibrancy);
     renderSwatches(s.colorStrength, s.colorVibrancy);
   }
 
@@ -164,6 +166,44 @@
   }
   el.autoButtons.addEventListener("change", save);
   el.colorCards.addEventListener("change", save);
+
+  const numberInputs = [
+    [el.cardWidthValue, el.cardWidth, TWC_LIMITS.cardWidth],
+    [el.colorStrengthValue, el.colorStrength, TWC_LIMITS.colorStrength],
+    [el.colorVibrancyValue, el.colorVibrancy, TWC_LIMITS.colorVibrancy],
+  ];
+  for (const [numberInput, rangeInput, limits] of numberInputs) {
+    numberInput.addEventListener("change", () => {
+      const value = twcClamp(numberInput.value, limits.min, limits.max, Number(rangeInput.value));
+      rangeInput.value = String(value);
+      numberInput.value = String(value);
+      save();
+    });
+    numberInput.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") numberInput.blur();
+    });
+  }
+
+  for (const [numberInput, toDescRatio] of [
+    [el.ratioValue, (value) => value],
+    [el.ratioRightValue, (value) => 100 - value],
+  ]) {
+    numberInput.addEventListener("change", () => {
+      const entered = Number(numberInput.value);
+      const fallback = Number(el.descRatio.value);
+      const value = twcClamp(
+        toDescRatio(Number.isFinite(entered) ? entered : (numberInput === el.ratioValue ? fallback : 100 - fallback)),
+        TWC_LIMITS.descRatio.min,
+        TWC_LIMITS.descRatio.max,
+        fallback
+      );
+      el.descRatio.value = String(value);
+      save();
+    });
+    numberInput.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") numberInput.blur();
+    });
+  }
 
   el.reset.addEventListener("click", () => {
     clearTimeout(rangeSaveTimer);

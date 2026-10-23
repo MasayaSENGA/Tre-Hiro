@@ -19,7 +19,10 @@
       <section class="field">
         <div class="field-head">
           <label for="cardWidth">カードの幅</label>
-          <output class="value" id="cardWidthValue">95%</output>
+          <span class="value-entry">
+            <input class="value" id="cardWidthValue" type="number" min="40" max="100" step="1" aria-label="カードの幅（%）" />
+            <span>%</span>
+          </span>
         </div>
         <input
           type="range"
@@ -36,7 +39,17 @@
       <section class="field">
         <div class="field-head">
           <label for="descRatio">左右の比率</label>
-          <output class="value" id="ratioValue">40 : 60</output>
+          <span class="ratio-values">
+            <span class="value-entry">
+              <input class="value" id="ratioValue" type="number" min="15" max="90" step="1" aria-label="説明欄の割合（%）" />
+              <span>%</span>
+            </span>
+            <span>:</span>
+            <span class="value-entry">
+              <input class="value" id="ratioRightValue" type="number" min="10" max="85" step="1" aria-label="コメント欄の割合（%）" />
+              <span>%</span>
+            </span>
+          </span>
         </div>
         <input
           type="range"
@@ -86,7 +99,10 @@
         />
         <div class="scale">
           <span>薄い</span>
-          <output class="value value-mini" id="colorStrengthValue">45%</output>
+          <span class="value-entry">
+            <input class="value value-mini" id="colorStrengthValue" type="number" min="5" max="45" step="1" aria-label="カード色の濃さ（%）" />
+            <span>%</span>
+          </span>
           <span>濃い</span>
         </div>
         <label class="subfield-label" for="colorVibrancy">鮮やかさ</label>
@@ -104,7 +120,10 @@
         </datalist>
         <div class="scale">
           <span>控えめ</span>
-          <output class="value value-mini" id="colorVibrancyValue">100%</output>
+          <span class="value-entry">
+            <input class="value value-mini" id="colorVibrancyValue" type="number" min="0" max="200" step="1" aria-label="鮮やかさ（%）" />
+            <span>%</span>
+          </span>
           <span>200%</span>
         </div>
         <div class="swatch" id="swatch" aria-hidden="true"></div>

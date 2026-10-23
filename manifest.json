@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "トレひろ",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "Trello のカード詳細を広げて左右比率を調整。自動化ボタンの常時表示、カードURLのコピー、ラベル色でのカード色付けにも対応（非公式ツール）。",
   "permissions": ["storage"],
   "action": {
