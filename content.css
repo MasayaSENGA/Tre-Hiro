@@ -318,8 +318,18 @@
    ----------------------------------------------------------------- */
 @media screen {
   [data-twc-list-id] {
+    /* 折りたたんだリストを展開し直すと、Trello は「…」ボタンなどを見出しの最後（バッジの後ろ）に足し直す。
+       DOM の順番によらず、バッジを最後の行に並べる。 */
+    order: 9999;
     flex: 0 0 100%;
     min-width: 0;
+  }
+
+  /* 折りたたんだリストは、見出しが縦書きの細い列になる（見出しに role="button" が付き、カードの一覧は hidden）。
+     バッジがリスト名を押し出してしまうので出さない。 */
+  [data-testid="list-header"][role="button"] [data-twc-list-id],
+  [data-testid="list"]:has(> [data-testid="list-cards"][hidden]) [data-twc-list-id] {
+    display: none !important;
   }
 
   [data-twc-list-id] .twc-list-id {
