@@ -23,29 +23,6 @@
     return `${location.origin}/c/${match[1]}/`;
   }
 
-  async function copyText(text) {
-    try {
-      await navigator.clipboard.writeText(text);
-      return true;
-    } catch {
-      // Clipboard API が使えない環境では、クリック中のユーザー操作でコピーする。
-      const field = document.createElement("textarea");
-      field.value = text;
-      field.setAttribute("readonly", "");
-      field.style.position = "fixed";
-      field.style.opacity = "0";
-      document.body.appendChild(field);
-      field.select();
-      let copied = false;
-      try {
-        copied = document.execCommand("copy");
-      } finally {
-        field.remove();
-      }
-      return copied;
-    }
-  }
-
   function makeIcon() {
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svg.setAttribute("viewBox", "0 0 16 16");
@@ -87,7 +64,7 @@
     button.appendChild(makeIcon());
     button.addEventListener("click", async () => {
       const url = cardUrl();
-      const copied = !!url && await copyText(url);
+      const copied = !!url && await twcCopyText(url);
       showResult(button, copied);
     });
     item.appendChild(button);

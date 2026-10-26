@@ -233,6 +233,11 @@ input[type="range"] {
   align-self: center;
 }
 
+/* 1 つの節にスイッチを続けて並べるときの、2 つ目以降の見出し */
+.field-head-next {
+  margin-top: 10px;
+}
+
 .value-mini {
   width: 46px;
   padding: 0 6px;

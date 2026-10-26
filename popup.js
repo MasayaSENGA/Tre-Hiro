@@ -13,6 +13,12 @@
     previewLeft: document.getElementById("previewLeft"),
     autoButtons: document.getElementById("autoButtons"),
     autoButtonsText: document.getElementById("autoButtonsText"),
+    listIds: document.getElementById("listIds"),
+    listIdsText: document.getElementById("listIdsText"),
+    cardHistory: document.getElementById("cardHistory"),
+    cardHistoryText: document.getElementById("cardHistoryText"),
+    disableShortcutC: document.getElementById("disableShortcutC"),
+    disableShortcutCText: document.getElementById("disableShortcutCText"),
     colorField: document.getElementById("colorField"),
     colorCards: document.getElementById("colorCards"),
     colorCardsText: document.getElementById("colorCardsText"),
@@ -91,6 +97,13 @@
     el.autoButtons.checked = s.autoButtons;
     el.autoButtonsText.textContent = s.autoButtons ? "ON" : "OFF";
 
+    el.listIds.checked = s.listIds;
+    el.listIdsText.textContent = s.listIds ? "ON" : "OFF";
+    el.cardHistory.checked = s.cardHistory;
+    el.cardHistoryText.textContent = s.cardHistory ? "ON" : "OFF";
+    el.disableShortcutC.checked = s.disableShortcutC;
+    el.disableShortcutCText.textContent = s.disableShortcutC ? "ON" : "OFF";
+
     el.colorCards.checked = s.colorCards;
     el.colorCardsText.textContent = s.colorCards ? "ON" : "OFF";
     el.colorField.classList.toggle("is-colors-off", !s.colorCards);
@@ -108,6 +121,9 @@
       cardWidth: el.cardWidth.value,
       descRatio: el.descRatio.value,
       autoButtons: el.autoButtons.checked,
+      listIds: el.listIds.checked,
+      cardHistory: el.cardHistory.checked,
+      disableShortcutC: el.disableShortcutC.checked,
       colorCards: el.colorCards.checked,
       colorStrength: el.colorStrength.value,
       colorVibrancy: el.colorVibrancy.value,
@@ -165,6 +181,9 @@
     input.addEventListener("change", flushRangeSave);
   }
   el.autoButtons.addEventListener("change", save);
+  el.listIds.addEventListener("change", save);
+  el.cardHistory.addEventListener("change", save);
+  el.disableShortcutC.addEventListener("change", save);
   el.colorCards.addEventListener("change", save);
 
   const numberInputs = [

@@ -8,6 +8,9 @@ const TWC_DEFAULTS = {
   colorStrength: 45, // 背景に重ねるラベル色の濃さ（%）
   colorVibrancy: 100, // ラベル色の鮮やかさ（%）
   autoButtons: true, // カード詳細の下部に自動化（カードボタン）を常に並べるか
+  listIds: true, // ボードの各リストの見出しにリストIDを出すか
+  cardHistory: true, // カード詳細のヘッダーに変更履歴（JSON）を開くボタンを置くか
+  disableShortcutC: false, // ショートカット「c」（カードのアーカイブ）を無効化するか
 };
 
 const TWC_LIMITS = {
@@ -54,5 +57,32 @@ function twcNormalize(stored) {
       TWC_DEFAULTS.colorVibrancy
     ),
     autoButtons: s.autoButtons !== false,
+    listIds: s.listIds !== false,
+    cardHistory: s.cardHistory !== false,
+    disableShortcutC: s.disableShortcutC === true,
   };
+}
+
+/** 文字列をクリップボードにコピーし、できたかどうかを返す。 */
+async function twcCopyText(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    return true;
+  } catch {
+    // Clipboard API が使えない環境では、クリック中のユーザー操作でコピーする。
+    const field = document.createElement("textarea");
+    field.value = text;
+    field.setAttribute("readonly", "");
+    field.style.position = "fixed";
+    field.style.opacity = "0";
+    document.body.appendChild(field);
+    field.select();
+    let copied = false;
+    try {
+      copied = document.execCommand("copy");
+    } finally {
+      field.remove();
+    }
+    return copied;
+  }
 }

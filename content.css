@@ -152,8 +152,9 @@
       ダークテーマにもそのまま追従する。
    ----------------------------------------------------------------- */
 @media screen {
-  /* カード詳細ヘッダーのURLコピー操作 */
-  .twc-copy-card-url {
+  /* カード詳細ヘッダーのURLコピー操作と、変更履歴（cardhistory.js）を開く操作 */
+  .twc-copy-card-url,
+  .twc-card-history {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -167,11 +168,13 @@
     cursor: pointer;
   }
 
-  .twc-copy-card-url:hover {
+  .twc-copy-card-url:hover,
+  .twc-card-history:hover {
     background: var(--ds-background-neutral-hovered, #dcdfe4);
   }
 
-  .twc-copy-card-url:focus-visible {
+  .twc-copy-card-url:focus-visible,
+  .twc-card-history:focus-visible {
     outline: 2px solid var(--ds-border-focused, #388bff);
     outline-offset: 2px;
   }
@@ -308,8 +311,96 @@
   }
 }
 
+/* -----------------------------------------------------------------
+   6. ボードの各リストの見出しに出すリストID
+      listid.js が見出しの最後に足すバッジ。見出しは折り返しありの横並びなので、
+      リスト名を押し縮めないよう、バッジの入れ物だけで 1 行を占める。
+   ----------------------------------------------------------------- */
+@media screen {
+  [data-twc-list-id] {
+    flex: 0 0 100%;
+    min-width: 0;
+  }
+
+  [data-twc-list-id] .twc-list-id {
+    display: inline-block;
+    max-width: calc(100% - 16px);
+    margin: 4px 8px;
+    padding: 2px 6px;
+    border: 1px solid var(--ds-border, #091e4224);
+    border-radius: 3px;
+    background: var(--ds-background-neutral, #091e420f);
+    color: var(--ds-text-subtle, #44546f);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 10px;
+    line-height: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: copy;
+  }
+
+  [data-twc-list-id] .twc-list-id:hover {
+    background: var(--ds-background-neutral-hovered, #091e4224);
+  }
+
+  [data-twc-list-id] .twc-list-id:focus-visible {
+    outline: 2px solid var(--ds-border-focused, #388bff);
+    outline-offset: 1px;
+  }
+
+  [data-twc-list-id] .twc-list-id[data-copied="true"] {
+    background: var(--ds-background-success, #dcfff1);
+    color: var(--ds-text-success, #216e4e);
+  }
+
+  [data-twc-list-id] .twc-list-id[data-copied="false"] {
+    background: var(--ds-background-danger, #ffeceb);
+    color: var(--ds-text-danger, #ae2e24);
+  }
+
+  /* 別の拡張機能も同じ見出しにリストIDのバッジ（.custom-list-id）を出す。
+     両方を入れているときに二重に並ばないよう、トレひろの側を引っ込める。 */
+  [data-testid="list-header"]:has(.custom-list-id) [data-twc-list-id] {
+    display: none !important;
+  }
+}
+
+/* -----------------------------------------------------------------
+   7. ショートカット「c」を止めたときの通知
+      shortcut.js が「c」を止めるたびに右上に出し、2 秒で消す。
+   ----------------------------------------------------------------- */
+@media screen {
+  [data-twc-shortcut-toast] {
+    position: fixed;
+    top: 60px;
+    right: 20px;
+    z-index: 999999;
+    padding: 12px 24px;
+    border-radius: 8px;
+    background: var(--ds-background-danger-bold, #c9372c);
+    box-shadow: var(--ds-shadow-overlay, 0 4px 12px #091e4226);
+    color: var(--ds-text-inverse, #ffffff);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+  }
+
+  [data-twc-shortcut-toast][data-shown] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @media print {
-  [data-twc-copy-card-url] {
+  [data-twc-copy-card-url],
+  [data-twc-card-history],
+  [data-twc-list-id],
+  [data-twc-shortcut-toast] {
     display: none !important;
   }
 
