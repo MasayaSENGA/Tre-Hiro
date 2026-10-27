@@ -13,6 +13,9 @@
     previewLeft: document.getElementById("previewLeft"),
     autoButtons: document.getElementById("autoButtons"),
     autoButtonsText: document.getElementById("autoButtonsText"),
+    autoButtonsBoards: document.getElementById("autoButtonsBoards"),
+    addBoard: document.getElementById("addBoard"),
+    addBoardStatus: document.getElementById("addBoardStatus"),
     listIds: document.getElementById("listIds"),
     listIdsText: document.getElementById("listIdsText"),
     cardHistory: document.getElementById("cardHistory"),
@@ -35,6 +38,8 @@
   let rangeSaveTimer = null;
   let pendingSettings = null;
   let lastRangeSaveAt = 0;
+  /** 自動化ボタンを表示するボード（UI に出している一覧）。 */
+  let boards = [];
   const RANGE_SAVE_INTERVAL = 1000;
   const VIBRANCY_DETENT = 4;
 
@@ -96,6 +101,7 @@
 
     el.autoButtons.checked = s.autoButtons;
     el.autoButtonsText.textContent = s.autoButtons ? "ON" : "OFF";
+    renderBoards(s.autoButtonsBoards);
 
     el.listIds.checked = s.listIds;
     el.listIdsText.textContent = s.listIds ? "ON" : "OFF";
@@ -114,6 +120,57 @@
     renderSwatches(s.colorStrength, s.colorVibrancy);
   }
 
+  function renderBoards(list) {
+    boards = list;
+    el.autoButtonsBoards.replaceChildren(
+      ...list.map((board) => {
+        const li = document.createElement("li");
+        li.className = "board-item";
+        const name = document.createElement("span");
+        name.className = "board-name";
+        name.textContent = board.name || board.id;
+        name.title = `https://trello.com/b/${board.id}`;
+        const remove = document.createElement("button");
+        remove.type = "button";
+        remove.className = "board-remove";
+        remove.textContent = "×";
+        remove.setAttribute("aria-label", `${board.name || board.id} を外す`);
+        remove.addEventListener("click", () => {
+          boards = boards.filter((b) => b.id !== board.id);
+          save();
+        });
+        li.append(name, remove);
+        return li;
+      })
+    );
+  }
+
+  function showBoardStatus(text) {
+    el.addBoardStatus.textContent = text;
+  }
+
+  /** 開いているタブの Trello に今のボードを聞いて、一覧に足す。 */
+  function addCurrentBoard() {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      const tab = tabs && tabs[0];
+      if (!tab || tab.id == null) return showBoardStatus("タブが見つかりませんでした。");
+      chrome.tabs.sendMessage(tab.id, { type: "twc-current-board" }, (response) => {
+        const board = !chrome.runtime.lastError && response && response.board;
+        if (!board) {
+          showBoardStatus("Trello のボードかカードを開いた状態で押してください。");
+          return;
+        }
+        if (boards.some((b) => b.id === board.id)) {
+          showBoardStatus(`「${board.name || board.id}」は追加済みです。`);
+          return;
+        }
+        boards = [...boards, board];
+        save();
+        showBoardStatus(`「${board.name || board.id}」を追加しました。`);
+      });
+    });
+  }
+
   /** 現在の UI の値を設定オブジェクトとして取り出す */
   function collect() {
     return twcNormalize({
@@ -121,6 +178,7 @@
       cardWidth: el.cardWidth.value,
       descRatio: el.descRatio.value,
       autoButtons: el.autoButtons.checked,
+      autoButtonsBoards: boards,
       listIds: el.listIds.checked,
       cardHistory: el.cardHistory.checked,
       disableShortcutC: el.disableShortcutC.checked,
@@ -181,6 +239,7 @@
     input.addEventListener("change", flushRangeSave);
   }
   el.autoButtons.addEventListener("change", save);
+  el.addBoard.addEventListener("click", addCurrentBoard);
   el.listIds.addEventListener("change", save);
   el.cardHistory.addEventListener("change", save);
   el.disableShortcutC.addEventListener("change", save);
@@ -228,8 +287,10 @@
     clearTimeout(rangeSaveTimer);
     rangeSaveTimer = null;
     pendingSettings = null;
-    render(TWC_DEFAULTS);
-    chrome.storage.sync.set(TWC_DEFAULTS, flashSaved);
+    // 指定したボードの一覧は、既定値に戻しても残す。
+    const settings = { ...TWC_DEFAULTS, autoButtonsBoards: boards };
+    render(settings);
+    chrome.storage.sync.set(settings, flashSaved);
   });
 
   chrome.storage.sync.get(TWC_DEFAULTS, (stored) => render(stored));

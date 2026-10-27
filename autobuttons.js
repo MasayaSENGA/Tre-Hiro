@@ -93,6 +93,13 @@
   let current = null;
   /** カードごとの読み取りの試行。 */
   let attempts = { key: null, count: 0, retryAt: 0 };
+  /** 今の設定。 */
+  let settings = twcNormalize(TWC_DEFAULTS);
+  /**
+   * カードの shortLink → そのカードのボードの shortLink（調べられなかったら ""）。
+   * 調べている間は undefined を入れておき、同じカードで二重に問い合わせない。
+   */
+  const boardOfCard = new Map();
   /** 入力中なので読み取りを後回しにしているか。 */
   let deferred = false;
   /**
@@ -207,6 +214,46 @@
   function cardKey() {
     const m = /^\/c\/([^/]+)/.exec(location.pathname);
     return m ? m[1] : "";
+  }
+
+  /** Trello 自身の API でボードの shortLink と名前を調べる。失敗したら null。 */
+  async function fetchBoard(path) {
+    try {
+      const res = await fetch(`${location.origin}${path}?fields=shortLink,name`, {
+        credentials: "same-origin",
+      });
+      if (!res.ok) return null;
+      const board = await res.json();
+      return board && board.shortLink ? { id: board.shortLink, name: board.name || "" } : null;
+    } catch {
+      return null;
+    }
+  }
+
+  /** 開いているボードを調べる。カード詳細なら、そのカードのボード。 */
+  function currentBoard() {
+    const m = /^\/([bc])\/([^/]+)/.exec(location.pathname);
+    if (!m) return Promise.resolve(null);
+    const id = encodeURIComponent(m[2]);
+    return fetchBoard(m[1] === "b" ? `/1/boards/${id}` : `/1/cards/${id}/board`);
+  }
+
+  /** カードのボードの shortLink。調べ終わるまでは undefined を返し、終わったら読み直す。 */
+  function boardOf(key) {
+    if (boardOfCard.has(key)) return boardOfCard.get(key);
+    boardOfCard.set(key, undefined);
+    fetchBoard(`/1/cards/${encodeURIComponent(key)}/board`).then((board) => {
+      boardOfCard.set(key, board ? board.id : "");
+      schedule();
+    });
+    return undefined;
+  }
+
+  /** このカードで自動化ボタンを並べるか。「常に表示」が OFF なら、指定したボードだけ。 */
+  function isTargetCard(key) {
+    if (settings.autoButtons) return true;
+    const board = boardOf(key);
+    return !!board && settings.autoButtonsBoards.some((b) => b.id === board);
   }
 
   /** 入力欄・エディタに入力中か。ポップオーバーを開くとフォーカスを奪うので、その間は読まない。 */
@@ -557,6 +604,10 @@
     }
 
     const key = cardKey();
+    if (!isTargetCard(key)) {
+      removeBars();
+      return;
+    }
     if (!current || current.key !== key) {
       removeBars();
       if (attempts.key === key && Date.now() < attempts.retryAt) return;
@@ -613,10 +664,14 @@
     removeBars();
   }
 
-  function apply(settings) {
-    const s = twcNormalize(settings);
-    if (s.enabled && s.autoButtons) start();
-    else stop();
+  function apply(stored) {
+    settings = twcNormalize(stored);
+    if (settings.enabled && (settings.autoButtons || settings.autoButtonsBoards.length)) {
+      start();
+      schedule();
+    } else {
+      stop();
+    }
   }
 
   function whenReady(fn) {
@@ -636,9 +691,16 @@
 
   chrome.storage.onChanged.addListener((changes, areaName) => {
     if (areaName !== "sync") return;
-    if (!["enabled", "autoButtons"].some((key) => key in changes)) return;
+    if (!["enabled", "autoButtons", "autoButtonsBoards"].some((key) => key in changes)) return;
     whenReady(() => {
       chrome.storage.sync.get(TWC_DEFAULTS, (stored) => apply(stored));
     });
+  });
+
+  // ポップアップの「開いているボードを追加」から、今のボードを聞かれる。
+  chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
+    if (!message || message.type !== "twc-current-board") return false;
+    currentBoard().then((board) => sendResponse({ board }));
+    return true;
   });
 })();

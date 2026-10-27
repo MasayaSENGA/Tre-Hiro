@@ -251,6 +251,53 @@ input[type="range"] {
   font-size: 11px;
 }
 
+/* 自動化ボタンを表示するボードの一覧 */
+.board-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.board-list:empty {
+  display: none;
+}
+
+.board-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 12px;
+}
+
+.board-name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.board-remove {
+  padding: 0 6px;
+  border: 0;
+  background: transparent;
+  color: var(--fg-subtle);
+  font: inherit;
+  font-size: 14px;
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+.board-remove:hover {
+  color: var(--accent);
+}
+
+.board-add {
+  margin-top: 6px;
+}
+
 /* 色付け OFF のときは、この節の操作だけを無効化する */
 .field.is-colors-off input[type="range"],
 .field.is-colors-off .scale,

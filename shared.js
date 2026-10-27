@@ -8,6 +8,7 @@ const TWC_DEFAULTS = {
   colorStrength: 45, // 背景に重ねるラベル色の濃さ（%）
   colorVibrancy: 100, // ラベル色の鮮やかさ（%）
   autoButtons: true, // カード詳細の下部に自動化（カードボタン）を常に並べるか
+  autoButtonsBoards: [], // autoButtons が OFF でも自動化ボタンを並べるボード [{ id: shortLink, name }]
   listIds: true, // ボードの各リストの見出しにリストIDを出すか
   cardHistory: true, // カード詳細のヘッダーに変更履歴（JSON）を開くボタンを置くか
   disableShortcutC: false, // ショートカット「c」（カードのアーカイブ）を無効化するか
@@ -24,6 +25,20 @@ function twcClamp(value, min, max, fallback) {
   const n = Number(value);
   if (!Number.isFinite(n)) return fallback;
   return Math.min(max, Math.max(min, Math.round(n)));
+}
+
+/** ボードの一覧を検証する。id は URL の /b/<shortLink>/ の部分。 */
+function twcNormalizeBoards(boards) {
+  if (!Array.isArray(boards)) return [];
+  const seen = new Set();
+  const result = [];
+  for (const b of boards) {
+    const id = b && typeof b.id === "string" ? b.id : "";
+    if (!/^[A-Za-z0-9]{1,24}$/.test(id) || seen.has(id)) continue;
+    seen.add(id);
+    result.push({ id, name: typeof b.name === "string" ? b.name.slice(0, 200) : "" });
+  }
+  return result;
 }
 
 /** 保存値を検証して、必ず有効な設定オブジェクトを返す。 */
@@ -57,6 +72,7 @@ function twcNormalize(stored) {
       TWC_DEFAULTS.colorVibrancy
     ),
     autoButtons: s.autoButtons !== false,
+    autoButtonsBoards: twcNormalizeBoards(s.autoButtonsBoards),
     listIds: s.listIds !== false,
     cardHistory: s.cardHistory !== false,
     disableShortcutC: s.disableShortcutC === true,
